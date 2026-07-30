@@ -2,207 +2,174 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Parque Zoológico Vale Verde</title>
 
 <style>
 
+/* ==========================================
+   CONFIGURAÇÃO GERAL
+========================================== */
+
+html,
 body {
     margin: 0;
-    background: #d6d6d6;
-    color: #111;
-    font-family: Verdana, Arial, sans-serif;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: #c0c0c0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
 }
 
-/* ================================
-   SITE PRINCIPAL
-================================ */
+
+/* ==========================================
+   SITE INTEIRO
+========================================== */
 
 #site {
-    width: 760px;
-    margin: 15px auto;
-    background: white;
-    border: 2px solid #555;
-}
-
-/* CABEÇALHO */
-
-.header {
-    height: 105px;
-    background: #185c2b;
-    color: white;
-    border-bottom: 4px solid #e4c600;
-    position: relative;
-}
-
-.header h1 {
-    margin: 0;
-    padding: 20px 20px 3px;
-    font-family: Georgia, serif;
-    font-size: 30px;
-    letter-spacing: 1px;
-}
-
-.header p {
-    margin: 0 20px;
-    font-size: 11px;
-}
-
-/* MENU */
-
-.menu {
-    background: #eeeeee;
-    border-bottom: 1px solid #777;
-    padding: 6px;
-    text-align: center;
-}
-
-.menu a {
-    color: #003399;
-    text-decoration: underline;
-    font-weight: bold;
-    margin: 0 9px;
-    cursor: pointer;
-}
-
-.menu a:hover {
-    color: #cc0000;
-}
-
-/* LAYOUT */
-
-.layout {
-    display: table;
     width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
 }
 
-.sidebar {
-    display: table-cell;
-    width: 165px;
+
+/* ==========================================
+   CABEÇALHO
+========================================== */
+
+#header {
+    width: 100%;
+    background: #164b25;
+    color: #ffffff;
+    border-bottom: 3px solid #808000;
+}
+
+#header table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#header td {
+    padding: 12px;
+}
+
+#logo {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+#subtitle {
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+
+/* ==========================================
+   MENU PRINCIPAL
+========================================== */
+
+#menu {
+    width: 100%;
+    background: #d4d0c8;
+    border-bottom: 1px solid #808080;
+}
+
+#menu table {
+    border-collapse: collapse;
+}
+
+#menu td {
+    border-right: 1px solid #808080;
+    padding: 6px 12px;
+    white-space: nowrap;
+}
+
+#menu a {
+    color: #0000cc;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#menu a:hover {
+    color: #ff0000;
+}
+
+
+/* ==========================================
+   ÁREA PRINCIPAL
+========================================== */
+
+#main {
+    width: 100%;
+    min-height: calc(100vh - 170px);
+}
+
+#main-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+/* ==========================================
+   MENU LATERAL
+========================================== */
+
+#sidebar {
+    width: 175px;
     vertical-align: top;
     background: #eeeeee;
-    border-right: 1px solid #999;
+    border-right: 1px solid #808080;
     padding: 8px;
 }
 
-.content {
-    display: table-cell;
-    vertical-align: top;
-    padding: 15px;
-}
-
-/* CAIXAS */
-
-.box {
-    border: 1px solid #777;
-    margin-bottom: 12px;
-    background: #fff;
-}
-
-.box-title {
-    background: #185c2b;
+.sidebar-title {
+    background: #164b25;
     color: white;
     font-weight: bold;
-    padding: 4px 6px;
+    padding: 4px;
+    margin-bottom: 5px;
 }
 
-.box-content {
-    padding: 8px;
-    line-height: 1.6;
+.sidebar-box {
+    border: 1px solid #808080;
+    background: #ffffff;
+    margin-bottom: 12px;
+    padding: 7px;
 }
 
-.sidebar a {
+.sidebar-box a {
     display: block;
-    color: #003399;
+    color: #0000cc;
     text-decoration: underline;
-    padding: 2px;
+    margin: 4px 0;
     cursor: pointer;
 }
 
-/* TÍTULOS */
-
-h2 {
-    color: #185c2b;
-    font-family: Georgia, serif;
-    font-size: 22px;
-    border-bottom: 1px solid #aaa;
-    padding-bottom: 5px;
+.sidebar-box a:hover {
+    color: #ff0000;
 }
 
-h3 {
-    color: #185c2b;
+
+/* ==========================================
+   CONTEÚDO
+========================================== */
+
+#content {
+    vertical-align: top;
+    padding: 18px 22px;
+    background: #ffffff;
 }
 
-/* HOME */
 
-.welcome {
-    background: #ffffcc;
-    border: 1px solid #c7c700;
-    padding: 10px;
-    margin-bottom: 15px;
-}
-
-.notice {
-    border-bottom: 1px dotted #777;
-    padding: 10px 0;
-}
-
-.notice a {
-    color: #003399;
-    text-decoration: underline;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* BLOG */
-
-.post {
-    border: 1px solid #aaa;
-    margin-bottom: 15px;
-    padding: 10px;
-}
-
-.post h3 {
-    margin-top: 0;
-}
-
-.post-date {
-    color: #666;
-    font-size: 10px;
-}
-
-.post-image {
-    max-width: 100%;
-    max-height: 220px;
-}
-
-/* FOOTER */
-
-.footer {
-    clear: both;
-    background: #eeeeee;
-    border-top: 1px solid #777;
-    padding: 12px;
-    text-align: center;
-    font-size: 10px;
-    color: #555;
-}
-
-/* CONTADOR */
-
-.counter {
-    background: black;
-    color: #00ff00;
-    font-family: "Courier New", monospace;
-    padding: 3px 5px;
-    display: inline-block;
-}
-
-/* ================================
+/* ==========================================
    PÁGINAS
-================================ */
+========================================== */
 
 .page {
     display: none;
@@ -212,179 +179,1075 @@ h3 {
     display: block;
 }
 
-/* ================================
-   LOGIN
-================================ */
 
-.login {
-    width: 390px;
-    margin: 50px auto;
-    border: 2px solid #555;
-    background: #eeeeee;
+/* ==========================================
+   TÍTULOS
+========================================== */
+
+h1 {
+    font-family: "Times New Roman", Times, serif;
+    color: #164b25;
+    font-size: 25px;
+    margin: 0 0 12px 0;
 }
 
-.login-title {
-    background: #000080;
+h2 {
+    font-family: "Times New Roman", Times, serif;
+    color: #164b25;
+    font-size: 19px;
+    margin-top: 20px;
+}
+
+h3 {
+    font-size: 14px;
+    color: #164b25;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #808080;
+}
+
+
+/* ==========================================
+   HOME
+========================================== */
+
+.welcome {
+    background: #ffffcc;
+    border: 1px solid #999900;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.notice {
+    border-bottom: 1px dotted #808080;
+    padding: 9px 0;
+}
+
+.notice-title {
+    color: #0000cc;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.notice-date {
+    color: #555555;
+    font-size: 10px;
+}
+
+
+/* ==========================================
+   TABELA DE INFORMAÇÕES
+========================================== */
+
+.info-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 700px;
+}
+
+.info-table td {
+    border: 1px solid #999999;
+    padding: 7px;
+}
+
+.info-table .head {
+    background: #164b25;
     color: white;
-    padding: 6px;
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   BLOG
+========================================== */
+
+.blog-post {
+    border-bottom: 1px solid #999999;
+    padding: 12px 0 16px 0;
+    max-width: 800px;
+}
+
+.blog-post-title {
+    color: #0000cc;
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.blog-post-date {
+    color: #666666;
+    font-size: 10px;
+    margin: 5px 0 8px 0;
+}
+
+.blog-post-category {
+    font-weight: bold;
+    color: #164b25;
+}
+
+.blog-post-content {
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+
+/* ==========================================
+   LOGIN
+========================================== */
+
+.login-container {
+    width: 100%;
+    min-height: 430px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    width: 380px;
+    border: 1px solid #000000;
+    background: #c0c0c0;
+}
+
+.login-header {
+    background: #000080;
+    color: #ffffff;
+    padding: 4px 6px;
     font-weight: bold;
 }
 
 .login-body {
-    padding: 18px;
+    padding: 15px;
 }
 
-.login input {
+.login-body input {
     width: 95%;
-    margin: 5px 0 12px;
-    padding: 5px;
-    border: 1px solid #777;
+    border: 1px solid #000000;
+    padding: 4px;
+    margin: 5px 0 12px 0;
+    background: #ffffff;
 }
 
 .old-button {
-    background: #eeeeee;
-    border: 2px outset #fff;
-    padding: 4px 15px;
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    padding: 3px 13px;
     cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 .old-button:active {
-    border-style: inset;
+    border-top: 2px solid #404040;
+    border-left: 2px solid #404040;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
 }
 
-.error {
-    color: #cc0000;
+.login-error {
+    color: #ff0000;
     font-weight: bold;
     margin-top: 10px;
     display: none;
 }
 
-/* ================================
-   PAINEL
-================================ */
 
-.admin {
-    border: 2px solid #555;
+/* ==========================================
+   PAINEL DO GESTOR
+========================================== */
+
+.admin-box {
+    border: 1px solid #808080;
     background: #eeeeee;
-    padding: 10px;
+    padding: 12px;
+    max-width: 850px;
 }
 
-.admin textarea {
+.admin-box input,
+.admin-box textarea {
     width: 97%;
+    border: 1px solid #000000;
+    padding: 5px;
+    margin: 5px 0 12px 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.admin-box textarea {
     height: 160px;
 }
 
-.admin input,
-.admin select {
-    width: 97%;
-    margin-bottom: 10px;
-    padding: 5px;
-}
-
 .admin-post {
-    background: white;
-    border: 1px solid #999;
+    background: #ffffff;
+    border: 1px solid #999999;
     padding: 8px;
-    margin-top: 8px;
+    margin-top: 7px;
 }
 
-/* ================================
-   TERMINAL
-================================ */
+.admin-post-title {
+    font-weight: bold;
+}
 
-#terminalPage {
-    background: #000;
+
+/* ==========================================
+   TERMINAL
+========================================== */
+
+#terminal-page {
+    background: #000000;
     color: #00ff00;
-    min-height: 470px;
+    min-height: 550px;
     padding: 15px;
     font-family: "Courier New", monospace;
     font-size: 14px;
 }
 
-.terminal-header {
+.terminal-top {
     border-bottom: 1px solid #00aa00;
     padding-bottom: 8px;
     margin-bottom: 12px;
 }
 
-#terminalOutput {
+#terminal-output {
     white-space: pre-wrap;
     line-height: 1.45;
-    min-height: 360px;
+    min-height: 430px;
+    overflow-y: auto;
 }
 
-.terminal-input {
+.terminal-line {
     display: flex;
     align-items: center;
 }
 
-.terminal-input span {
-    margin-right: 6px;
+.terminal-prompt {
+    white-space: nowrap;
 }
 
-#commandInput {
+#command-input {
+    flex: 1;
     background: transparent;
+    color: #00ff00;
     border: none;
     outline: none;
-    color: #00ff00;
     font-family: "Courier New", monospace;
     font-size: 14px;
-    width: 90%;
+    margin-left: 5px;
 }
 
-.secret {
+.yellow {
     color: #ffff00;
 }
 
 .red {
-    color: #ff4444;
+    color: #ff0000;
+}
+
+
+/* ==========================================
+   RODAPÉ
+========================================== */
+
+#footer {
+    width: 100%;
+    background: #d4d0c8;
+    border-top: 1px solid #808080;
+    text-align: center;
+    padding: 12px 0;
+    color: #444444;
+    font-size: 10px;
+}
+
+.footer-links {
+    margin-bottom: 5px;
+}
+
+.footer-links a {
+    color: #0000cc;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   CONTADOR
+========================================== */
+
+.counter {
+    background: #000000;
+    color: #00ff00;
+    font-family: "Courier New", monospace;
+    padding: 2px 4px;
+    border: 1px solid #555555;
+}
+
+
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+@media(max-width: 700px) {
+
+    #sidebar {
+        width: 130px;
+    }
+
+    #content {
+        padding: 12px;
+    }
+
+    #logo {
+        font-size: 21px;
+    }
+
+    #menu td {
+        padding: 5px;
+    }
+
+    .login-box {
+        width: 90%;
+    }
+
 }
 
 </style>
 </head>
 
-<body>
 
+<body>
 
 <div id="site">
 
-    <!-- =================================
-         CABEÇALHO
-    ================================== -->
 
-    <div class="header">
+<!-- ========================================
+     CABEÇALHO
+========================================= -->
 
-        <h1>
-            Parque Zoológico Vale Verde
-        </h1>
+<div id="header">
 
-        <p>
-            Centro de Educação Ambiental e Conservação
-        </p>
+    <table>
+
+        <tr>
+
+            <td>
+
+                <div id="logo">
+                    Parque Zoológico Vale Verde
+                </div>
+
+                <div id="subtitle">
+                    Centro de Educação Ambiental e Conservação
+                </div>
+
+            </td>
+
+            <td
+                style="
+                text-align:right;
+                vertical-align:bottom;
+                font-size:10px;
+                padding-right:15px;
+                "
+            >
+
+                Bem-vindo à Internet!
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+
+<!-- ========================================
+     MENU
+========================================= -->
+
+<div id="menu">
+
+    <table>
+
+        <tr>
+
+            <td>
+                <a onclick="showPage('home')">
+                    Início
+                </a>
+            </td>
+
+            <td>
+                <a onclick="showPage('animals')">
+                    Animais
+                </a>
+            </td>
+
+            <td>
+                <a onclick="showPage('conservation')">
+                    Conservação
+                </a>
+            </td>
+
+            <td>
+                <a onclick="showPage('blog')">
+                    Notícias
+                </a>
+            </td>
+
+            <td>
+                <a onclick="showPage('visit')">
+                    Visite-nos
+                </a>
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+
+<!-- ========================================
+     ÁREA PRINCIPAL
+========================================= -->
+
+<div id="main">
+
+<table id="main-table">
+
+<tr>
+
+
+<!-- ========================================
+     BARRA LATERAL
+========================================= -->
+
+<td id="sidebar">
+
+
+<div class="sidebar-title">
+    MENU
+</div>
+
+<div class="sidebar-box">
+
+    <a onclick="showPage('home')">
+        Página inicial
+    </a>
+
+    <a onclick="showPage('animals')">
+        Nossos animais
+    </a>
+
+    <a onclick="showPage('conservation')">
+        Conservação
+    </a>
+
+    <a onclick="showPage('blog')">
+        Notícias
+    </a>
+
+    <a onclick="showPage('visit')">
+        Como chegar
+    </a>
+
+</div>
+
+
+<div class="sidebar-title">
+    INFORMAÇÕES
+</div>
+
+<div class="sidebar-box">
+
+    <b>Horário:</b>
+
+    <br>
+
+    Terça a domingo
+
+    <br>
+
+    08:00 às 17:00
+
+    <br><br>
+
+    <b>Telefone:</b>
+
+    <br>
+
+    (00) 0000-0000
+
+</div>
+
+
+<div class="sidebar-title">
+    VISITANTES
+</div>
+
+<div class="sidebar-box">
+
+    Visitantes:
+
+    <br><br>
+
+    <span class="counter">
+        001847
+    </span>
+
+</div>
+
+
+<div class="sidebar-title">
+    SISTEMA
+</div>
+
+<div class="sidebar-box">
+
+    Última atualização:
+
+    <br>
+
+    <b>14/08/1999</b>
+
+    <br><br>
+
+    <a onclick="showPage('login')">
+        Área restrita
+    </a>
+
+</div>
+
+
+</td>
+
+
+<!-- ========================================
+     CONTEÚDO
+========================================= -->
+
+<td id="content">
+
+
+<!-- ========================================
+     HOME
+========================================= -->
+
+<div id="home" class="page active">
+
+    <h1>
+        Parque Zoológico Vale Verde
+    </h1>
+
+    <hr>
+
+    <div class="welcome">
+
+        <b>
+            Bem-vindo ao site oficial do Parque
+            Zoológico Vale Verde.
+        </b>
+
+        <br><br>
+
+        Este espaço apresenta informações sobre
+        nossos animais, atividades de conservação
+        e programas de educação ambiental.
 
     </div>
 
 
-    <!-- =================================
-         MENU
-    ================================== -->
+    <p>
+        O Parque Zoológico Vale Verde foi criado
+        com o objetivo de promover o conhecimento
+        e a preservação da fauna.
+    </p>
 
-    <div class="menu">
+
+    <h2>
+        Últimas notícias
+    </h2>
+
+    <div id="home-news"></div>
+
+
+    <h2>
+        Informações rápidas
+    </h2>
+
+    <table class="info-table">
+
+        <tr>
+
+            <td class="head">
+                Informação
+            </td>
+
+            <td class="head">
+                Detalhes
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+                Funcionamento
+            </td>
+
+            <td>
+                Terça a domingo
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+                Horário
+            </td>
+
+            <td>
+                08:00 às 17:00
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+                Última atualização
+            </td>
+
+            <td>
+                14/08/1999
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+
+<!-- ========================================
+     ANIMAIS
+========================================= -->
+
+<div id="animals" class="page">
+
+    <h1>
+        Nossos animais
+    </h1>
+
+    <hr>
+
+    <p>
+        Conheça algumas das espécies presentes
+        no Parque Zoológico Vale Verde.
+    </p>
+
+    <h2>
+        Mamíferos
+    </h2>
+
+    <ul>
+
+        <li>
+            Felinos
+        </li>
+
+        <li>
+            Primatas
+        </li>
+
+        <li>
+            Herbívoros
+        </li>
+
+    </ul>
+
+
+    <h2>
+        Aves
+    </h2>
+
+    <ul>
+
+        <li>
+            Aves de rapina
+        </li>
+
+        <li>
+            Aves brasileiras
+        </li>
+
+        <li>
+            Aves aquáticas
+        </li>
+
+    </ul>
+
+
+    <h2>
+        Répteis
+    </h2>
+
+    <ul>
+
+        <li>
+            Serpentes
+        </li>
+
+        <li>
+            Quelônios
+        </li>
+
+        <li>
+            Lagartos
+        </li>
+
+    </ul>
+
+</div>
+
+
+<!-- ========================================
+     CONSERVAÇÃO
+========================================= -->
+
+<div id="conservation" class="page">
+
+    <h1>
+        Conservação
+    </h1>
+
+    <hr>
+
+    <p>
+        O Parque Zoológico Vale Verde desenvolve
+        atividades de educação ambiental,
+        pesquisa e conservação da biodiversidade.
+    </p>
+
+    <h2>
+        Educação ambiental
+    </h2>
+
+    <p>
+        São realizadas atividades educativas
+        destinadas a estudantes e visitantes.
+    </p>
+
+    <h2>
+        Pesquisa
+    </h2>
+
+    <p>
+        O parque acompanha diferentes espécies
+        e participa de projetos relacionados
+        ao conhecimento da fauna.
+    </p>
+
+    <h2>
+        Preservação
+    </h2>
+
+    <p>
+        A conservação da biodiversidade é uma
+        das principais atividades desenvolvidas
+        pelo parque.
+    </p>
+
+</div>
+
+
+<!-- ========================================
+     BLOG
+========================================= -->
+
+<div id="blog" class="page">
+
+    <h1>
+        Notícias do Vale Verde
+    </h1>
+
+    <hr>
+
+    <p>
+        Notícias, comunicados e informações
+        sobre as atividades do parque.
+    </p>
+
+    <div id="blog-posts"></div>
+
+</div>
+
+
+<!-- ========================================
+     VISITE-NOS
+========================================= -->
+
+<div id="visit" class="page">
+
+    <h1>
+        Visite-nos
+    </h1>
+
+    <hr>
+
+    <h2>
+        Horário de funcionamento
+    </h2>
+
+    <p>
+        Terça a domingo
+        <br>
+        08:00 às 17:00
+    </p>
+
+    <h2>
+        Localização
+    </h2>
+
+    <p>
+        Estrada Vale Verde, Km 12
+    </p>
+
+    <h2>
+        Contato
+    </h2>
+
+    <p>
+        Telefone: (00) 0000-0000
+        <br>
+        E-mail: contato@vale-verde.example
+    </p>
+
+</div>
+
+
+<!-- ========================================
+     LOGIN
+========================================= -->
+
+<div id="login" class="page">
+
+    <div class="login-container">
+
+        <div class="login-box">
+
+            <div class="login-header">
+                VALE VERDE - ÁREA RESTRITA
+            </div>
+
+            <div class="login-body">
+
+                <b>
+                    Identificação do gestor
+                </b>
+
+                <br><br>
+
+                Usuário:
+
+                <br>
+
+                <input
+                    id="login-user"
+                    type="text"
+                    autocomplete="off"
+                >
+
+                Senha:
+
+                <br>
+
+                <input
+                    id="login-pass"
+                    type="password"
+                >
+
+                <br>
+
+                <button
+                    class="old-button"
+                    onclick="login()"
+                >
+                    Entrar
+                </button>
+
+                <div
+                    id="login-error"
+                    class="login-error"
+                >
+                    Usuário ou senha inválidos.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================
+     PAINEL DO GESTOR
+========================================= -->
+
+<div id="dashboard" class="page">
+
+    <h1>
+        Painel Administrativo
+    </h1>
+
+    <hr>
+
+    <div class="admin-box">
+
+        <b>
+            SISTEMA DE GERENCIAMENTO DO SITE
+        </b>
+
+        <p>
+            Área destinada exclusivamente aos
+            gestores do Parque Zoológico Vale Verde.
+        </p>
+
+
+        <h2>
+            Nova publicação
+        </h2>
+
+        Título:
+
+        <br>
+
+        <input
+            id="post-title"
+            type="text"
+        >
+
+        Categoria:
+
+        <br>
+
+        <input
+            id="post-category"
+            type="text"
+        >
+
+        Conteúdo:
+
+        <br>
+
+        <textarea
+            id="post-content"
+        ></textarea>
+
+        <br>
+
+        <button
+            class="old-button"
+            onclick="createPost()"
+        >
+            Publicar notícia
+        </button>
+
+
+        <h2>
+            Publicações existentes
+        </h2>
+
+        <div id="admin-posts"></div>
+
+
+        <br>
+
+        <button
+            class="old-button"
+            onclick="logout()"
+        >
+            Encerrar sessão
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================
+     TERMINAL SECRETO
+========================================= -->
+
+<div id="terminal" class="page">
+
+    <div id="terminal-page">
+
+        <div class="terminal-top">
+
+            VALE VERDE COMPUTER SYSTEM
+
+            <br>
+
+            SYSTEM VERSION 2.4
+
+            <br>
+
+            COPYRIGHT 1999
+
+        </div>
+
+
+        <div id="terminal-output"></div>
+
+
+        <div class="terminal-line">
+
+            <span class="terminal-prompt">
+                C:\VALEVERDE&gt;
+            </span>
+
+            <input
+                id="command-input"
+                type="text"
+                autocomplete="off"
+            >
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- ========================================
+     RODAPÉ
+========================================= -->
+
+<div id="footer">
+
+    <div class="footer-links">
 
         <a onclick="showPage('home')">
             Início
-        </a>
-
-        |
-
-        <a onclick="showPage('animals')">
-            Animais
-        </a>
-
-        |
-
-        <a onclick="showPage('conservation')">
-            Conservação
         </a>
 
         |
@@ -395,513 +1258,29 @@ h3 {
 
         |
 
-        <a onclick="showPage('visit')">
-            Visite-nos
+        <a onclick="showPage('login')">
+            Área restrita
         </a>
 
     </div>
 
+    Parque Zoológico Vale Verde © 1999
 
-    <!-- =================================
-         LAYOUT
-    ================================== -->
+    <br>
 
-    <div class="layout">
+    Última atualização: 14/08/1999
 
-        <!-- SIDEBAR -->
+</div>
 
-        <div class="sidebar">
-
-            <div class="box">
-
-                <div class="box-title">
-                    MENU
-                </div>
-
-                <div class="box-content">
-
-                    <a onclick="showPage('home')">
-                        Página inicial
-                    </a>
-
-                    <a onclick="showPage('animals')">
-                        Nossos animais
-                    </a>
-
-                    <a onclick="showPage('conservation')">
-                        Conservação
-                    </a>
-
-                    <a onclick="showPage('blog')">
-                        Notícias
-                    </a>
-
-                    <a onclick="showPage('visit')">
-                        Como chegar
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="box">
-
-                <div class="box-title">
-                    INFORMAÇÕES
-                </div>
-
-                <div class="box-content">
-
-                    Horário:
-
-                    <br>
-
-                    Terça a domingo
-
-                    <br>
-
-                    08:00 às 17:00
-
-                    <br><br>
-
-                    Telefone:
-
-                    <br>
-
-                    (00) 0000-0000
-
-                </div>
-
-            </div>
-
-
-            <div class="box">
-
-                <div class="box-title">
-                    VISITANTES
-                </div>
-
-                <div class="box-content">
-
-                    <span class="counter">
-                        001847
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="box">
-
-                <div class="box-title">
-                    SISTEMA
-                </div>
-
-                <div class="box-content">
-
-                    Última atualização:
-
-                    <br>
-
-                    14/08/1999
-
-                    <br><br>
-
-                    <a onclick="showPage('login')">
-                        Área restrita
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- CONTEÚDO -->
-
-        <div class="content">
-
-
-            <!-- HOME -->
-
-            <div id="home" class="page active">
-
-                <h2>
-                    Bem-vindo ao Vale Verde
-                </h2>
-
-                <div class="welcome">
-
-                    <b>
-                        Seja bem-vindo ao site oficial
-                        do Parque Zoológico Vale Verde.
-                    </b>
-
-                    <br><br>
-
-                    Conheça nosso trabalho de
-                    conservação, educação ambiental
-                    e cuidado com os animais.
-
-                </div>
-
-
-                <p>
-                    O Parque Zoológico Vale Verde
-                    trabalha para aproximar a população
-                    da natureza e contribuir para a
-                    preservação da fauna.
-                </p>
-
-
-                <h3>
-                    Últimas notícias
-                </h3>
-
-                <div id="homeNews"></div>
-
-            </div>
-
-
-            <!-- ANIMAIS -->
-
-            <div id="animals" class="page">
-
-                <h2>
-                    Nossos animais
-                </h2>
-
-                <p>
-                    Conheça algumas das espécies
-                    presentes no Parque Zoológico
-                    Vale Verde.
-                </p>
-
-                <ul>
-
-                    <li>
-                        Mamíferos
-                    </li>
-
-                    <li>
-                        Aves
-                    </li>
-
-                    <li>
-                        Répteis
-                    </li>
-
-                    <li>
-                        Primatas
-                    </li>
-
-                </ul>
-
-                <p>
-                    Novas informações sobre os
-                    animais são adicionadas
-                    periodicamente.
-                </p>
-
-            </div>
-
-
-            <!-- CONSERVAÇÃO -->
-
-            <div id="conservation" class="page">
-
-                <h2>
-                    Conservação
-                </h2>
-
-                <p>
-                    O Vale Verde desenvolve atividades
-                    relacionadas à conservação da
-                    biodiversidade e educação ambiental.
-                </p>
-
-                <h3>
-                    Educação ambiental
-                </h3>
-
-                <p>
-                    Programas educativos aproximam
-                    estudantes e visitantes do
-                    conhecimento sobre a fauna.
-                </p>
-
-                <h3>
-                    Pesquisa
-                </h3>
-
-                <p>
-                    O parque também participa de
-                    iniciativas de pesquisa e
-                    acompanhamento de espécies.
-                </p>
-
-            </div>
-
-
-            <!-- BLOG -->
-
-            <div id="blog" class="page">
-
-                <h2>
-                    Notícias do Vale Verde
-                </h2>
-
-                <p>
-                    Últimas notícias e comunicados
-                    do parque.
-                </p>
-
-                <div id="blogPosts"></div>
-
-            </div>
-
-
-            <!-- VISITA -->
-
-            <div id="visit" class="page">
-
-                <h2>
-                    Visite-nos
-                </h2>
-
-                <h3>
-                    Horário de funcionamento
-                </h3>
-
-                <p>
-                    Terça a domingo
-                    <br>
-                    08:00 às 17:00
-                </p>
-
-                <h3>
-                    Localização
-                </h3>
-
-                <p>
-                    Estrada Vale Verde, Km 12
-                </p>
-
-                <h3>
-                    Informações
-                </h3>
-
-                <p>
-                    Para informações adicionais,
-                    entre em contato com a administração
-                    do parque.
-                </p>
-
-            </div>
-
-
-            <!-- LOGIN -->
-
-            <div id="login" class="page">
-
-                <div class="login">
-
-                    <div class="login-title">
-                        VALE VERDE - ÁREA RESTRITA
-                    </div>
-
-                    <div class="login-body">
-
-                        <b>
-                            Identificação do gestor
-                        </b>
-
-                        <br><br>
-
-                        Usuário:
-
-                        <input
-                            id="loginUser"
-                            type="text"
-                        >
-
-                        Senha:
-
-                        <input
-                            id="loginPass"
-                            type="password"
-                        >
-
-                        <button
-                            class="old-button"
-                            onclick="login()"
-                        >
-                            Entrar
-                        </button>
-
-                        <div
-                            id="loginError"
-                            class="error"
-                        >
-                            Usuário ou senha inválidos.
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- DASHBOARD -->
-
-            <div id="dashboard" class="page">
-
-                <h2>
-                    Painel Administrativo
-                </h2>
-
-                <div class="admin">
-
-                    <b>
-                        GESTOR AUTENTICADO
-                    </b>
-
-                    <p>
-                        Sistema de gerenciamento
-                        do Parque Zoológico Vale Verde.
-                    </p>
-
-
-                    <h3>
-                        Nova notícia
-                    </h3>
-
-                    Título:
-
-                    <input
-                        id="postTitle"
-                        type="text"
-                    >
-
-                    Categoria:
-
-                    <input
-                        id="postCategory"
-                        type="text"
-                    >
-
-                    Conteúdo:
-
-                    <textarea
-                        id="postContent"
-                    ></textarea>
-
-                    <br>
-
-                    <button
-                        class="old-button"
-                        onclick="createPost()"
-                    >
-                        Publicar notícia
-                    </button>
-
-
-                    <h3>
-                        Publicações existentes
-                    </h3>
-
-                    <div id="adminPosts"></div>
-
-                    <br>
-
-                    <button
-                        class="old-button"
-                        onclick="logout()"
-                    >
-                        Encerrar sessão
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- TERMINAL -->
-
-            <div id="terminal" class="page">
-
-                <div id="terminalPage">
-
-                    <div class="terminal-header">
-
-                        VALE VERDE COMPUTER SYSTEM
-
-                        <br>
-
-                        SYSTEM VERSION 2.4
-
-                        <br>
-
-                        COPYRIGHT 1999
-
-                    </div>
-
-                    <div id="terminalOutput"></div>
-
-                    <div class="terminal-input">
-
-                        <span>
-                            C:\VALEVERDE&gt;
-                        </span>
-
-                        <input
-                            id="commandInput"
-                            autocomplete="off"
-                        >
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================
-         FOOTER
-    ================================== -->
-
-    <div class="footer">
-
-        Parque Zoológico Vale Verde © 1999
-
-        <br>
-
-        Todos os direitos reservados.
-
-        <br><br>
-
-        Este site foi desenvolvido para
-        fins de entretenimento.
-
-    </div>
 
 </div>
 
 
 <script>
 
-/* =========================================
+/* ==========================================
    GESTORES
-========================================= */
+========================================== */
 
 const gestores = {
 
@@ -914,19 +1293,20 @@ const gestores = {
 };
 
 
-/* =========================================
+/* ==========================================
    NAVEGAÇÃO
-========================================= */
+========================================== */
 
 function showPage(page) {
 
-    document
-        .querySelectorAll(".page")
-        .forEach(function(p) {
+    const pages =
+        document.querySelectorAll(".page");
 
-            p.classList.remove("active");
+    pages.forEach(function(p) {
 
-        });
+        p.classList.remove("active");
+
+    });
 
 
     const target =
@@ -940,7 +1320,7 @@ function showPage(page) {
     }
 
 
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 
 
     if (page === "blog") {
@@ -952,7 +1332,7 @@ function showPage(page) {
 
     if (page === "home") {
 
-        renderHomeNews();
+        renderHome();
 
     }
 
@@ -963,18 +1343,25 @@ function showPage(page) {
 
     }
 
+
+    if (page === "terminal") {
+
+        startTerminal();
+
+    }
+
 }
 
 
-/* =========================================
+/* ==========================================
    LOGIN
-========================================= */
+========================================== */
 
 function login() {
 
     const user =
         document
-        .getElementById("loginUser")
+        .getElementById("login-user")
         .value
         .trim()
         .toUpperCase();
@@ -982,7 +1369,7 @@ function login() {
 
     const pass =
         document
-        .getElementById("loginPass")
+        .getElementById("login-pass")
         .value;
 
 
@@ -998,7 +1385,7 @@ function login() {
 
 
         document
-            .getElementById("loginError")
+            .getElementById("login-error")
             .style.display = "none";
 
 
@@ -1009,7 +1396,7 @@ function login() {
     else {
 
         document
-            .getElementById("loginError")
+            .getElementById("login-error")
             .style.display = "block";
 
     }
@@ -1017,9 +1404,9 @@ function login() {
 }
 
 
-/* =========================================
+/* ==========================================
    LOGOUT
-========================================= */
+========================================== */
 
 function logout() {
 
@@ -1032,9 +1419,9 @@ function logout() {
 }
 
 
-/* =========================================
+/* ==========================================
    POSTS
-========================================= */
+========================================== */
 
 function getPosts() {
 
@@ -1062,29 +1449,29 @@ function savePosts(posts) {
 }
 
 
-/* =========================================
+/* ==========================================
    CRIAR POST
-========================================= */
+========================================== */
 
 function createPost() {
 
     const title =
         document
-        .getElementById("postTitle")
+        .getElementById("post-title")
         .value
         .trim();
 
 
     const category =
         document
-        .getElementById("postCategory")
+        .getElementById("post-category")
         .value
         .trim();
 
 
     const content =
         document
-        .getElementById("postContent")
+        .getElementById("post-content")
         .value
         .trim();
 
@@ -1125,17 +1512,17 @@ function createPost() {
 
 
     document
-        .getElementById("postTitle")
+        .getElementById("post-title")
         .value = "";
 
 
     document
-        .getElementById("postCategory")
+        .getElementById("post-category")
         .value = "";
 
 
     document
-        .getElementById("postContent")
+        .getElementById("post-content")
         .value = "";
 
 
@@ -1143,7 +1530,7 @@ function createPost() {
 
     renderBlog();
 
-    renderHomeNews();
+    renderHome();
 
 
     alert(
@@ -1153,9 +1540,9 @@ function createPost() {
 }
 
 
-/* =========================================
+/* ==========================================
    BLOG
-========================================= */
+========================================== */
 
 function renderBlog() {
 
@@ -1163,7 +1550,7 @@ function renderBlog() {
 
     const container =
         document.getElementById(
-            "blogPosts"
+            "blog-posts"
         );
 
 
@@ -1178,27 +1565,30 @@ function renderBlog() {
 
 
     container.innerHTML =
+
         posts.map(function(post) {
 
             return `
 
-                <div class="post">
+                <div class="blog-post">
 
-                    <div class="post-date">
-                        ${post.date}
+                    <div class="blog-post-date">
+                        ${escapeHTML(post.date)}
                     </div>
 
-                    <h3>
+                    <div class="blog-post-title">
                         ${escapeHTML(post.title)}
-                    </h3>
+                    </div>
 
-                    <b>
+                    <div class="blog-post-category">
                         ${escapeHTML(post.category)}
-                    </b>
+                    </div>
 
-                    <p>
+                    <br>
+
+                    <div class="blog-post-content">
                         ${escapeHTML(post.content)}
-                    </p>
+                    </div>
 
                 </div>
 
@@ -1209,17 +1599,17 @@ function renderBlog() {
 }
 
 
-/* =========================================
+/* ==========================================
    HOME
-========================================= */
+========================================== */
 
-function renderHomeNews() {
+function renderHome() {
 
     const posts = getPosts();
 
     const container =
         document.getElementById(
-            "homeNews"
+            "home-news"
         );
 
 
@@ -1234,26 +1624,27 @@ function renderHomeNews() {
 
 
     container.innerHTML =
-        posts.slice(0,3)
+
+        posts.slice(0, 3)
         .map(function(post) {
 
             return `
 
                 <div class="notice">
 
-                    <div class="post-date">
-                        ${post.date}
+                    <div class="notice-date">
+                        ${escapeHTML(post.date)}
                     </div>
 
-                    <a>
+                    <div class="notice-title">
                         ${escapeHTML(post.title)}
-                    </a>
+                    </div>
 
                     <br>
 
                     ${escapeHTML(
-                        post.content.substring(0,120)
-                    )}...
+                        post.content.substring(0, 150)
+                    )}
 
                 </div>
 
@@ -1264,9 +1655,9 @@ function renderHomeNews() {
 }
 
 
-/* =========================================
+/* ==========================================
    PAINEL
-========================================= */
+========================================== */
 
 function renderAdmin() {
 
@@ -1274,7 +1665,7 @@ function renderAdmin() {
 
     const container =
         document.getElementById(
-            "adminPosts"
+            "admin-posts"
         );
 
 
@@ -1289,23 +1680,26 @@ function renderAdmin() {
 
 
     container.innerHTML =
+
         posts.map(function(post) {
 
             return `
 
                 <div class="admin-post">
 
-                    <b>
+                    <div class="admin-post-title">
                         ${escapeHTML(post.title)}
-                    </b>
+                    </div>
+
+                    <div>
+                        ${escapeHTML(post.category)}
+                    </div>
+
+                    <div>
+                        ${escapeHTML(post.date)}
+                    </div>
 
                     <br>
-
-                    <small>
-                        ${post.date}
-                    </small>
-
-                    <br><br>
 
                     <button
                         class="old-button"
@@ -1323,9 +1717,9 @@ function renderAdmin() {
 }
 
 
-/* =========================================
-   EXCLUIR
-========================================= */
+/* ==========================================
+   EXCLUIR POST
+========================================== */
 
 function deletePost(id) {
 
@@ -1341,28 +1735,29 @@ function deletePost(id) {
 
     savePosts(posts);
 
+
     renderAdmin();
 
     renderBlog();
 
-    renderHomeNews();
+    renderHome();
 
 }
 
 
-/* =========================================
-   TERMINAL SECRETO
-========================================= */
+/* ==========================================
+   TERMINAL
+========================================== */
 
 const terminalOutput =
     document.getElementById(
-        "terminalOutput"
+        "terminal-output"
     );
 
 
 const commandInput =
     document.getElementById(
-        "commandInput"
+        "command-input"
     );
 
 
@@ -1371,8 +1766,13 @@ let terminalStarted = false;
 
 function startTerminal() {
 
-    if (terminalStarted)
+    if (terminalStarted) {
+
+        commandInput.focus();
+
         return;
+
+    }
 
 
     terminalStarted = true;
@@ -1381,19 +1781,23 @@ function startTerminal() {
     terminalOutput.textContent =
 `VALE VERDE COMPUTER SYSTEM
 ---------------------------
+SYSTEM VERSION 2.4
+COPYRIGHT 1999
 
-BOOT SEQUENCE STARTED...
+BOOTING...
 
 MEMORY CHECK ........ OK
 DISK A .............. OK
+DISK B .............. OK
 NETWORK ............. OK
 
 DATE: 14/08/1999
 
 WARNING:
-UNAUTHORIZED ACCESS IS PROHIBITED.
+THIS COMPUTER IS FOR AUTHORIZED
+PERSONNEL ONLY.
 
-Type HELP for available commands.
+Type HELP for a list of commands.
 
 `;
 
@@ -1402,6 +1806,10 @@ Type HELP for available commands.
 
 }
 
+
+/* ==========================================
+   COMANDOS DO TERMINAL
+========================================== */
 
 commandInput.addEventListener(
     "keydown",
@@ -1416,10 +1824,6 @@ commandInput.addEventListener(
     }
 );
 
-
-/* =========================================
-   COMANDOS
-========================================= */
 
 function executeCommand() {
 
@@ -1444,7 +1848,7 @@ function executeCommand() {
 
         terminalOutput.textContent +=
 `
-AVAILABLE COMMANDS:
+AVAILABLE COMMANDS
 
 HELP
 ABOUT
@@ -1466,10 +1870,10 @@ LOGOUT
 `
 VALE VERDE COMPUTER SYSTEM
 
-Sistema administrativo interno.
+Version: 2.4
+Year: 1999
 
-Versão: 2.4
-Ano: 1999
+Administrative computer system.
 
 `;
 
@@ -1482,10 +1886,10 @@ Ano: 1999
 `
 SYSTEM STATUS
 
-MAIN SYSTEM ......... ONLINE
-DATABASE ............ ONLINE
-ARCHIVE ............. ONLINE
-SECURITY ............ ACTIVE
+MAIN SYSTEM ..... ONLINE
+DATABASE ........ ONLINE
+ARCHIVE ......... ONLINE
+SECURITY ........ ACTIVE
 
 `;
 
@@ -1496,7 +1900,7 @@ SECURITY ............ ACTIVE
 
         terminalOutput.textContent +=
 `
-DIRECTORY:
+DIRECTORY
 
 /PUBLIC
 /ANIMALS
@@ -1504,7 +1908,7 @@ DIRECTORY:
 /ADMIN
 /ARCHIVE
 
-5 FILES FOUND.
+5 DIRECTORIES FOUND.
 
 `;
 
@@ -1515,17 +1919,18 @@ DIRECTORY:
 
         terminalOutput.innerHTML +=
 `
-<span class="secret">
-ARQUIVO ENCONTRADO.
+<span class="yellow">
+--------------------------------
+ARCHIVE RECORD 004
 
-REGISTRO Nº 004
+DATE: 13/08/1999
 
-Data: 13/08/1999
+[CONTENT REMOVED]
 
-[CONTEÚDO REMOVIDO]
+REFERENCE:
+ADMIN-04
 
-Consulte o arquivo ADMIN-04.
-
+--------------------------------
 </span>
 
 `;
@@ -1550,16 +1955,18 @@ ENTER ACCESS CODE:
 
         terminalOutput.innerHTML +=
 `
-<span class="secret">
-ACCESS GRANTED.
+<span class="yellow">
+--------------------------------
+ACCESS GRANTED
 
 ADMINISTRATIVE ARCHIVE 04
 
 STATUS: RESTRICTED
 
-A administração recomenda que
-este arquivo permaneça fechado.
+This file is not intended
+for public access.
 
+--------------------------------
 </span>
 
 `;
@@ -1613,26 +2020,29 @@ Type HELP for assistance.
 }
 
 
-/* =========================================
+/* ==========================================
    ATALHO SECRETO
-=========================================
+==========================================
 
    CTRL + ALT + V
-========================================= */
+
+========================================== */
 
 document.addEventListener(
     "keydown",
     function(event) {
 
         if (
+
             event.ctrlKey &&
+
             event.altKey &&
+
             event.key.toLowerCase() === "v"
+
         ) {
 
             showPage("terminal");
-
-            startTerminal();
 
         }
 
@@ -1640,32 +2050,32 @@ document.addEventListener(
 );
 
 
-/* =========================================
-   SEGURANÇA DE EXIBIÇÃO
-========================================= */
+/* ==========================================
+   ESCAPE HTML
+========================================== */
 
 function escapeHTML(text) {
 
     return String(text)
 
-        .replaceAll("&","&amp;")
+        .replaceAll("&", "&amp;")
 
-        .replaceAll("<","&lt;")
+        .replaceAll("<", "&lt;")
 
-        .replaceAll(">","&gt;")
+        .replaceAll(">", "&gt;")
 
-        .replaceAll('"',"&quot;")
+        .replaceAll('"', "&quot;")
 
-        .replaceAll("'","&#039;");
+        .replaceAll("'", "&#039;");
 
 }
 
 
-/* =========================================
+/* ==========================================
    POSTS INICIAIS
-========================================= */
+========================================== */
 
-function initialize() {
+function initializePosts() {
 
     if (
         !localStorage.getItem(
@@ -1716,14 +2126,14 @@ function initialize() {
     }
 
 
-    renderBlog();
+    renderHome();
 
-    renderHomeNews();
+    renderBlog();
 
 }
 
 
-initialize();
+initializePosts();
 
 </script>
 
