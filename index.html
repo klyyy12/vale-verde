@@ -4,9 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PARQUE ZOOLOGICO VALE VERDE</title>
+<title>Parque Zoológico Vale Verde</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+/* =========================================================
+   VALE VERDE — ESTÉTICA 1983
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -16,782 +21,962 @@ html,
 body {
     margin: 0;
     padding: 0;
-    width: 100%;
     min-height: 100%;
 }
 
 body {
-    background: #000;
-    color: #b8ffb8;
+    background: #020602;
+    color: #72ff72;
     font-family: "Courier New", Courier, monospace;
-    font-size: 14px;
-    overflow-x: hidden;
+    font-size: 15px;
+    line-height: 1.5;
 }
 
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            rgba(255,255,255,0.025),
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px,
-            transparent 4px
-        );
-    z-index: 999;
+button,
+input,
+textarea,
+select {
+    font-family: "Courier New", Courier, monospace;
 }
 
-#screen {
+a {
+    color: #72ff72;
+}
+
+::selection {
+    background: #72ff72;
+    color: #020602;
+}
+
+/* =========================================================
+   TERMINAL
+   ========================================================= */
+
+#site {
     min-height: 100vh;
-    padding: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    border-bottom: 2px solid #72ff72;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.topbar-title {
+    font-weight: bold;
+}
+
+.topbar-status {
+    font-size: 12px;
 }
 
 header {
-    border: 1px solid #b8ffb8;
-    padding: 15px;
-    text-align: center;
-    margin-bottom: 12px;
+    padding: 28px 16px 20px;
+    border-bottom: 1px solid #72ff72;
 }
 
-header h1 {
-    color: white;
-    margin: 0;
-    font-size: 22px;
-    letter-spacing: 2px;
+.logo {
+    font-size: clamp(24px, 5vw, 42px);
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
 }
 
-header p {
-    margin: 8px 0 0;
+.subtitle {
+    font-size: 13px;
 }
 
-#system-status {
-    border-top: 1px solid #557755;
-    border-bottom: 1px solid #557755;
-    padding: 7px;
+nav {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 18px;
+    border-bottom: 1px solid #72ff72;
+}
+
+nav button {
+    background: transparent;
+    border: 0;
+    border-right: 1px solid #72ff72;
+    color: #72ff72;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+nav button:hover,
+nav button.active {
+    background: #72ff72;
+    color: #020602;
+}
+
+main {
+    width: 100%;
+    flex: 1;
+    padding: 20px;
 }
 
 .page {
     display: none;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .page.active {
     display: block;
 }
 
-.panel {
-    width: 100%;
-    max-width: 1000px;
-    margin: auto;
-    border: 1px solid #b8ffb8;
-    padding: 20px;
+.box {
+    border: 1px solid #72ff72;
+    padding: 18px;
+    margin-bottom: 18px;
 }
 
-.center {
-    text-align: center;
-}
-
-.white {
-    color: white;
-}
-
-.dim {
-    color: #668866;
-}
-
-.line {
-    color: #557755;
-    margin: 14px 0;
-}
-
-button {
-    background: #000;
-    color: #b8ffb8;
-    border: 1px solid #b8ffb8;
-    padding: 6px 12px;
-    font-family: "Courier New", Courier, monospace;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-button:hover {
-    color: white;
-    border-color: white;
-}
-
-.menu {
-    line-height: 2.1;
-}
-
-.menu button {
-    margin-left: 8px;
-}
-
-input,
-textarea {
-    display: block;
-    width: 100%;
-    background: #000;
-    color: #b8ffb8;
-    border: 1px solid #557755;
-    padding: 8px;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 14px;
-    outline: none;
-    margin: 7px 0 16px;
-}
-
-input[type="date"] {
-    color-scheme: dark;
-}
-
-textarea {
-    min-height: 180px;
-    resize: vertical;
-}
-
-.login-box {
-    width: 500px;
-    max-width: 100%;
-    margin: 50px auto;
-    border: 1px solid #b8ffb8;
-    padding: 22px;
-}
-
-.error {
-    color: white;
-    margin-top: 15px;
-    display: none;
-}
-
-.success {
-    color: white;
-    margin: 12px 0;
-}
-
-.boletim {
-    border: 1px solid #557755;
-    padding: 15px;
-    margin: 15px 0;
-}
-
-.boletim h3 {
-    margin: 0 0 7px;
-    color: white;
-}
-
-.boletim .date {
-    color: #668866;
-    font-size: 12px;
-    margin-bottom: 12px;
-}
-
-.boletim .content {
-    white-space: pre-wrap;
-    line-height: 1.5;
-}
-
-.admin-actions {
-    margin-top: 12px;
-}
-
-.secret {
-    display: none;
-    border: 1px solid #b8ffb8;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-.secret-title {
-    color: white;
-    margin-bottom: 15px;
+.box-title {
+    border-bottom: 1px solid #72ff72;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    font-weight: bold;
 }
 
 .warning {
-    color: white;
+    border: 1px dashed #72ff72;
+    padding: 14px;
+    margin: 15px 0;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.dim {
+    opacity: 0.7;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* =========================================================
+   TERMINAL
+   ========================================================= */
+
+.terminal {
+    border: 2px solid #72ff72;
+    background: #000;
+    padding: 20px;
+    min-height: 350px;
+    box-shadow: 0 0 18px rgba(114,255,114,.12);
+}
+
+.terminal-output {
+    min-height: 220px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin-bottom: 20px;
+}
+
+.terminal-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.prompt {
+    flex-shrink: 0;
+}
+
+#terminalInput {
+    width: 100%;
+    background: transparent;
+    color: #72ff72;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+}
+
+.terminal-button {
+    margin-top: 14px;
+    background: #72ff72;
+    color: #020602;
+    border: 0;
+    padding: 9px 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.terminal-button:hover {
+    opacity: .85;
+}
+
+/* =========================================================
+   DOCUMENTOS
+   ========================================================= */
+
+.document {
+    border: 1px solid #72ff72;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #010301;
+}
+
+.document-header {
+    border-bottom: 1px dashed #72ff72;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+}
+
+.document-title {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.document-body {
+    white-space: pre-wrap;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   BOLETINS
+   ========================================================= */
+
+.boletim {
+    border: 1px solid #72ff72;
+    padding: 16px;
+    margin-bottom: 15px;
+}
+
+.boletim-date {
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.boletim-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+.login-box {
+    max-width: 450px;
+    margin: 50px auto;
+}
+
+.form-row {
+    margin-bottom: 15px;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.form-row input {
+    width: 100%;
+    background: #000;
+    color: #72ff72;
+    border: 1px solid #72ff72;
+    padding: 10px;
+    outline: none;
+}
+
+.btn {
+    background: #72ff72;
+    color: #020602;
+    border: 0;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn.secondary {
+    background: transparent;
+    color: #72ff72;
+    border: 1px solid #72ff72;
+}
+
+.btn:hover {
+    opacity: .85;
+}
+
+.message {
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+/* =========================================================
+   GESTOR
+   ========================================================= */
+
+.admin-only {
+    display: none;
+}
+
+.admin-panel {
+    border: 2px solid #72ff72;
+    padding: 20px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+    background: #000;
+    color: #72ff72;
+    border: 1px solid #72ff72;
+    padding: 10px;
+    resize: vertical;
+    outline: none;
+}
+
+select {
+    width: 100%;
+    background: #000;
+    color: #72ff72;
+    border: 1px solid #72ff72;
+    padding: 10px;
 }
 
 footer {
-    text-align: center;
-    border-top: 1px solid #557755;
-    margin-top: 25px;
-    padding: 12px;
-    font-size: 12px;
-    color: #557755;
+    border-top: 1px solid #72ff72;
+    padding: 15px 20px;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 600px) {
+    main {
+        padding: 12px;
+    }
+
+    nav button {
+        flex: 1 1 50%;
+        border-bottom: 1px solid #72ff72;
+    }
+
+    .topbar {
+        font-size: 12px;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<div id="screen">
+<div id="site">
 
-<header>
+    <div class="topbar">
+        <div>VV-01 :: ARQUIVO DIGITAL</div>
+        <div class="topbar-status">
+            SISTEMA OPERACIONAL
+        </div>
+    </div>
 
-<h1>PARQUE ZOOLOGICO VALE VERDE</h1>
+    <header>
+        <div class="logo">PARQUE ZOOLÓGICO VALE VERDE</div>
+        <div class="subtitle">
+            CENTRO DE CONSERVAÇÃO E PESQUISA — ARQUIVO 1983
+        </div>
+    </header>
 
-<p>SISTEMA DE INFORMACOES VV-01</p>
+    <nav>
+        <button class="nav-btn active" onclick="showPage('inicio', this)">
+            INÍCIO
+        </button>
 
-</header>
+        <button class="nav-btn" onclick="showPage('parque', this)">
+            PARQUE
+        </button>
 
-<div id="system-status">
+        <button class="nav-btn" onclick="showPage('animais', this)">
+            ANIMAIS
+        </button>
 
-<span>SISTEMA: VV-01</span>
-<span>STATUS: OPERACIONAL</span>
-<span>ANO: 1983</span>
+        <button class="nav-btn" onclick="showPage('boletins', this)">
+            BOLETINS
+        </button>
+
+        <button class="nav-btn" onclick="showPage('terminal', this)">
+            TERMINAL
+        </button>
+
+        <button class="nav-btn" onclick="showPage('gestor', this)">
+            GESTOR
+        </button>
+    </nav>
+
+    <main>
+
+        <!-- =================================================
+             INÍCIO
+             ================================================= -->
+
+        <section id="inicio" class="page active">
+
+            <div class="box">
+
+                <div class="box-title">
+                    PARQUE ZOOLÓGICO VALE VERDE
+                </div>
+
+                <p>
+                    Bem-vindo ao arquivo digital do Parque Zoológico
+                    Vale Verde.
+                </p>
+
+                <p>
+                    O Parque Zoológico Vale Verde atua na conservação,
+                    pesquisa e educação ambiental.
+                </p>
+
+                <p class="dim">
+                    Arquivo público — 1983.
+                </p>
+
+            </div>
+
+            <div class="box">
+
+                <div class="box-title">
+                    AVISO
+                </div>
+
+                <p>
+                    Alguns registros podem não estar disponíveis
+                    nesta versão do arquivo.
+                </p>
+
+                <p>
+                    Para consultar documentos administrativos,
+                    utilize o TERMINAL.
+                </p>
+
+            </div>
+
+            <div class="warning">
+                SISTEMA DE ARQUIVOS VV-01 ATIVO.
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PARQUE
+             ================================================= -->
+
+        <section id="parque" class="page">
+
+            <div class="box">
+
+                <div class="box-title">
+                    SOBRE O PARQUE
+                </div>
+
+                <p>
+                    O Parque Zoológico Vale Verde foi criado com
+                    o objetivo de promover a conservação da fauna,
+                    a pesquisa zoológica e a educação ambiental.
+                </p>
+
+                <p>
+                    Durante a década de 1980, o parque ampliou
+                    suas atividades de pesquisa.
+                </p>
+
+                <p class="dim">
+                    Alguns registros administrativos desse período
+                    permanecem restritos.
+                </p>
+
+            </div>
+
+            <div class="box">
+
+                <div class="box-title">
+                    SETORES
+                </div>
+
+                <pre>
+01 — VISITAÇÃO
+02 — CONSERVAÇÃO
+03 — PESQUISA
+04 — [REGISTRO RESTRITO]
+05 — ADMINISTRAÇÃO
+                </pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ANIMAIS
+             ================================================= -->
+
+        <section id="animais" class="page">
+
+            <div class="box">
+
+                <div class="box-title">
+                    REGISTRO DE ESPÉCIES
+                </div>
+
+                <p>
+                    O Vale Verde mantém registros de espécies
+                    utilizadas em programas de conservação,
+                    pesquisa e educação.
+                </p>
+
+            </div>
+
+            <div class="box">
+
+                <div class="box-title">
+                    REGISTRO HISTÓRICO
+                </div>
+
+                <p>
+                    <strong>MYOTRAGUS BALEARICUS</strong>
+                </p>
+
+                <p>
+                    Status histórico: EXTINTO
+                </p>
+
+                <p>
+                    Origem: ILHAS BALEARES
+                </p>
+
+                <p class="dim">
+                    Registro detalhado indisponível.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BOLETINS
+             ================================================= -->
+
+        <section id="boletins" class="page">
+
+            <div class="box">
+
+                <div class="box-title">
+                    BOLETINS PÚBLICOS
+                </div>
+
+                <div id="boletinsContainer">
+                    CARREGANDO ARQUIVOS...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TERMINAL
+             ================================================= -->
+
+        <section id="terminal" class="page">
+
+            <div class="box">
+
+                <div class="box-title">
+                    TERMINAL DE ARQUIVOS VV-01
+                </div>
+
+                <p class="small">
+                    SISTEMA DE CONSULTA — ACESSO RESTRITO
+                </p>
+
+            </div>
+
+            <div class="terminal">
+
+                <div id="terminalOutput" class="terminal-output">
+VALE VERDE ARCHIVE TERMINAL
+VERSÃO 1.983
+
+SISTEMA INICIADO.
+
+DIGITE HELP PARA CONSULTAR OS COMANDOS.
+
+                </div>
+
+                <div class="terminal-line">
+
+                    <span class="prompt">&gt;</span>
+
+                    <input
+                        id="terminalInput"
+                        autocomplete="off"
+                        spellcheck="false"
+                        placeholder="digite um código..."
+                    >
+
+                </div>
+
+                <button
+                    class="terminal-button"
+                    onclick="runTerminal()">
+                    EXECUTAR
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             GESTOR
+             ================================================= -->
+
+        <section id="gestor" class="page">
+
+            <!-- LOGIN -->
+
+            <div id="loginArea" class="login-box">
+
+                <div class="box">
+
+                    <div class="box-title">
+                        ACESSO DE GESTOR
+                    </div>
+
+                    <div class="form-row">
+
+                        <label>
+                            USUÁRIO
+                        </label>
+
+                        <input
+                            id="loginUsername"
+                            type="text"
+                            autocomplete="username"
+                        >
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <label>
+                            SENHA
+                        </label>
+
+                        <input
+                            id="loginPassword"
+                            type="password"
+                            autocomplete="current-password"
+                        >
+
+                    </div>
+
+                    <button
+                        class="btn"
+                        onclick="loginGestor()">
+                        ENTRAR
+                    </button>
+
+                    <div
+                        id="loginMessage"
+                        class="message">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAINEL -->
+
+            <div
+                id="adminArea"
+                class="admin-only">
+
+                <div class="admin-panel">
+
+                    <div class="box-title">
+                        PAINEL DE GESTÃO
+                    </div>
+
+                    <p>
+                        USUÁRIO:
+                        <strong id="adminUsername"></strong>
+                    </p>
+
+                    <button
+                        class="btn secondary"
+                        onclick="logoutGestor()">
+                        SAIR
+                    </button>
+
+                    <hr style="
+                        border:0;
+                        border-top:1px solid #72ff72;
+                        margin:25px 0;
+                    ">
+
+                    <div class="box-title">
+                        NOVO BOLETIM
+                    </div>
+
+                    <div class="form-row">
+
+                        <label>
+                            DATA DO BOLETIM
+                        </label>
+
+                        <input
+                            id="boletimData"
+                            type="date"
+                            style="
+                                width:100%;
+                                background:#000;
+                                color:#72ff72;
+                                border:1px solid #72ff72;
+                                padding:10px;
+                            "
+                        >
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <label>
+                            TÍTULO
+                        </label>
+
+                        <input
+                            id="boletimTitulo"
+                            type="text"
+                            placeholder="Título do boletim"
+                            style="
+                                width:100%;
+                                background:#000;
+                                color:#72ff72;
+                                border:1px solid #72ff72;
+                                padding:10px;
+                            "
+                        >
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <label>
+                            CONTEÚDO
+                        </label>
+
+                        <textarea
+                            id="boletimConteudo"
+                            placeholder="Digite o conteúdo do boletim..."
+                        ></textarea>
+
+                    </div>
+
+                    <button
+                        class="btn"
+                        onclick="salvarBoletim()">
+                        PUBLICAR BOLETIM
+                    </button>
+
+                    <div
+                        id="adminMessage"
+                        class="message">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <span>
+            PARQUE ZOOLÓGICO VALE VERDE
+        </span>
+
+        <span>
+            ARQUIVO VV-01 / 1983
+        </span>
+
+    </footer>
 
 </div>
 
-
-<!-- =====================================================
-     PAGINA INICIAL
-===================================================== -->
-
-<section id="home" class="page active">
-
-<div class="panel">
-
-<div class="center white">
-
-==================================================
-
-<br>
-
-SISTEMA CENTRAL DO PARQUE
-
-<br>
-
-==================================================
-
-</div>
-
-<br>
-
-BEM-VINDO AO SISTEMA DE INFORMACOES DO
-
-PARQUE ZOOLOGICO VALE VERDE.
-
-<br><br>
-
-SELECIONE UMA OPERACAO:
-
-<br><br>
-
-<div class="menu">
-
-[01]
-<button onclick="showPage('information')">
-INFORMACOES GERAIS
-</button>
-
-<br>
-
-[02]
-<button onclick="showPage('animals')">
-REGISTRO DE ANIMAIS
-</button>
-
-<br>
-
-[03]
-<button onclick="showPage('conservation')">
-CONSERVACAO
-</button>
-
-<br>
-
-[04]
-<button onclick="showPage('bulletins')">
-BOLETINS
-</button>
-
-<br>
-
-[05]
-<button onclick="showPage('archive')">
-TERMINAL DE ARQUIVOS
-</button>
-
-<br>
-
-[06]
-<button onclick="showPage('login')">
-ACESSO ADMINISTRATIVO
-</button>
-
-</div>
-
-<div class="line">
---------------------------------------------------
-</div>
-
-<div class="dim">
-VV-01 / TERMINAL LOCAL
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     INFORMACOES
-===================================================== -->
-
-<section id="information" class="page">
-
-<div class="panel">
-
-<div class="white">
-INFORMACOES GERAIS
-</div>
-
-<div class="line">
---------------------------------------------------
-</div>
-
-<pre>
-PARQUE ZOOLOGICO VALE VERDE
-
-ESTE TERMINAL CONTEM INFORMACOES
-ADMINISTRATIVAS E REGISTROS DO PARQUE.
-
-HORARIO DE FUNCIONAMENTO:
-
-TERCA A DOMINGO
-08:00 - 17:00
-
-SEGUNDA-FEIRA
-MANUTENCAO.
-</pre>
-
-<button onclick="showPage('home')">
-[ VOLTAR ]
-</button>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     ANIMAIS
-===================================================== -->
-
-<section id="animals" class="page">
-
-<div class="panel">
-
-<div class="white">
-REGISTRO DE ANIMAIS
-</div>
-
-<div class="line">
---------------------------------------------------
-</div>
-
-<pre>
-REGISTRO 001 ........ MAMIFEROS
-
-REGISTRO 002 ........ AVES
-
-REGISTRO 003 ........ REPTEIS
-
-REGISTRO 004 ........ PRIMATAS
-
-REGISTRO 005 ........ OUTRAS ESPECIES
-
-STATUS:
-
-ARQUIVO DISPONIVEL.
-</pre>
-
-<button onclick="showPage('home')">
-[ VOLTAR ]
-</button>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     CONSERVACAO
-===================================================== -->
-
-<section id="conservation" class="page">
-
-<div class="panel">
-
-<div class="white">
-PROGRAMAS DE CONSERVACAO
-</div>
-
-<div class="line">
---------------------------------------------------
-</div>
-
-<pre>
-01 - EDUCACAO AMBIENTAL
-
-02 - PESQUISA
-
-03 - PRESERVACAO DA FAUNA
-
-04 - MONITORAMENTO
-
-05 - PROGRAMAS EDUCATIVOS
-</pre>
-
-<button onclick="showPage('home')">
-[ VOLTAR ]
-</button>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     BOLETINS
-===================================================== -->
-
-<section id="bulletins" class="page">
-
-<div class="panel">
-
-<div class="white">
-ARQUIVO DE BOLETINS
-</div>
-
-<div class="line">
---------------------------------------------------
-</div>
-
-<div id="public-bulletins">
-CONECTANDO AO ARQUIVO...
-</div>
-
-<br>
-
-<button onclick="showPage('home')">
-[ VOLTAR ]
-</button>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     TERMINAL DE ARQUIVOS
-===================================================== -->
-
-<section id="archive" class="page">
-
-<div class="panel">
-
-<div class="white">
-TERMINAL DE ARQUIVOS VV-01
-</div>
-
-<div class="line">
---------------------------------------------------
-</div>
-
-<pre>
-SISTEMA DE CONSULTA DE ARQUIVOS
-
-DIGITE O CODIGO DO DOCUMENTO:
-
-CODIGO:
-</pre>
-
-<input
-id="archive-code"
-type="text"
-autocomplete="off"
-placeholder="________"
->
-
-<button onclick="searchArchive()">
-[ CONSULTAR ]
-</button>
-
-<button onclick="showPage('home')">
-[ VOLTAR ]
-</button>
-
-<div id="archive-error" class="error">
-ARQUIVO NAO ENCONTRADO.
-</div>
-
-
-<!-- DOCUMENTO SECRETO -->
-
-<div id="secret-vv04" class="secret">
-
-<div class="secret-title">
-
-ARQUIVO VV-04
-
-</div>
-
-<div class="line">
---------------------------------------------------
-</div>
-
-<pre>
-PARQUE ZOOLOGICO VALE VERDE
-
-DOCUMENTO: VV-04
-DATA: 17/08/1983
-
-CLASSIFICACAO:
-ADMINISTRATIVO
-
-STATUS:
-RESTRITO
-
-
-O SETOR 04 PERMANECE FECHADO.
-
-A ADMINISTRACAO DETERMINOU QUE
-TODOS OS REGISTROS REFERENTES AO
-LOCAL FOSSEM TRANSFERIDOS PARA
-O ARQUIVO CENTRAL.
-
-
-OBSERVACAO:
-
-NAO EXISTEM MOTIVOS PARA
-FUNCIONARIOS ACESSAREM O SETOR
-SEM AUTORIZACAO.
-
-
-ULTIMA ATUALIZACAO:
-
-17/08/1983
-
-
-RESPONSAVEL:
-
-C. NOGUEIRA
-</pre>
-
-<div class="line">
---------------------------------------------------
-</div>
-
-<div class="warning">
-
-REGISTRO ENCERRADO.
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     LOGIN
-===================================================== -->
-
-<section id="login" class="page">
-
-<div class="login-box">
-
-<div class="white">
-SISTEMA ADMINISTRATIVO VV-01
-</div>
-
-<div class="line">
---------------------------------------------------
-</div>
-
-USUARIO:
-
-<input
-id="username"
-type="text"
-autocomplete="off"
->
-
-SENHA:
-
-<input
-id="password"
-type="password"
-autocomplete="off"
->
-
-<button onclick="login()">
-[ ACESSAR ]
-</button>
-
-<button onclick="showPage('home')">
-[ CANCELAR ]
-</button>
-
-<div id="login-error" class="error">
-ACESSO NEGADO.
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     PAINEL DO GESTOR
-===================================================== -->
-
-<section id="admin" class="page">
-
-<div class="panel">
-
-<div class="white">
-SISTEMA ADMINISTRATIVO
-</div>
-
-<div class="line">
---------------------------------------------------
-</div>
-
-<div id="operator-name">
-OPERADOR: --
-</div>
-
-<br>
-
-<div class="white">
-NOVO BOLETIM
-</div>
-
-<br>
-
-TITULO:
-
-<input
-id="post-title"
-type="text"
->
-
-CATEGORIA:
-
-<input
-id="post-category"
-type="text"
-value="BOLETIM"
->
-
-DATA DO BOLETIM:
-
-<input
-id="post-date"
-type="date"
->
-
-<div class="dim">
-
-A DATA ACIMA SERA MOSTRADA AOS VISITANTES.
-
-SE DEIXAR EM BRANCO, SERA UTILIZADA A DATA
-DE PUBLICACAO.
-
-</div>
-
-<br>
-
-CONTEUDO:
-
-<textarea
-id="post-content"
-></textarea>
-
-<button onclick="publishBulletin()">
-[ PUBLICAR BOLETIM ]
-</button>
-
-<div id="publish-message" class="success">
-</div>
-
-<div class="line">
---------------------------------------------------
-</div>
-
-<div class="white">
-BOLETINS REGISTRADOS
-</div>
-
-<br>
-
-<div id="admin-bulletins">
-CARREGANDO...
-</div>
-
-<br>
-
-<button onclick="logout()">
-[ ENCERRAR SESSAO ]
-</button>
-
-</div>
-
-</section>
-
-
-<footer>
-
-PARQUE ZOOLOGICO VALE VERDE
-
-<br>
-
-SISTEMA VV-01
-
-<br>
-
-TERMINAL ORIGINAL - 1983
-
-</footer>
-
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-/* =====================================================
+/* =========================================================
    SUPABASE
-===================================================== */
+   ========================================================= */
 
 const SUPABASE_URL =
-"https://ejuoosullizocjprdbsj.supabase.co";
+    "https://ejuoosullizocjprdbsj.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_tk2a-wGe64sC5QonEFYwzw_NhhDiJiv";
+    "sb_publishable_tk2a-wGe64sC5QonEFYwzw_NhhDiJiv";
 
-const db =
-supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
-/* =====================================================
-   GESTORES
-===================================================== */
+/* =========================================================
+   NAVEGAÇÃO
+   ========================================================= */
+
+function showPage(pageId, button) {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
+
+    document
+        .getElementById(pageId)
+        .classList.add("active");
+
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    if (pageId === "boletins") {
+        carregarBoletins();
+    }
+
+}
+
+
+/* =========================================================
+   BOLETINS
+   ========================================================= */
+
+async function carregarBoletins() {
+
+    const container =
+        document.getElementById("boletinsContainer");
+
+    container.innerHTML =
+        "CARREGANDO ARQUIVOS...";
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from("boletins")
+                .select("*")
+                .order("data", {
+                    ascending: false
+                });
+
+        if (error) {
+            throw error;
+        }
+
+        if (!data || data.length === 0) {
+
+            container.innerHTML =
+                `<p>NENHUM BOLETIM DISPONÍVEL.</p>`;
+
+            return;
+        }
+
+        container.innerHTML = "";
+
+        data.forEach(boletim => {
+
+            const div =
+                document.createElement("div");
+
+            div.className = "boletim";
+
+            const dataFormatada =
+                formatarData(boletim.data);
+
+            div.innerHTML = `
+                <div class="boletim-date">
+                    ${escapeHTML(dataFormatada)}
+                </div>
+
+                <div class="boletim-title">
+                    ${escapeHTML(boletim.titulo || "SEM TÍTULO")}
+                </div>
+
+                <div>
+                    ${escapeHTML(boletim.conteudo || "")}
+                </div>
+            `;
+
+            container.appendChild(div);
+
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        container.innerHTML = `
+            <p>
+                ERRO AO CARREGAR OS BOLETINS.
+            </p>
+        `;
+    }
+}
+
+
+function formatarData(data) {
+
+    if (!data) {
+        return "";
+    }
+
+    const partes =
+        String(data).split("-");
+
+    if (partes.length !== 3) {
+        return data;
+    }
+
+    return `${partes[2]}/${partes[1]}/${partes[0]}`;
+}
+
+
+/* =========================================================
+   LOGIN SIMPLES DE GESTORES
+   ========================================================= */
 
 const gestores = {
 
@@ -803,625 +988,731 @@ const gestores = {
 
 };
 
-let currentOperator = null;
 
-
-/* =====================================================
-   NAVEGACAO
-===================================================== */
-
-function showPage(id) {
-
-    document
-        .querySelectorAll(".page")
-        .forEach(page => {
-
-            page.classList.remove("active");
-
-        });
-
-    const page =
-        document.getElementById(id);
-
-    if (page) {
-
-        page.classList.add("active");
-
-    }
-
-    if (id === "bulletins") {
-
-        loadPublicBulletins();
-
-    }
-
-    if (id === "admin") {
-
-        loadAdminBulletins();
-
-    }
-
-}
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-function login() {
+function loginGestor() {
 
     const username =
         document
-        .getElementById("username")
-        .value
-        .trim()
-        .toUpperCase();
+            .getElementById("loginUsername")
+            .value
+            .trim()
+            .toUpperCase();
 
     const password =
         document
-        .getElementById("password")
-        .value;
+            .getElementById("loginPassword")
+            .value;
 
-    const error =
-        document.getElementById(
-            "login-error"
-        );
+    const message =
+        document.getElementById("loginMessage");
 
     if (
         gestores[username] &&
         gestores[username] === password
     ) {
 
-        currentOperator =
-            username;
+        localStorage.setItem(
+            "vv_gestor",
+            username
+        );
 
-        document
-        .getElementById(
-            "operator-name"
-        )
-        .textContent =
-            "OPERADOR: " +
-            username;
+        atualizarPainelGestor();
 
-        error.style.display =
-            "none";
-
-        showPage("admin");
+        message.textContent = "";
 
     } else {
 
-        error.textContent =
+        message.textContent =
             "ACESSO NEGADO.";
 
-        error.style.display =
-            "block";
+    }
+
+}
+
+
+function logoutGestor() {
+
+    localStorage.removeItem("vv_gestor");
+
+    atualizarPainelGestor();
+
+}
+
+
+function atualizarPainelGestor() {
+
+    const gestor =
+        localStorage.getItem("vv_gestor");
+
+    const loginArea =
+        document.getElementById("loginArea");
+
+    const adminArea =
+        document.getElementById("adminArea");
+
+    const username =
+        document.getElementById("adminUsername");
+
+    if (gestor) {
+
+        loginArea.style.display = "none";
+
+        adminArea.style.display = "block";
+
+        username.textContent = gestor;
+
+    } else {
+
+        loginArea.style.display = "block";
+
+        adminArea.style.display = "none";
+
+        username.textContent = "";
 
     }
 
 }
 
 
-/* =====================================================
-   LOGOUT
-===================================================== */
+/* =========================================================
+   SALVAR BOLETIM
+   ========================================================= */
 
-function logout() {
+async function salvarBoletim() {
 
-    currentOperator = null;
-
-    document
-        .getElementById("username")
-        .value = "";
-
-    document
-        .getElementById("password")
-        .value = "";
-
-    showPage("home");
-
-}
-
-
-/* =====================================================
-   PUBLICAR BOLETIM
-===================================================== */
-
-async function publishBulletin() {
-
-    if (!currentOperator) {
-
-        alert(
-            "ACESSO ADMINISTRATIVO NECESSARIO."
-        );
-
-        showPage("login");
-
-        return;
-
-    }
-
-    const title =
-        document
-        .getElementById("post-title")
-        .value
-        .trim();
-
-    const category =
-        document
-        .getElementById("post-category")
-        .value
-        .trim();
-
-    const selectedDate =
-        document
-        .getElementById("post-date")
-        .value;
-
-    const content =
-        document
-        .getElementById("post-content")
-        .value
-        .trim();
+    const gestor =
+        localStorage.getItem("vv_gestor");
 
     const message =
-        document.getElementById(
-            "publish-message"
-        );
+        document.getElementById("adminMessage");
 
-    if (!title || !content) {
+    if (!gestor) {
 
         message.textContent =
-            "TITULO E CONTEUDO SAO OBRIGATORIOS.";
+            "ACESSO NEGADO.";
 
         return;
+    }
 
+    const data =
+        document
+            .getElementById("boletimData")
+            .value;
+
+    const titulo =
+        document
+            .getElementById("boletimTitulo")
+            .value
+            .trim();
+
+    const conteudo =
+        document
+            .getElementById("boletimConteudo")
+            .value
+            .trim();
+
+    if (!data || !titulo || !conteudo) {
+
+        message.textContent =
+            "PREENCHA DATA, TÍTULO E CONTEÚDO.";
+
+        return;
     }
 
     message.textContent =
-        "REGISTRANDO BOLETIM...";
+        "PUBLICANDO...";
 
-    const { error } =
-        await db
-        .from("boletins")
-        .insert({
+    try {
 
-            title: title,
+        const { error } =
+            await supabaseClient
+                .from("boletins")
+                .insert({
 
-            category:
-                category || "BOLETIM",
+                    data: data,
 
-            content: content,
+                    titulo: titulo,
 
-            author:
-                currentOperator,
+                    conteudo: conteudo,
 
-            display_date:
-                selectedDate || null
+                    criado_por: gestor
 
-        });
+                });
 
-    if (error) {
+        if (error) {
+            throw error;
+        }
+
+        message.textContent =
+            "BOLETIM PUBLICADO COM SUCESSO.";
+
+        document
+            .getElementById("boletimTitulo")
+            .value = "";
+
+        document
+            .getElementById("boletimConteudo")
+            .value = "";
+
+        carregarBoletins();
+
+    } catch (error) {
 
         console.error(error);
 
         message.textContent =
-            "ERRO AO REGISTRAR BOLETIM.";
-
-        return;
+            "ERRO AO PUBLICAR O BOLETIM.";
 
     }
-
-    document
-        .getElementById("post-title")
-        .value = "";
-
-    document
-        .getElementById("post-category")
-        .value = "BOLETIM";
-
-    document
-        .getElementById("post-date")
-        .value = "";
-
-    document
-        .getElementById("post-content")
-        .value = "";
-
-    message.textContent =
-        "BOLETIM REGISTRADO COM SUCESSO.";
-
-    loadAdminBulletins();
 
 }
 
 
-/* =====================================================
-   FORMATAR DATA
-===================================================== */
+/* =========================================================
+   TERMINAL ARG
+   ========================================================= */
 
-function formatBulletinDate(post) {
+const terminalOutput =
+    document.getElementById("terminalOutput");
 
-    if (post.display_date) {
+const terminalInput =
+    document.getElementById("terminalInput");
 
-        const parts =
-            post.display_date.split("-");
 
-        if (parts.length === 3) {
+function terminalPrint(text) {
 
-            return (
-                parts[2] +
-                "/" +
-                parts[1] +
-                "/" +
-                parts[0]
-            );
+    terminalOutput.textContent +=
+        "\n\n" + text;
 
-        }
+    terminalOutput.scrollTop =
+        terminalOutput.scrollHeight;
 
+}
+
+
+function runTerminal() {
+
+    const value =
+        terminalInput.value
+            .trim()
+            .toUpperCase();
+
+    if (!value) {
+        return;
     }
 
-    return new Date(
-        post.created_at
-    ).toLocaleDateString(
-        "pt-BR"
+    terminalPrint(
+        "> " + value
+    );
+
+    terminalInput.value = "";
+
+
+    /* ===============================
+       HELP
+       =============================== */
+
+    if (value === "HELP") {
+
+        terminalPrint(`
+COMANDOS DISPONÍVEIS:
+
+HELP
+STATUS
+VV-04
+
+OUTROS COMANDOS:
+ACESSO RESTRITO
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       STATUS
+       =============================== */
+
+    if (value === "STATUS") {
+
+        terminalPrint(`
+VV-01
+
+SISTEMA: OPERACIONAL
+ARQUIVOS: PARCIALMENTE DISPONÍVEIS
+ACESSO: PÚBLICO
+
+ÚLTIMA ATUALIZAÇÃO:
+17/08/1983
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       VV-04
+       =============================== */
+
+    if (value === "VV-04") {
+
+        terminalPrint(`
+ARQUIVO ENCONTRADO.
+
+DOCUMENTO: VV-04
+DATA: 17/08/1983
+
+CLASSIFICAÇÃO:
+RESTRITO
+
+────────────────────────
+
+O SETOR 04 PERMANECERÁ
+FECHADO ATÉ SEGUNDA ORDEM.
+
+TODOS OS REGISTROS RELACIONADOS
+À ÁREA DEVERÃO SER TRANSFERIDOS
+PARA O ARQUIVO CENTRAL.
+
+RESPONSÁVEL:
+
+C. NOGUEIRA
+
+────────────────────────
+
+REFERÊNCIA:
+C. NOGUEIRA
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       NOGUEIRA
+       =============================== */
+
+    if (value === "NOGUEIRA" ||
+        value === "C. NOGUEIRA") {
+
+        terminalPrint(`
+REGISTRO ENCONTRADO.
+
+NOME:
+C. NOGUEIRA
+
+FUNÇÃO:
+RESPONSÁVEL TÉCNICO
+
+SETOR:
+04
+
+STATUS:
+AFASTADO
+
+ÚLTIMO ACESSO:
+17/08/1983 — 22:41
+
+DOCUMENTO ASSOCIADO:
+
+0183
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       0183
+       =============================== */
+
+    if (value === "0183") {
+
+        terminalPrint(`
+DOCUMENTO Nº 0183
+
+DATA:
+18/08/1983
+
+ASSUNTO:
+OCORRÊNCIA NO SETOR 04
+
+DURANTE A MADRUGADA DO DIA
+17 DE AGOSTO FOI IDENTIFICADA
+UMA IRREGULARIDADE NAS
+INSTALAÇÕES DO SETOR 04.
+
+O PROTOCOLO DE CONTENÇÃO
+FOI INTERROMPIDO.
+
+A DIRETORIA DETERMINOU QUE
+A OCORRÊNCIA NÃO SEJA
+INCLUÍDA NOS BOLETINS PÚBLICOS.
+
+REFERÊNCIA:
+
+LAB-04
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       LAB-04
+       =============================== */
+
+    if (value === "LAB-04" ||
+        value === "LAB") {
+
+        terminalPrint(`
+REGISTRO DE PESQUISA
+
+CÓDIGO:
+LAB-04
+
+LOCAL:
+SETOR 04
+
+ATIVIDADE:
+PESQUISA EXPERIMENTAL
+
+ÁREA:
+RECONSTRUÇÃO BIOLÓGICA
+
+OBJETIVO:
+
+RESTAURAÇÃO DE CARACTERÍSTICAS
+BIOLÓGICAS OBSERVADAS EM
+REGISTROS DE ESPÉCIE EXTINTA.
+
+STATUS:
+FASE FINAL
+
+RESPONSÁVEL:
+C. NOGUEIRA
+
+REFERÊNCIA:
+
+VV-04-BIO
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       VV-04-BIO
+       =============================== */
+
+    if (value === "VV-04-BIO") {
+
+        terminalPrint(`
+REGISTRO BIOLÓGICO
+
+PROJETO:
+RECONSTRUÇÃO
+
+IDENTIFICAÇÃO:
+
+MYOTRAGUS BALEARICUS
+
+STATUS HISTÓRICO:
+EXTINTO
+
+STATUS DO PROJETO:
+ATIVO
+
+ORIGEM:
+ILHAS BALEARES
+
+────────────────────────
+
+RESULTADO:
+
+RECONSTRUÇÃO CONSIDERADA
+BEM-SUCEDIDA.
+
+────────────────────────
+
+RECOMENDAÇÃO:
+
+MANTER O EXEMPLAR NA
+ÁREA DE CONTENÇÃO.
+
+NÃO AUTORIZAR TRANSFERÊNCIA
+SEM AVAL DA DIRETORIA.
+
+────────────────────────
+
+REFERÊNCIA:
+
+CLÍNICA
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       CLINICA
+       =============================== */
+
+    if (value === "CLINICA") {
+
+        terminalPrint(`
+CLÍNICA VALE VERDE
+
+REGISTRO DE ATENDIMENTOS
+
+18/08/1983
+01 ATENDIMENTO
+
+19/08/1983
+03 ATENDIMENTOS
+
+20/08/1983
+07 ATENDIMENTOS
+
+21/08/1983
+████ ATENDIMENTOS
+
+ORIGEM DOS PRIMEIROS CASOS:
+
+FUNCIONÁRIOS DO PARQUE
+
+OBSERVAÇÃO:
+
+AUMENTO INCOMUM NO NÚMERO
+DE ATENDIMENTOS.
+
+RESPOSTA DA ADMINISTRAÇÃO:
+
+"TRATAR COMO OCORRÊNCIA
+ISOLADA."
+
+REFERÊNCIA:
+
+COMUNICADO 08
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       COMUNICADO 08
+       =============================== */
+
+    if (value === "COMUNICADO 08" ||
+        value === "08") {
+
+        terminalPrint(`
+COMUNICADO INTERNO Nº 08
+
+DATA:
+22/08/1983
+
+A DIRETORIA DETERMINA:
+
+I
+NÃO DIVULGAR INFORMAÇÕES
+REFERENTES AO SETOR 04.
+
+II
+NÃO ASSOCIAR OS ATENDIMENTOS
+DA CLÍNICA ÀS ATIVIDADES
+DE PESQUISA.
+
+III
+SUSPENDER A DISTRIBUIÇÃO
+DE DOCUMENTOS RELACIONADOS
+AO PROJETO.
+
+IV
+MANTER AS ATIVIDADES DO
+PARQUE SEM ALTERAÇÕES
+VISÍVEIS AO PÚBLICO.
+
+JUSTIFICATIVA:
+
+A DIVULGAÇÃO DOS
+ACONTECIMENTOS PODERÁ
+COMPROMETER INVESTIMENTOS
+E ACORDOS EM ANDAMENTO.
+
+REFERÊNCIA:
+
+INVESTIMENTO
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       INVESTIMENTO
+       =============================== */
+
+    if (value === "INVESTIMENTO") {
+
+        terminalPrint(`
+ARQUIVO ADMINISTRATIVO
+
+REGISTRO DE INVESTIMENTO
+
+PROJETO:
+VV-04
+
+O PROJETO REPRESENTA
+INVESTIMENTO SIGNIFICATIVO
+PARA A INSTITUIÇÃO.
+
+A CONTINUIDADE DA PESQUISA
+DEPENDE DA MANUTENÇÃO DO
+SIGILO.
+
+OBSERVAÇÃO:
+
+ENTIDADES EXTERNAS
+DEMONSTRARAM INTERESSE
+NOS RESULTADOS OBTIDOS.
+
+────────────────────────
+
+REFERÊNCIA:
+
+ARQUIVO PESSOAL
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       ARQUIVO PESSOAL
+       =============================== */
+
+    if (value === "ARQUIVO PESSOAL" ||
+        value === "REGISTRO 001") {
+
+        terminalPrint(`
+ARQUIVO PESSOAL
+
+REGISTRO 001
+
+DATA:
+23/08/1983
+
+────────────────────────
+
+Eu sabia que tinha alguma coisa
+errada.
+
+O portão do setor 04 está fechado
+desde aquela noite.
+
+Meu pai disse que é só manutenção.
+
+Mas hoje vi um homem saindo de lá.
+
+Ele estava usando uma roupa que
+nunca vi ninguém usar no parque.
+
+Depois fui até a clínica.
+
+Tinha mais gente lá.
+
+Perguntei o que aconteceu.
+
+Ninguém quis falar.
+
+Eu vou descobrir.
+
+────────────────────────
+
+FIM
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       CÓDIGOS SECRETOS FUTUROS
+       =============================== */
+
+    if (value === "VV-01") {
+
+        terminalPrint(`
+ARQUIVO PRINCIPAL
+
+ACESSO NEGADO.
+
+NÍVEL DE AUTORIZAÇÃO INSUFICIENTE.
+`);
+
+        return;
+    }
+
+
+    /* ===============================
+       COMANDO INVÁLIDO
+       =============================== */
+
+    terminalPrint(
+        "ARQUIVO NÃO ENCONTRADO."
     );
 
 }
 
 
-/* =====================================================
-   CARREGAR BOLETINS PUBLICOS
-===================================================== */
+/* =========================================================
+   ENTER NO TERMINAL
+   ========================================================= */
 
-async function loadPublicBulletins() {
+terminalInput.addEventListener(
+    "keydown",
+    function(event) {
 
-    const container =
-        document.getElementById(
-            "public-bulletins"
-        );
-
-    container.textContent =
-        "CONECTANDO AO ARQUIVO...";
-
-    const {
-        data,
-        error
-    } =
-        await db
-        .from("boletins")
-        .select("*")
-        .order(
-            "created_at",
-            {
-                ascending: false
-            }
-        );
-
-    if (error) {
-
-        console.error(error);
-
-        container.textContent =
-            "ERRO AO ACESSAR O ARQUIVO.";
-
-        return;
+        if (event.key === "Enter") {
+            runTerminal();
+        }
 
     }
+);
 
-    if (!data || data.length === 0) {
 
-        container.textContent =
-            "NENHUM BOLETIM REGISTRADO.";
+/* =========================================================
+   SEGURANÇA BÁSICA DE HTML
+   ========================================================= */
 
-        return;
+function escapeHTML(value) {
 
-    }
-
-    container.innerHTML = "";
-
-    data.forEach(post => {
-
-        const article =
-            document.createElement(
-                "article"
-            );
-
-        article.className =
-            "boletim";
-
-        const title =
-            document.createElement(
-                "h3"
-            );
-
-        title.textContent =
-            post.title;
-
-        const date =
-            document.createElement(
-                "div"
-            );
-
-        date.className =
-            "date";
-
-        date.textContent =
-            "DATA: " +
-            formatBulletinDate(post);
-
-        const category =
-            document.createElement(
-                "div"
-            );
-
-        category.textContent =
-            "CATEGORIA: " +
-            post.category;
-
-        const content =
-            document.createElement(
-                "div"
-            );
-
-        content.className =
-            "content";
-
-        content.textContent =
-            post.content;
-
-        article.appendChild(title);
-
-        article.appendChild(date);
-
-        article.appendChild(category);
-
-        article.appendChild(
-            document.createElement("br")
-        );
-
-        article.appendChild(content);
-
-        container.appendChild(article);
-
-    });
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
 
 }
 
 
-/* =====================================================
-   CARREGAR BOLETINS DO GESTOR
-===================================================== */
+/* =========================================================
+   INICIALIZAÇÃO
+   ========================================================= */
 
-async function loadAdminBulletins() {
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
 
-    const container =
-        document.getElementById(
-            "admin-bulletins"
-        );
+        atualizarPainelGestor();
 
-    container.textContent =
-        "CARREGANDO...";
-
-    const {
-        data,
-        error
-    } =
-        await db
-        .from("boletins")
-        .select("*")
-        .order(
-            "created_at",
-            {
-                ascending: false
-            }
-        );
-
-    if (error) {
-
-        console.error(error);
-
-        container.textContent =
-            "ERRO AO CARREGAR.";
-
-        return;
+        carregarBoletins();
 
     }
-
-    if (!data || data.length === 0) {
-
-        container.textContent =
-            "NENHUM BOLETIM.";
-
-        return;
-
-    }
-
-    container.innerHTML = "";
-
-    data.forEach(post => {
-
-        const article =
-            document.createElement(
-                "article"
-            );
-
-        article.className =
-            "boletim";
-
-        const title =
-            document.createElement(
-                "h3"
-            );
-
-        title.textContent =
-            post.title;
-
-        const date =
-            document.createElement(
-                "div"
-            );
-
-        date.className =
-            "date";
-
-        date.textContent =
-            "DATA DO BOLETIM: " +
-            formatBulletinDate(post) +
-            " | AUTOR: " +
-            post.author;
-
-        const content =
-            document.createElement(
-                "div"
-            );
-
-        content.className =
-            "content";
-
-        content.textContent =
-            post.content;
-
-        const actions =
-            document.createElement(
-                "div"
-            );
-
-        actions.className =
-            "admin-actions";
-
-        const deleteButton =
-            document.createElement(
-                "button"
-            );
-
-        deleteButton.textContent =
-            "[ EXCLUIR ]";
-
-        deleteButton.onclick =
-            () => deleteBulletin(
-                post.id
-            );
-
-        actions.appendChild(
-            deleteButton
-        );
-
-        article.appendChild(title);
-
-        article.appendChild(date);
-
-        article.appendChild(content);
-
-        article.appendChild(actions);
-
-        container.appendChild(article);
-
-    });
-
-}
-
-
-/* =====================================================
-   EXCLUIR BOLETIM
-===================================================== */
-
-async function deleteBulletin(id) {
-
-    if (!currentOperator) {
-
-        return;
-
-    }
-
-    const confirmed =
-        confirm(
-            "EXCLUIR ESTE BOLETIM?"
-        );
-
-    if (!confirmed) {
-
-        return;
-
-    }
-
-    const { error } =
-        await db
-        .from("boletins")
-        .delete()
-        .eq("id", id);
-
-    if (error) {
-
-        console.error(error);
-
-        alert(
-            "ERRO AO EXCLUIR BOLETIM."
-        );
-
-        return;
-
-    }
-
-    loadAdminBulletins();
-
-}
-
-
-/* =====================================================
-   TERMINAL VV-04
-===================================================== */
-
-function searchArchive() {
-
-    const code =
-        document
-        .getElementById("archive-code")
-        .value
-        .trim()
-        .toUpperCase();
-
-    const error =
-        document.getElementById(
-            "archive-error"
-        );
-
-    const secret =
-        document.getElementById(
-            "secret-vv04"
-        );
-
-
-    secret.style.display =
-        "none";
-
-    error.style.display =
-        "none";
-
-
-    if (code === "VV-04") {
-
-        secret.style.display =
-            "block";
-
-        return;
-
-    }
-
-
-    error.textContent =
-        "ARQUIVO NAO ENCONTRADO.";
-
-    error.style.display =
-        "block";
-
-}
-
-
-/* =====================================================
-   INICIO
-===================================================== */
-
-loadPublicBulletins();
+);
 
 </script>
 
