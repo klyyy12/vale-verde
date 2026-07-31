@@ -9,10 +9,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-/* =========================================================
-   VALE VERDE — ESTÉTICA 1983
-   ========================================================= */
-
 * {
     box-sizing: border-box;
 }
@@ -39,18 +35,10 @@ select {
     font-family: "Courier New", Courier, monospace;
 }
 
-a {
-    color: #72ff72;
-}
-
 ::selection {
     background: #72ff72;
     color: #020602;
 }
-
-/* =========================================================
-   TERMINAL
-   ========================================================= */
 
 #site {
     min-height: 100vh;
@@ -162,20 +150,18 @@ pre {
     word-break: break-word;
 }
 
-/* =========================================================
-   TERMINAL
-   ========================================================= */
-
 .terminal {
     border: 2px solid #72ff72;
     background: #000;
     padding: 20px;
-    min-height: 350px;
+    min-height: 420px;
     box-shadow: 0 0 18px rgba(114,255,114,.12);
 }
 
 .terminal-output {
-    min-height: 220px;
+    min-height: 300px;
+    max-height: 600px;
+    overflow-y: auto;
     white-space: pre-wrap;
     word-break: break-word;
     margin-bottom: 20px;
@@ -214,37 +200,6 @@ pre {
     opacity: .85;
 }
 
-/* =========================================================
-   DOCUMENTOS
-   ========================================================= */
-
-.document {
-    border: 1px solid #72ff72;
-    padding: 20px;
-    margin-bottom: 20px;
-    background: #010301;
-}
-
-.document-header {
-    border-bottom: 1px dashed #72ff72;
-    padding-bottom: 12px;
-    margin-bottom: 15px;
-}
-
-.document-title {
-    font-weight: bold;
-    font-size: 17px;
-}
-
-.document-body {
-    white-space: pre-wrap;
-    line-height: 1.7;
-}
-
-/* =========================================================
-   BOLETINS
-   ========================================================= */
-
 .boletim {
     border: 1px solid #72ff72;
     padding: 16px;
@@ -260,10 +215,6 @@ pre {
     font-weight: bold;
     margin-bottom: 10px;
 }
-
-/* =========================================================
-   LOGIN
-   ========================================================= */
 
 .login-box {
     max-width: 450px;
@@ -313,10 +264,6 @@ pre {
     font-size: 13px;
 }
 
-/* =========================================================
-   GESTOR
-   ========================================================= */
-
 .admin-only {
     display: none;
 }
@@ -337,14 +284,6 @@ textarea {
     outline: none;
 }
 
-select {
-    width: 100%;
-    background: #000;
-    color: #72ff72;
-    border: 1px solid #72ff72;
-    padding: 10px;
-}
-
 footer {
     border-top: 1px solid #72ff72;
     padding: 15px 20px;
@@ -355,11 +294,8 @@ footer {
     gap: 10px;
 }
 
-/* =========================================================
-   RESPONSIVO
-   ========================================================= */
-
 @media (max-width: 600px) {
+
     main {
         padding: 12px;
     }
@@ -369,9 +305,6 @@ footer {
         border-bottom: 1px solid #72ff72;
     }
 
-    .topbar {
-        font-size: 12px;
-    }
 }
 </style>
 </head>
@@ -380,459 +313,442 @@ footer {
 
 <div id="site">
 
-    <div class="topbar">
-        <div>VV-01 :: ARQUIVO DIGITAL</div>
-        <div class="topbar-status">
-            SISTEMA OPERACIONAL
+<div class="topbar">
+    <div>VV-01 :: ARQUIVO DIGITAL</div>
+    <div class="topbar-status">
+        SISTEMA OPERACIONAL
+    </div>
+</div>
+
+<header>
+    <div class="logo">PARQUE ZOOLÓGICO VALE VERDE</div>
+
+    <div class="subtitle">
+        CENTRO DE CONSERVAÇÃO E PESQUISA — ARQUIVO 1983
+    </div>
+</header>
+
+<nav>
+
+    <button class="nav-btn active"
+        onclick="showPage('inicio', this)">
+        INÍCIO
+    </button>
+
+    <button class="nav-btn"
+        onclick="showPage('parque', this)">
+        PARQUE
+    </button>
+
+    <button class="nav-btn"
+        onclick="showPage('animais', this)">
+        ANIMAIS
+    </button>
+
+    <button class="nav-btn"
+        onclick="showPage('boletins', this)">
+        BOLETINS
+    </button>
+
+    <button class="nav-btn"
+        onclick="showPage('terminal', this)">
+        TERMINAL
+    </button>
+
+    <button class="nav-btn"
+        onclick="showPage('gestor', this)">
+        GESTOR
+    </button>
+
+</nav>
+
+<main>
+
+<!-- =====================================================
+     INÍCIO
+     ===================================================== -->
+
+<section id="inicio" class="page active">
+
+    <div class="box">
+
+        <div class="box-title">
+            PARQUE ZOOLÓGICO VALE VERDE
         </div>
+
+        <p>
+            Bem-vindo ao arquivo digital do Parque Zoológico
+            Vale Verde.
+        </p>
+
+        <p>
+            O Parque Zoológico Vale Verde atua na conservação,
+            pesquisa e educação ambiental.
+        </p>
+
+        <p class="dim">
+            Arquivo público — 1983.
+        </p>
+
     </div>
 
-    <header>
-        <div class="logo">PARQUE ZOOLÓGICO VALE VERDE</div>
-        <div class="subtitle">
-            CENTRO DE CONSERVAÇÃO E PESQUISA — ARQUIVO 1983
+    <div class="box">
+
+        <div class="box-title">
+            AVISO
         </div>
-    </header>
 
-    <nav>
-        <button class="nav-btn active" onclick="showPage('inicio', this)">
-            INÍCIO
-        </button>
+        <p>
+            Alguns registros podem não estar disponíveis
+            nesta versão do arquivo.
+        </p>
 
-        <button class="nav-btn" onclick="showPage('parque', this)">
-            PARQUE
-        </button>
+        <p>
+            Para consultar documentos administrativos,
+            utilize o TERMINAL.
+        </p>
 
-        <button class="nav-btn" onclick="showPage('animais', this)">
-            ANIMAIS
-        </button>
+    </div>
 
-        <button class="nav-btn" onclick="showPage('boletins', this)">
-            BOLETINS
-        </button>
-
-        <button class="nav-btn" onclick="showPage('terminal', this)">
-            TERMINAL
-        </button>
-
-        <button class="nav-btn" onclick="showPage('gestor', this)">
-            GESTOR
-        </button>
-    </nav>
-
-    <main>
-
-        <!-- =================================================
-             INÍCIO
-             ================================================= -->
-
-        <section id="inicio" class="page active">
-
-            <div class="box">
-
-                <div class="box-title">
-                    PARQUE ZOOLÓGICO VALE VERDE
-                </div>
-
-                <p>
-                    Bem-vindo ao arquivo digital do Parque Zoológico
-                    Vale Verde.
-                </p>
-
-                <p>
-                    O Parque Zoológico Vale Verde atua na conservação,
-                    pesquisa e educação ambiental.
-                </p>
-
-                <p class="dim">
-                    Arquivo público — 1983.
-                </p>
-
-            </div>
-
-            <div class="box">
-
-                <div class="box-title">
-                    AVISO
-                </div>
-
-                <p>
-                    Alguns registros podem não estar disponíveis
-                    nesta versão do arquivo.
-                </p>
-
-                <p>
-                    Para consultar documentos administrativos,
-                    utilize o TERMINAL.
-                </p>
-
-            </div>
-
-            <div class="warning">
-                SISTEMA DE ARQUIVOS VV-01 ATIVO.
-            </div>
-
-        </section>
+</section>
 
 
-        <!-- =================================================
-             PARQUE
-             ================================================= -->
+<!-- =====================================================
+     PARQUE
+     ===================================================== -->
 
-        <section id="parque" class="page">
+<section id="parque" class="page">
 
-            <div class="box">
+    <div class="box">
 
-                <div class="box-title">
-                    SOBRE O PARQUE
-                </div>
+        <div class="box-title">
+            SOBRE O PARQUE
+        </div>
 
-                <p>
-                    O Parque Zoológico Vale Verde foi criado com
-                    o objetivo de promover a conservação da fauna,
-                    a pesquisa zoológica e a educação ambiental.
-                </p>
+        <p>
+            O Parque Zoológico Vale Verde foi criado com
+            o objetivo de promover a conservação da fauna,
+            a pesquisa zoológica e a educação ambiental.
+        </p>
 
-                <p>
-                    Durante a década de 1980, o parque ampliou
-                    suas atividades de pesquisa.
-                </p>
+        <p>
+            Durante a década de 1980, o parque ampliou
+            suas atividades de pesquisa.
+        </p>
 
-                <p class="dim">
-                    Alguns registros administrativos desse período
-                    permanecem restritos.
-                </p>
+    </div>
 
-            </div>
+    <div class="box">
 
-            <div class="box">
+        <div class="box-title">
+            SETORES
+        </div>
 
-                <div class="box-title">
-                    SETORES
-                </div>
-
-                <pre>
+        <pre>
 01 — VISITAÇÃO
 02 — CONSERVAÇÃO
 03 — PESQUISA
 04 — [REGISTRO RESTRITO]
 05 — ADMINISTRAÇÃO
-                </pre>
+        </pre>
 
-            </div>
+    </div>
 
-        </section>
-
-
-        <!-- =================================================
-             ANIMAIS
-             ================================================= -->
-
-        <section id="animais" class="page">
-
-            <div class="box">
-
-                <div class="box-title">
-                    REGISTRO DE ESPÉCIES
-                </div>
-
-                <p>
-                    O Vale Verde mantém registros de espécies
-                    utilizadas em programas de conservação,
-                    pesquisa e educação.
-                </p>
-
-            </div>
-
-            <div class="box">
-
-                <div class="box-title">
-                    REGISTRO HISTÓRICO
-                </div>
-
-                <p>
-                    <strong>MYOTRAGUS BALEARICUS</strong>
-                </p>
-
-                <p>
-                    Status histórico: EXTINTO
-                </p>
-
-                <p>
-                    Origem: ILHAS BALEARES
-                </p>
-
-                <p class="dim">
-                    Registro detalhado indisponível.
-                </p>
-
-            </div>
-
-        </section>
+</section>
 
 
-        <!-- =================================================
-             BOLETINS
-             ================================================= -->
+<!-- =====================================================
+     ANIMAIS
+     ===================================================== -->
 
-        <section id="boletins" class="page">
+<section id="animais" class="page">
 
-            <div class="box">
+    <div class="box">
 
-                <div class="box-title">
-                    BOLETINS PÚBLICOS
-                </div>
+        <div class="box-title">
+            REGISTRO DE ESPÉCIES
+        </div>
 
-                <div id="boletinsContainer">
-                    CARREGANDO ARQUIVOS...
-                </div>
+        <p>
+            O Vale Verde mantém registros de espécies
+            utilizadas em programas de conservação,
+            pesquisa e educação.
+        </p>
 
-            </div>
+    </div>
 
-        </section>
+    <div class="box">
+
+        <div class="box-title">
+            REGISTRO HISTÓRICO
+        </div>
+
+        <p>
+            <strong>MYOTRAGUS BALEARICUS</strong>
+        </p>
+
+        <p>
+            Status histórico: EXTINTO
+        </p>
+
+        <p>
+            Origem: ILHAS BALEARES
+        </p>
+
+        <p class="dim">
+            Registro detalhado indisponível.
+        </p>
+
+    </div>
+
+</section>
 
 
-        <!-- =================================================
-             TERMINAL
-             ================================================= -->
+<!-- =====================================================
+     BOLETINS
+     ===================================================== -->
 
-        <section id="terminal" class="page">
+<section id="boletins" class="page">
 
-            <div class="box">
+    <div class="box">
 
-                <div class="box-title">
-                    TERMINAL DE ARQUIVOS VV-01
-                </div>
+        <div class="box-title">
+            BOLETINS PÚBLICOS
+        </div>
 
-                <p class="small">
-                    SISTEMA DE CONSULTA — ACESSO RESTRITO
-                </p>
+        <div id="boletinsContainer">
+            CARREGANDO ARQUIVOS...
+        </div>
 
-            </div>
+    </div>
 
-            <div class="terminal">
+</section>
 
-                <div id="terminalOutput" class="terminal-output">
+
+<!-- =====================================================
+     TERMINAL
+     ===================================================== -->
+
+<section id="terminal" class="page">
+
+    <div class="box">
+
+        <div class="box-title">
+            TERMINAL DE ARQUIVOS VV-01
+        </div>
+
+        <p class="small">
+            SISTEMA DE CONSULTA — ACESSO RESTRITO
+        </p>
+
+    </div>
+
+    <div class="terminal">
+
+        <div id="terminalOutput"
+             class="terminal-output">
 VALE VERDE ARCHIVE TERMINAL
 VERSÃO 1.983
 
 SISTEMA INICIADO.
 
 DIGITE HELP PARA CONSULTAR OS COMANDOS.
+        </div>
 
-                </div>
+        <div class="terminal-line">
 
-                <div class="terminal-line">
+            <span class="prompt">&gt;</span>
 
-                    <span class="prompt">&gt;</span>
+            <input
+                id="terminalInput"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="digite um código..."
+            >
 
-                    <input
-                        id="terminalInput"
-                        autocomplete="off"
-                        spellcheck="false"
-                        placeholder="digite um código..."
-                    >
+        </div>
 
-                </div>
+        <button
+            class="terminal-button"
+            onclick="runTerminal()">
+            EXECUTAR
+        </button>
 
-                <button
-                    class="terminal-button"
-                    onclick="runTerminal()">
-                    EXECUTAR
-                </button>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GESTOR
+     ===================================================== -->
+
+<section id="gestor" class="page">
+
+    <div id="loginArea"
+         class="login-box">
+
+        <div class="box">
+
+            <div class="box-title">
+                ACESSO DE GESTOR
+            </div>
+
+            <div class="form-row">
+
+                <label>USUÁRIO</label>
+
+                <input
+                    id="loginUsername"
+                    type="text"
+                >
 
             </div>
 
-        </section>
+            <div class="form-row">
 
+                <label>SENHA</label>
 
-        <!-- =================================================
-             GESTOR
-             ================================================= -->
-
-        <section id="gestor" class="page">
-
-            <!-- LOGIN -->
-
-            <div id="loginArea" class="login-box">
-
-                <div class="box">
-
-                    <div class="box-title">
-                        ACESSO DE GESTOR
-                    </div>
-
-                    <div class="form-row">
-
-                        <label>
-                            USUÁRIO
-                        </label>
-
-                        <input
-                            id="loginUsername"
-                            type="text"
-                            autocomplete="username"
-                        >
-
-                    </div>
-
-                    <div class="form-row">
-
-                        <label>
-                            SENHA
-                        </label>
-
-                        <input
-                            id="loginPassword"
-                            type="password"
-                            autocomplete="current-password"
-                        >
-
-                    </div>
-
-                    <button
-                        class="btn"
-                        onclick="loginGestor()">
-                        ENTRAR
-                    </button>
-
-                    <div
-                        id="loginMessage"
-                        class="message">
-                    </div>
-
-                </div>
+                <input
+                    id="loginPassword"
+                    type="password"
+                >
 
             </div>
 
-
-            <!-- PAINEL -->
+            <button
+                class="btn"
+                onclick="loginGestor()">
+                ENTRAR
+            </button>
 
             <div
-                id="adminArea"
-                class="admin-only">
+                id="loginMessage"
+                class="message">
+            </div>
 
-                <div class="admin-panel">
+        </div>
 
-                    <div class="box-title">
-                        PAINEL DE GESTÃO
-                    </div>
+    </div>
 
-                    <p>
-                        USUÁRIO:
-                        <strong id="adminUsername"></strong>
-                    </p>
 
-                    <button
-                        class="btn secondary"
-                        onclick="logoutGestor()">
-                        SAIR
-                    </button>
+    <div id="adminArea"
+         class="admin-only">
 
-                    <hr style="
-                        border:0;
-                        border-top:1px solid #72ff72;
-                        margin:25px 0;
-                    ">
+        <div class="admin-panel">
 
-                    <div class="box-title">
-                        NOVO BOLETIM
-                    </div>
+            <div class="box-title">
+                PAINEL DE GESTÃO
+            </div>
 
-                    <div class="form-row">
+            <p>
+                USUÁRIO:
+                <strong id="adminUsername"></strong>
+            </p>
 
-                        <label>
-                            DATA DO BOLETIM
-                        </label>
+            <button
+                class="btn secondary"
+                onclick="logoutGestor()">
+                SAIR
+            </button>
 
-                        <input
-                            id="boletimData"
-                            type="date"
-                            style="
-                                width:100%;
-                                background:#000;
-                                color:#72ff72;
-                                border:1px solid #72ff72;
-                                padding:10px;
-                            "
-                        >
+            <hr style="
+                border:0;
+                border-top:1px solid #72ff72;
+                margin:25px 0;
+            ">
 
-                    </div>
+            <div class="box-title">
+                NOVO BOLETIM
+            </div>
 
-                    <div class="form-row">
+            <div class="form-row">
 
-                        <label>
-                            TÍTULO
-                        </label>
+                <label>
+                    DATA DO BOLETIM
+                </label>
 
-                        <input
-                            id="boletimTitulo"
-                            type="text"
-                            placeholder="Título do boletim"
-                            style="
-                                width:100%;
-                                background:#000;
-                                color:#72ff72;
-                                border:1px solid #72ff72;
-                                padding:10px;
-                            "
-                        >
-
-                    </div>
-
-                    <div class="form-row">
-
-                        <label>
-                            CONTEÚDO
-                        </label>
-
-                        <textarea
-                            id="boletimConteudo"
-                            placeholder="Digite o conteúdo do boletim..."
-                        ></textarea>
-
-                    </div>
-
-                    <button
-                        class="btn"
-                        onclick="salvarBoletim()">
-                        PUBLICAR BOLETIM
-                    </button>
-
-                    <div
-                        id="adminMessage"
-                        class="message">
-                    </div>
-
-                </div>
+                <input
+                    id="boletimData"
+                    type="date"
+                    style="
+                        width:100%;
+                        background:#000;
+                        color:#72ff72;
+                        border:1px solid #72ff72;
+                        padding:10px;
+                    "
+                >
 
             </div>
 
-        </section>
+            <div class="form-row">
 
-    </main>
+                <label>TÍTULO</label>
 
+                <input
+                    id="boletimTitulo"
+                    type="text"
+                    style="
+                        width:100%;
+                        background:#000;
+                        color:#72ff72;
+                        border:1px solid #72ff72;
+                        padding:10px;
+                    "
+                >
 
-    <footer>
+            </div>
 
-        <span>
-            PARQUE ZOOLÓGICO VALE VERDE
-        </span>
+            <div class="form-row">
 
-        <span>
-            ARQUIVO VV-01 / 1983
-        </span>
+                <label>CONTEÚDO</label>
 
-    </footer>
+                <textarea
+                    id="boletimConteudo">
+                </textarea>
+
+            </div>
+
+            <button
+                class="btn"
+                onclick="salvarBoletim()">
+                PUBLICAR BOLETIM
+            </button>
+
+            <div
+                id="adminMessage"
+                class="message">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+
+    <span>
+        PARQUE ZOOLÓGICO VALE VERDE
+    </span>
+
+    <span>
+        ARQUIVO VV-01 / 1983
+    </span>
+
+</footer>
 
 </div>
 
 
 <script>
 
-/* =========================================================
+/* =====================================================
    SUPABASE
-   ========================================================= */
+   ===================================================== */
 
 const SUPABASE_URL =
     "https://ejuoosullizocjprdbsj.supabase.co";
@@ -847,17 +763,17 @@ const supabaseClient =
     );
 
 
-/* =========================================================
+/* =====================================================
    NAVEGAÇÃO
-   ========================================================= */
+   ===================================================== */
 
 function showPage(pageId, button) {
 
     document
         .querySelectorAll(".page")
-        .forEach(page => {
-            page.classList.remove("active");
-        });
+        .forEach(page =>
+            page.classList.remove("active")
+        );
 
     document
         .getElementById(pageId)
@@ -865,9 +781,9 @@ function showPage(pageId, button) {
 
     document
         .querySelectorAll(".nav-btn")
-        .forEach(btn => {
-            btn.classList.remove("active");
-        });
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
 
     if (button) {
         button.classList.add("active");
@@ -876,18 +792,19 @@ function showPage(pageId, button) {
     if (pageId === "boletins") {
         carregarBoletins();
     }
-
 }
 
 
-/* =========================================================
+/* =====================================================
    BOLETINS
-   ========================================================= */
+   ===================================================== */
 
 async function carregarBoletins() {
 
     const container =
-        document.getElementById("boletinsContainer");
+        document.getElementById(
+            "boletinsContainer"
+        );
 
     container.innerHTML =
         "CARREGANDO ARQUIVOS...";
@@ -902,14 +819,12 @@ async function carregarBoletins() {
                     ascending: false
                 });
 
-        if (error) {
-            throw error;
-        }
+        if (error) throw error;
 
         if (!data || data.length === 0) {
 
             container.innerHTML =
-                `<p>NENHUM BOLETIM DISPONÍVEL.</p>`;
+                "<p>NENHUM BOLETIM DISPONÍVEL.</p>";
 
             return;
         }
@@ -923,20 +838,23 @@ async function carregarBoletins() {
 
             div.className = "boletim";
 
-            const dataFormatada =
-                formatarData(boletim.data);
-
             div.innerHTML = `
                 <div class="boletim-date">
-                    ${escapeHTML(dataFormatada)}
+                    ${escapeHTML(
+                        formatarData(boletim.data)
+                    )}
                 </div>
 
                 <div class="boletim-title">
-                    ${escapeHTML(boletim.titulo || "SEM TÍTULO")}
+                    ${escapeHTML(
+                        boletim.titulo || "SEM TÍTULO"
+                    )}
                 </div>
 
                 <div>
-                    ${escapeHTML(boletim.conteudo || "")}
+                    ${escapeHTML(
+                        boletim.conteudo || ""
+                    )}
                 </div>
             `;
 
@@ -948,20 +866,15 @@ async function carregarBoletins() {
 
         console.error(error);
 
-        container.innerHTML = `
-            <p>
-                ERRO AO CARREGAR OS BOLETINS.
-            </p>
-        `;
+        container.innerHTML =
+            "<p>ERRO AO CARREGAR OS BOLETINS.</p>";
     }
 }
 
 
 function formatarData(data) {
 
-    if (!data) {
-        return "";
-    }
+    if (!data) return "";
 
     const partes =
         String(data).split("-");
@@ -974,9 +887,9 @@ function formatarData(data) {
 }
 
 
-/* =========================================================
-   LOGIN SIMPLES DE GESTORES
-   ========================================================= */
+/* =====================================================
+   GESTORES
+   ===================================================== */
 
 const gestores = {
 
@@ -1004,7 +917,9 @@ function loginGestor() {
             .value;
 
     const message =
-        document.getElementById("loginMessage");
+        document.getElementById(
+            "loginMessage"
+        );
 
     if (
         gestores[username] &&
@@ -1026,65 +941,81 @@ function loginGestor() {
             "ACESSO NEGADO.";
 
     }
-
 }
 
 
 function logoutGestor() {
 
-    localStorage.removeItem("vv_gestor");
+    localStorage.removeItem(
+        "vv_gestor"
+    );
 
     atualizarPainelGestor();
-
 }
 
 
 function atualizarPainelGestor() {
 
     const gestor =
-        localStorage.getItem("vv_gestor");
+        localStorage.getItem(
+            "vv_gestor"
+        );
 
     const loginArea =
-        document.getElementById("loginArea");
+        document.getElementById(
+            "loginArea"
+        );
 
     const adminArea =
-        document.getElementById("adminArea");
+        document.getElementById(
+            "adminArea"
+        );
 
     const username =
-        document.getElementById("adminUsername");
+        document.getElementById(
+            "adminUsername"
+        );
 
     if (gestor) {
 
-        loginArea.style.display = "none";
+        loginArea.style.display =
+            "none";
 
-        adminArea.style.display = "block";
+        adminArea.style.display =
+            "block";
 
-        username.textContent = gestor;
+        username.textContent =
+            gestor;
 
     } else {
 
-        loginArea.style.display = "block";
+        loginArea.style.display =
+            "block";
 
-        adminArea.style.display = "none";
+        adminArea.style.display =
+            "none";
 
         username.textContent = "";
 
     }
-
 }
 
 
-/* =========================================================
+/* =====================================================
    SALVAR BOLETIM
-   ========================================================= */
+   ===================================================== */
 
 async function salvarBoletim() {
 
     const gestor =
-        localStorage.getItem("vv_gestor");
+        localStorage.getItem(
+            "vv_gestor"
+        );
 
     const message =
-        document.getElementById("adminMessage");
+        document.getElementById(
+            "adminMessage"
+        );
 
     if (!gestor) {
 
@@ -1096,18 +1027,24 @@ async function salvarBoletim() {
 
     const data =
         document
-            .getElementById("boletimData")
+            .getElementById(
+                "boletimData"
+            )
             .value;
 
     const titulo =
         document
-            .getElementById("boletimTitulo")
+            .getElementById(
+                "boletimTitulo"
+            )
             .value
             .trim();
 
     const conteudo =
         document
-            .getElementById("boletimConteudo")
+            .getElementById(
+                "boletimConteudo"
+            )
             .value
             .trim();
 
@@ -1130,28 +1067,27 @@ async function salvarBoletim() {
                 .insert({
 
                     data: data,
-
                     titulo: titulo,
-
                     conteudo: conteudo,
-
                     criado_por: gestor
 
                 });
 
-        if (error) {
-            throw error;
-        }
+        if (error) throw error;
 
         message.textContent =
             "BOLETIM PUBLICADO COM SUCESSO.";
 
         document
-            .getElementById("boletimTitulo")
+            .getElementById(
+                "boletimTitulo"
+            )
             .value = "";
 
         document
-            .getElementById("boletimConteudo")
+            .getElementById(
+                "boletimConteudo"
+            )
             .value = "";
 
         carregarBoletins();
@@ -1164,19 +1100,22 @@ async function salvarBoletim() {
             "ERRO AO PUBLICAR O BOLETIM.";
 
     }
-
 }
 
 
-/* =========================================================
+/* =====================================================
    TERMINAL ARG
-   ========================================================= */
+   ===================================================== */
 
 const terminalOutput =
-    document.getElementById("terminalOutput");
+    document.getElementById(
+        "terminalOutput"
+    );
 
 const terminalInput =
-    document.getElementById("terminalInput");
+    document.getElementById(
+        "terminalInput"
+    );
 
 
 function terminalPrint(text) {
@@ -1186,7 +1125,6 @@ function terminalPrint(text) {
 
     terminalOutput.scrollTop =
         terminalOutput.scrollHeight;
-
 }
 
 
@@ -1197,20 +1135,16 @@ function runTerminal() {
             .trim()
             .toUpperCase();
 
-    if (!value) {
-        return;
-    }
+    if (!value) return;
 
-    terminalPrint(
-        "> " + value
-    );
+    terminalPrint("> " + value);
 
     terminalInput.value = "";
 
 
-    /* ===============================
+    /* =================================================
        HELP
-       =============================== */
+       ================================================= */
 
     if (value === "HELP") {
 
@@ -1229,9 +1163,9 @@ ACESSO RESTRITO
     }
 
 
-    /* ===============================
+    /* =================================================
        STATUS
-       =============================== */
+       ================================================= */
 
     if (value === "STATUS") {
 
@@ -1250,9 +1184,9 @@ ACESSO: PÚBLICO
     }
 
 
-    /* ===============================
+    /* =================================================
        VV-04
-       =============================== */
+       ================================================= */
 
     if (value === "VV-04") {
 
@@ -1288,12 +1222,14 @@ C. NOGUEIRA
     }
 
 
-    /* ===============================
+    /* =================================================
        NOGUEIRA
-       =============================== */
+       ================================================= */
 
-    if (value === "NOGUEIRA" ||
-        value === "C. NOGUEIRA") {
+    if (
+        value === "NOGUEIRA" ||
+        value === "C. NOGUEIRA"
+    ) {
 
         terminalPrint(`
 REGISTRO ENCONTRADO.
@@ -1322,9 +1258,9 @@ DOCUMENTO ASSOCIADO:
     }
 
 
-    /* ===============================
+    /* =================================================
        0183
-       =============================== */
+       ================================================= */
 
     if (value === "0183") {
 
@@ -1358,12 +1294,14 @@ LAB-04
     }
 
 
-    /* ===============================
+    /* =================================================
        LAB-04
-       =============================== */
+       ================================================= */
 
-    if (value === "LAB-04" ||
-        value === "LAB") {
+    if (
+        value === "LAB-04" ||
+        value === "LAB"
+    ) {
 
         terminalPrint(`
 REGISTRO DE PESQUISA
@@ -1401,9 +1339,9 @@ VV-04-BIO
     }
 
 
-    /* ===============================
+    /* =================================================
        VV-04-BIO
-       =============================== */
+       ================================================= */
 
     if (value === "VV-04-BIO") {
 
@@ -1454,9 +1392,9 @@ CLÍNICA
     }
 
 
-    /* ===============================
+    /* =================================================
        CLINICA
-       =============================== */
+       ================================================= */
 
     if (value === "CLINICA") {
 
@@ -1500,12 +1438,14 @@ COMUNICADO 08
     }
 
 
-    /* ===============================
+    /* =================================================
        COMUNICADO 08
-       =============================== */
+       ================================================= */
 
-    if (value === "COMUNICADO 08" ||
-        value === "08") {
+    if (
+        value === "COMUNICADO 08" ||
+        value === "08"
+    ) {
 
         terminalPrint(`
 COMUNICADO INTERNO Nº 08
@@ -1550,9 +1490,9 @@ INVESTIMENTO
     }
 
 
-    /* ===============================
+    /* =================================================
        INVESTIMENTO
-       =============================== */
+       ================================================= */
 
     if (value === "INVESTIMENTO") {
 
@@ -1578,8 +1518,6 @@ ENTIDADES EXTERNAS
 DEMONSTRARAM INTERESSE
 NOS RESULTADOS OBTIDOS.
 
-────────────────────────
-
 REFERÊNCIA:
 
 ARQUIVO PESSOAL
@@ -1589,12 +1527,14 @@ ARQUIVO PESSOAL
     }
 
 
-    /* ===============================
-       ARQUIVO PESSOAL
-       =============================== */
+    /* =================================================
+       REGISTRO 001
+       ================================================= */
 
-    if (value === "ARQUIVO PESSOAL" ||
-        value === "REGISTRO 001") {
+    if (
+        value === "ARQUIVO PESSOAL" ||
+        value === "REGISTRO 001"
+    ) {
 
         terminalPrint(`
 ARQUIVO PESSOAL
@@ -1631,16 +1571,550 @@ Eu vou descobrir.
 
 ────────────────────────
 
-FIM
+REFERÊNCIA:
+REGISTRO 002
 `);
 
         return;
     }
 
 
-    /* ===============================
-       CÓDIGOS SECRETOS FUTUROS
-       =============================== */
+    /* =================================================
+       REGISTRO 002
+       ================================================= */
+
+    if (value === "REGISTRO 002") {
+
+        terminalPrint(`
+ARQUIVO PESSOAL
+
+REGISTRO 002
+
+DATA:
+24/08/1983
+
+────────────────────────
+
+Hoje voltei perto do setor 04.
+
+O portão continua fechado.
+
+Mas encontrei uma coisa no chão.
+
+Uma etiqueta.
+
+Nela estava escrito:
+
+VV-04-BIO
+
+Eu já tinha visto esse código
+nos arquivos da administração.
+
+Pesquisei o nome que estava escrito
+no documento.
+
+Myotragus balearicus.
+
+Nunca ouvi falar desse animal.
+
+Mas se ele está extinto...
+
+por que existe um registro dele
+no parque?
+
+────────────────────────
+
+REFERÊNCIA:
+
+CONTATO
+`);
+
+        return;
+    }
+
+
+    /* =================================================
+       CONTATO
+       ================================================= */
+
+    if (value === "CONTATO") {
+
+        terminalPrint(`
+CLÍNICA VALE VERDE
+
+REGISTRO MÉDICO
+
+CLASSIFICAÇÃO:
+RESTRITO
+
+CÓDIGO:
+CONTATO
+
+────────────────────────
+
+OS CASOS REGISTRADOS APÓS
+18/08 APRESENTAM RELAÇÃO
+TEMPORAL COM O INCIDENTE
+OCORRIDO NO SETOR 04.
+
+A ORIGEM DO CONTATO
+NÃO FOI DETERMINADA.
+
+────────────────────────
+
+RECOMENDAÇÃO:
+
+INFORMAR À DIRETORIA.
+
+────────────────────────
+
+NOTA:
+
+NÃO UTILIZAR A EXPRESSÃO
+"CONTAMINAÇÃO" EM DOCUMENTOS
+DESTINADOS AO ARQUIVO PÚBLICO.
+
+────────────────────────
+
+REFERÊNCIA:
+
+REGISTRO 004
+`);
+
+        return;
+    }
+
+
+    /* =================================================
+       REGISTRO 004
+       ================================================= */
+
+    if (value === "REGISTRO 004") {
+
+        terminalPrint(`
+ARQUIVO PESSOAL
+
+REGISTRO 004
+
+DATA:
+26/08/1983
+
+────────────────────────
+
+Agora eu sei.
+
+Eles sabem que as pessoas
+estão ficando doentes.
+
+A clínica sabe.
+
+A diretoria sabe.
+
+Mas ninguém fala nada.
+
+Encontrei outro documento.
+
+Ele dizia que o projeto não era
+apenas sobre reconstruir um animal.
+
+Havia outra finalidade.
+
+Não consegui pegar o documento.
+
+Só consegui copiar uma palavra:
+
+APLICAÇÃO.
+
+────────────────────────
+
+REFERÊNCIA:
+
+APLICAÇÃO
+`);
+
+        return;
+    }
+
+
+    /* =================================================
+       APLICAÇÃO
+       ================================================= */
+
+    if (value === "APLICAÇÃO") {
+
+        terminalPrint(`
+ARQUIVO DE PESQUISA
+
+PROJETO:
+VV-04
+
+CLASSIFICAÇÃO:
+ULTRARRESTRITO
+
+────────────────────────
+
+FINALIDADE:
+
+ESTUDO DE APLICAÇÕES
+BIOLÓGICAS DO EXEMPLAR.
+
+────────────────────────
+
+A RECONSTRUÇÃO NÃO DEVE
+SER CONSIDERADA O OBJETIVO
+FINAL DO PROJETO.
+
+O EXEMPLAR POSSUI
+CARACTERÍSTICAS DE INTERESSE
+PARA PESQUISAS POSTERIORES.
+
+────────────────────────
+
+TRANSFERÊNCIA DE INFORMAÇÕES
+SOMENTE MEDIANTE AUTORIZAÇÃO
+DA DIRETORIA.
+
+────────────────────────
+
+REFERÊNCIA:
+
+REGISTRO 005
+`);
+
+        return;
+    }
+
+
+    /* =================================================
+       REGISTRO 005
+       ================================================= */
+
+    if (value === "REGISTRO 005") {
+
+        terminalPrint(`
+ARQUIVO PESSOAL
+
+REGISTRO 005
+
+DATA:
+27/08/1983
+
+────────────────────────
+
+Eu descobri por que estão
+escondendo isso.
+
+Não era para ser apenas
+um animal.
+
+Eles queriam usar o projeto
+para outra coisa.
+
+Não sei exatamente o quê.
+
+Mas encontrei o nome de uma
+organização em um dos documentos.
+
+Não estava escrito por inteiro.
+
+Só consegui copiar:
+
+V.G.
+
+────────────────────────
+
+REFERÊNCIA:
+
+V.G.
+`);
+
+        return;
+    }
+
+
+    /* =================================================
+       V.G.
+       ================================================= */
+
+    if (
+        value === "V.G." ||
+        value === "VG"
+    ) {
+
+        terminalPrint(`
+ARQUIVO DE CORRESPONDÊNCIA
+
+REFERÊNCIA:
+V.G.
+
+DATA:
+12/08/1983
+
+────────────────────────
+
+AO PARQUE ZOOLÓGICO
+VALE VERDE
+
+A ORGANIZAÇÃO TEM INTERESSE
+NOS RESULTADOS OBTIDOS
+PELO PROJETO VV-04.
+
+SOLICITAMOS QUE OS RESULTADOS
+PERMANEÇAM RESTRITOS.
+
+HAVERÁ NOVA AVALIAÇÃO APÓS
+A CONCLUSÃO DA FASE ATUAL.
+
+────────────────────────
+
+ASSINATURA:
+
+V.G.
+
+────────────────────────
+
+REFERÊNCIA:
+
+REGISTRO 006
+`);
+
+        return;
+    }
+
+
+    /* =================================================
+       REGISTRO 006
+       ================================================= */
+
+    if (value === "REGISTRO 006") {
+
+        terminalPrint(`
+ARQUIVO PESSOAL
+
+REGISTRO 006
+
+DATA:
+28/08/1983
+
+────────────────────────
+
+Acho que eles sabem que estou
+procurando os documentos.
+
+Hoje encontrei a porta do arquivo
+aberta.
+
+Alguns papéis desapareceram.
+
+Mas encontrei uma coisa que eles
+esqueceram.
+
+Um mapa.
+
+O laboratório não fica exatamente
+onde eu pensava.
+
+Existe uma passagem entre o
+Setor 03 e o Setor 04.
+
+Vou entrar.
+
+────────────────────────
+
+REFERÊNCIA:
+
+23:17
+`);
+
+        return;
+    }
+
+
+    /* =================================================
+       23:17
+       ================================================= */
+
+    if (value === "23:17") {
+
+        terminalPrint(`
+REGISTRO DE ACESSO
+
+DATA:
+29/08/1983
+
+HORÁRIO:
+23:17
+
+LOCAL:
+PASSAGEM 03 — 04
+
+STATUS:
+ACESSO REGISTRADO
+
+────────────────────────
+
+ATIVIDADE NÃO AUTORIZADA.
+
+────────────────────────
+
+REFERÊNCIA:
+
+REGISTRO 007
+`);
+
+        return;
+    }
+
+
+    /* =================================================
+       REGISTRO 007
+       ================================================= */
+
+    if (value === "REGISTRO 007") {
+
+        terminalPrint(`
+ARQUIVO PESSOAL
+
+REGISTRO 007
+
+DATA:
+29/08/1983
+
+HORÁRIO:
+23:17
+
+────────────────────────
+
+Eu entrei.
+
+Não devia ter feito isso.
+
+O laboratório estava vazio.
+
+Mas havia sinais de que alguém
+tinha saído às pressas.
+
+Encontrei as caixas do projeto.
+
+E encontrei o recinto.
+
+Está vazio.
+
+────────────────────────
+
+O ANIMAL NÃO ESTÁ MAIS LÁ.
+
+────────────────────────
+
+REFERÊNCIA:
+
+REGISTRO 008
+`);
+
+        return;
+    }
+
+
+    /* =================================================
+       REGISTRO 008
+       ================================================= */
+
+    if (value === "REGISTRO 008") {
+
+        terminalPrint(`
+ARQUIVO PESSOAL
+
+REGISTRO 008
+
+DATA:
+30/08/1983
+
+────────────────────────
+
+Eles disseram que o animal
+foi transferido.
+
+É mentira.
+
+Eu encontrei o registro de
+transporte.
+
+Não existe.
+
+Ele saiu do laboratório
+sem autorização.
+
+E depois disso...
+
+os casos da clínica
+aumentaram.
+
+────────────────────────
+
+Acho que ele está solto.
+
+────────────────────────
+
+REFERÊNCIA:
+
+REGISTRO 009
+`);
+
+        return;
+    }
+
+
+    /* =================================================
+       REGISTRO 009
+       ================================================= */
+
+    if (value === "REGISTRO 009") {
+
+        terminalPrint(`
+ARQUIVO PESSOAL
+
+REGISTRO 009
+
+DATA:
+31/08/1983
+
+────────────────────────
+
+Eu sei onde ele está.
+
+Não posso contar aqui.
+
+Se eles encontrarem este arquivo,
+vão apagar tudo.
+
+Eu tentei avisar.
+
+Ninguém acreditou.
+
+Então vou voltar ao setor 04.
+
+Se eu conseguir destruir os
+registros do projeto, talvez eles
+não consigam continuar.
+
+────────────────────────
+
+Se alguém encontrar isso:
+
+NÃO CONFIE NOS ARQUIVOS PÚBLICOS.
+
+────────────────────────
+
+FIM DO REGISTRO.
+`);
+
+        return;
+    }
+
+
+    /* =================================================
+       VV-01
+       ================================================= */
 
     if (value === "VV-01") {
 
@@ -1656,9 +2130,9 @@ NÍVEL DE AUTORIZAÇÃO INSUFICIENTE.
     }
 
 
-    /* ===============================
+    /* =================================================
        COMANDO INVÁLIDO
-       =============================== */
+       ================================================= */
 
     terminalPrint(
         "ARQUIVO NÃO ENCONTRADO."
@@ -1667,9 +2141,9 @@ NÍVEL DE AUTORIZAÇÃO INSUFICIENTE.
 }
 
 
-/* =========================================================
-   ENTER NO TERMINAL
-   ========================================================= */
+/* =====================================================
+   ENTER
+   ===================================================== */
 
 terminalInput.addEventListener(
     "keydown",
@@ -1683,9 +2157,9 @@ terminalInput.addEventListener(
 );
 
 
-/* =========================================================
-   SEGURANÇA BÁSICA DE HTML
-   ========================================================= */
+/* =====================================================
+   ESCAPE HTML
+   ===================================================== */
 
 function escapeHTML(value) {
 
@@ -1699,9 +2173,9 @@ function escapeHTML(value) {
 }
 
 
-/* =========================================================
+/* =====================================================
    INICIALIZAÇÃO
-   ========================================================= */
+   ===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
