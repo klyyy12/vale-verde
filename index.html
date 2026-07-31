@@ -9,6 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -24,7 +25,7 @@ body {
     color: #72ff72;
     font-family: "Courier New", Courier, monospace;
     font-size: 15px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 button,
@@ -140,8 +141,10 @@ main {
     max-height: 600px;
     overflow-y: auto;
     white-space: pre-wrap;
-    word-break: break-word;
+    word-break: normal;
+    overflow-wrap: break-word;
     margin-bottom: 20px;
+    padding-right: 10px;
 }
 
 .terminal-line {
@@ -233,8 +236,6 @@ main {
     padding: 20px;
 }
 
-/* FINAL */
-
 .final-photo {
     display: none;
     text-align: center;
@@ -258,6 +259,28 @@ main {
     margin-top: 20px;
 }
 
+.typewriter-name {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    min-height: 34px;
+    margin: 10px 0;
+}
+
+.typewriter-cursor {
+    animation: blink .7s infinite;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
 .final-caption {
     font-size: 11px;
     opacity: .65;
@@ -274,6 +297,7 @@ footer {
 }
 
 @media (max-width: 600px) {
+
     main {
         padding: 12px;
     }
@@ -282,7 +306,9 @@ footer {
         flex: 1 1 50%;
         border-bottom: 1px solid #72ff72;
     }
+
 }
+
 </style>
 </head>
 
@@ -291,11 +317,16 @@ footer {
 <div id="site">
 
 <div class="topbar">
+
     <div>VV-01 :: ARQUIVO DIGITAL</div>
+
     <div>1983 // SISTEMA OPERACIONAL</div>
+
 </div>
 
+
 <header>
+
     <div class="logo">
         PARQUE ZOOLÓGICO VALE VERDE
     </div>
@@ -303,7 +334,9 @@ footer {
     <div class="subtitle">
         CENTRO DE CONSERVAÇÃO E PESQUISA — ARQUIVO 1983
     </div>
+
 </header>
+
 
 <nav>
 
@@ -339,9 +372,9 @@ GESTOR
 
 </nav>
 
+
 <main>
 
-<!-- ================= INÍCIO ================= -->
 
 <section id="inicio" class="page active">
 
@@ -352,8 +385,7 @@ PARQUE ZOOLÓGICO VALE VERDE
 </div>
 
 <p>
-Bem-vindo ao arquivo digital do Parque Zoológico
-Vale Verde.
+Bem-vindo ao arquivo digital do Parque Zoológico Vale Verde.
 </p>
 
 <p>
@@ -366,6 +398,7 @@ Arquivo público — 1983.
 </p>
 
 </div>
+
 
 <div class="box">
 
@@ -388,7 +421,6 @@ utilize o TERMINAL.
 </section>
 
 
-<!-- ================= PARQUE ================= -->
 
 <section id="parque" class="page">
 
@@ -411,6 +443,7 @@ suas atividades de pesquisa.
 
 </div>
 
+
 <div class="box">
 
 <div class="box-title">
@@ -430,7 +463,6 @@ SETORES
 </section>
 
 
-<!-- ================= ANIMAIS ================= -->
 
 <section id="animais" class="page">
 
@@ -447,6 +479,7 @@ pesquisa e educação.
 </p>
 
 </div>
+
 
 <div class="box">
 
@@ -475,7 +508,6 @@ Registro detalhado indisponível.
 </section>
 
 
-<!-- ================= BOLETINS ================= -->
 
 <section id="boletins" class="page">
 
@@ -494,7 +526,6 @@ CARREGANDO ARQUIVOS...
 </section>
 
 
-<!-- ================= TERMINAL ================= -->
 
 <section id="terminal" class="page">
 
@@ -510,14 +541,19 @@ SISTEMA DE CONSULTA — ACESSO RESTRITO
 
 </div>
 
+
 <div class="terminal">
 
-<div id="terminalOutput">VALE VERDE ARCHIVE TERMINAL
+<div id="terminalOutput"
+class="terminal-output">VALE VERDE ARCHIVE TERMINAL
+════════════════════════════════════
+
 VERSÃO 1.983
 
 SISTEMA INICIADO.
 
 DIGITE HELP PARA CONSULTAR OS COMANDOS.</div>
+
 
 <div class="terminal-line">
 
@@ -532,16 +568,18 @@ placeholder="digite um código..."
 
 </div>
 
+
 <button
 class="terminal-button"
 onclick="runTerminal()">
+
 EXECUTAR
+
 </button>
 
 </div>
 
 
-<!-- FOTO FINAL -->
 <div id="finalPhoto" class="final-photo">
 
 <div class="small">
@@ -558,9 +596,13 @@ LUCAS DOS SANTOS PEREIRA
 </div>
 
 <div class="final-caption">
-ARQUIVO 31-08-83<br>
-STATUS: DESAPARECIDO<br>
+
+ARQUIVO 31-08-83
+<br>
+STATUS: DESAPARECIDO
+<br>
 ÚLTIMO LOCAL REGISTRADO: SETOR 04
+
 </div>
 
 </div>
@@ -568,7 +610,6 @@ STATUS: DESAPARECIDO<br>
 </section>
 
 
-<!-- ================= GESTOR ================= -->
 
 <section id="gestor" class="page">
 
@@ -605,7 +646,9 @@ type="password"
 <button
 class="btn"
 onclick="loginGestor()">
+
 ENTRAR
+
 </button>
 
 <div id="loginMessage"></div>
@@ -613,6 +656,7 @@ ENTRAR
 </div>
 
 </div>
+
 
 
 <div id="adminArea" class="admin-only">
@@ -631,7 +675,9 @@ USUÁRIO:
 <button
 class="btn"
 onclick="logoutGestor()">
+
 SAIR
+
 </button>
 
 <hr style="
@@ -678,7 +724,9 @@ id="boletimConteudo"></textarea>
 <button
 class="btn"
 onclick="salvarBoletim()">
+
 PUBLICAR BOLETIM
+
 </button>
 
 <div id="adminMessage"></div>
@@ -690,6 +738,7 @@ PUBLICAR BOLETIM
 </section>
 
 </main>
+
 
 <footer>
 
@@ -706,11 +755,8 @@ ARQUIVO VV-01 / 1983
 </div>
 
 
-<script>
 
-/* =====================================================
-   SUPABASE
-===================================================== */
+<script>
 
 const SUPABASE_URL =
 "https://ejuoosullizocjprdbsj.supabase.co";
@@ -725,9 +771,10 @@ SUPABASE_KEY
 );
 
 
-/* =====================================================
+
+/* ================================
    NAVEGAÇÃO
-===================================================== */
+================================ */
 
 function showPage(pageId, button) {
 
@@ -758,9 +805,10 @@ carregarBoletins();
 }
 
 
-/* =====================================================
+
+/* ================================
    BOLETINS
-===================================================== */
+================================ */
 
 async function carregarBoletins() {
 
@@ -774,7 +822,10 @@ container.innerHTML =
 
 try {
 
-const { data, error } =
+const {
+data,
+error
+} =
 await supabaseClient
 .from("boletins")
 .select("*")
@@ -803,6 +854,7 @@ document.createElement("div");
 div.className = "boletim";
 
 div.innerHTML = `
+
 <div class="boletim-date">
 ${escapeHTML(formatarData(boletim.data))}
 </div>
@@ -814,13 +866,16 @@ ${escapeHTML(boletim.titulo || "SEM TÍTULO")}
 <div>
 ${escapeHTML(boletim.conteudo || "")}
 </div>
+
 `;
 
 container.appendChild(div);
 
 });
 
-} catch (error) {
+}
+
+catch (error) {
 
 console.error(error);
 
@@ -832,6 +887,7 @@ container.innerHTML =
 }
 
 
+
 function formatarData(data) {
 
 if (!data) return "";
@@ -839,18 +895,18 @@ if (!data) return "";
 const partes =
 String(data).split("-");
 
-if (partes.length !== 3) {
+if (partes.length !== 3)
 return data;
-}
 
 return `${partes[2]}/${partes[1]}/${partes[0]}`;
 
 }
 
 
-/* =====================================================
-   GESTORES
-===================================================== */
+
+/* ================================
+   GESTOR
+================================ */
 
 const gestores = {
 
@@ -861,6 +917,7 @@ const gestores = {
 "OPERADOR": "TERMINAL04"
 
 };
+
 
 
 function loginGestor() {
@@ -896,7 +953,9 @@ atualizarPainelGestor();
 
 message.textContent = "";
 
-} else {
+}
+
+else {
 
 message.textContent =
 "ACESSO NEGADO.";
@@ -904,6 +963,7 @@ message.textContent =
 }
 
 }
+
 
 
 function logoutGestor() {
@@ -915,6 +975,7 @@ localStorage.removeItem(
 atualizarPainelGestor();
 
 }
+
 
 
 function atualizarPainelGestor() {
@@ -950,7 +1011,9 @@ adminArea.style.display =
 username.textContent =
 gestor;
 
-} else {
+}
+
+else {
 
 loginArea.style.display =
 "block";
@@ -963,9 +1026,10 @@ adminArea.style.display =
 }
 
 
-/* =====================================================
+
+/* ================================
    SALVAR BOLETIM
-===================================================== */
+================================ */
 
 async function salvarBoletim() {
 
@@ -1019,7 +1083,9 @@ message.textContent =
 
 try {
 
-const { error } =
+const {
+error
+} =
 await supabaseClient
 .from("boletins")
 .insert({
@@ -1046,7 +1112,9 @@ document
 
 carregarBoletins();
 
-} catch (error) {
+}
+
+catch (error) {
 
 console.error(error);
 
@@ -1058,9 +1126,10 @@ message.textContent =
 }
 
 
-/* =====================================================
+
+/* ================================
    TERMINAL
-===================================================== */
+================================ */
 
 const terminalOutput =
 document.getElementById(
@@ -1073,10 +1142,17 @@ document.getElementById(
 );
 
 
+
 function terminalPrint(text) {
 
+const separator = `
+
+════════════════════════════════════
+
+`;
+
 terminalOutput.textContent +=
-"\n\n" + text;
+separator + text.trim();
 
 terminalOutput.scrollTop =
 terminalOutput.scrollHeight;
@@ -1084,9 +1160,10 @@ terminalOutput.scrollHeight;
 }
 
 
-/* =====================================================
-   TERMINAL — CAPÍTULOS 1, 2 E 3
-===================================================== */
+
+/* ================================
+   COMANDOS
+================================ */
 
 function runTerminal() {
 
@@ -1097,57 +1174,76 @@ terminalInput.value
 
 if (!value) return;
 
-terminalPrint("> " + value);
+terminalPrint(
+"> " + value
+);
 
 terminalInput.value = "";
 
 
-/* ================= HELP ================= */
 
 if (value === "HELP") {
 
 terminalPrint(`
-COMANDOS DISPONÍVEIS:
+
+COMANDOS DISPONÍVEIS
+────────────────────
 
 HELP
 STATUS
 VV-04
 
 ACESSO RESTRITO
+
 `);
 
 return;
+
 }
 
 
-/* ================= STATUS ================= */
 
 if (value === "STATUS") {
 
 terminalPrint(`
+
+STATUS DO SISTEMA
+─────────────────
+
 VV-01
 
-SISTEMA: OPERACIONAL
-ARQUIVOS: PARCIALMENTE DISPONÍVEIS
-ACESSO: PÚBLICO
+SISTEMA:
+OPERACIONAL
+
+ARQUIVOS:
+PARCIALMENTE DISPONÍVEIS
+
+ACESSO:
+PÚBLICO
 
 ÚLTIMA ATUALIZAÇÃO:
 17/08/1983
+
 `);
 
 return;
+
 }
 
 
-/* ================= CAPÍTULO 1 ================= */
 
 if (value === "VV-04") {
 
 terminalPrint(`
-ARQUIVO ENCONTRADO.
 
-DOCUMENTO: VV-04
-DATA: 17/08/1983
+ARQUIVO ENCONTRADO
+──────────────────
+
+DOCUMENTO:
+VV-04
+
+DATA:
+17/08/1983
 
 CLASSIFICAÇÃO:
 RESTRITO
@@ -1166,10 +1262,13 @@ C. NOGUEIRA
 REFERÊNCIA:
 
 C. NOGUEIRA
+
 `);
 
 return;
+
 }
+
 
 
 if (
@@ -1178,7 +1277,9 @@ value === "C. NOGUEIRA"
 ) {
 
 terminalPrint(`
-REGISTRO ENCONTRADO.
+
+REGISTRO ENCONTRADO
+───────────────────
 
 NOME:
 C. NOGUEIRA
@@ -1198,16 +1299,21 @@ AFASTADO
 DOCUMENTO ASSOCIADO:
 
 0183
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "0183") {
 
 terminalPrint(`
+
 DOCUMENTO Nº 0183
+─────────────────
 
 DATA:
 18/08/1983
@@ -1230,16 +1336,21 @@ INCLUÍDA NOS BOLETINS PÚBLICOS.
 REFERÊNCIA:
 
 LAB-04
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "LAB-04") {
 
 terminalPrint(`
+
 REGISTRO DE PESQUISA
+─────────────────────
 
 CÓDIGO:
 LAB-04
@@ -1260,21 +1371,27 @@ BIOLÓGICAS OBSERVADAS EM
 REGISTROS DE ESPÉCIE EXTINTA.
 
 STATUS:
+
 FASE FINAL
 
 REFERÊNCIA:
 
 VV-04-BIO
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "VV-04-BIO") {
 
 terminalPrint(`
+
 REGISTRO BIOLÓGICO
+──────────────────
 
 PROJETO:
 RECONSTRUÇÃO
@@ -1305,16 +1422,21 @@ MANTER O EXEMPLAR NA
 REFERÊNCIA:
 
 CLINICA
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "CLINICA") {
 
 terminalPrint(`
+
 CLÍNICA VALE VERDE
+───────────────────
 
 REGISTRO DE ATENDIMENTOS
 
@@ -1342,16 +1464,21 @@ DE ATENDIMENTOS.
 REFERÊNCIA:
 
 COMUNICADO 08
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "COMUNICADO 08") {
 
 terminalPrint(`
+
 COMUNICADO INTERNO Nº 08
+─────────────────────────
 
 DATA:
 22/08/1983
@@ -1379,16 +1506,21 @@ E ACORDOS EM ANDAMENTO.
 REFERÊNCIA:
 
 INVESTIMENTO
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "INVESTIMENTO") {
 
 terminalPrint(`
+
 ARQUIVO ADMINISTRATIVO
+────────────────────────
 
 REGISTRO DE INVESTIMENTO
 
@@ -1406,18 +1538,21 @@ NOS RESULTADOS OBTIDOS.
 REFERÊNCIA:
 
 ARQUIVO PESSOAL
+
 `);
 
 return;
+
 }
 
 
-/* ================= CAPÍTULO 2 ================= */
 
 if (value === "ARQUIVO PESSOAL") {
 
 terminalPrint(`
+
 ARQUIVO PESSOAL
+───────────────
 
 REGISTRO 001
 
@@ -1443,30 +1578,40 @@ Eu vou descobrir.
 REFERÊNCIA:
 
 REGISTRO 002
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "REGISTRO 001") {
 
 terminalPrint(`
+
 REGISTRO 001
+────────────
 
 REFERÊNCIA:
 
 REGISTRO 002
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "REGISTRO 002") {
 
 terminalPrint(`
+
 ARQUIVO PESSOAL
+───────────────
 
 REGISTRO 002
 
@@ -1494,16 +1639,21 @@ no parque?
 REFERÊNCIA:
 
 CONTATO
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "CONTATO") {
 
 terminalPrint(`
+
 CLÍNICA VALE VERDE
+───────────────────
 
 REGISTRO MÉDICO
 
@@ -1524,16 +1674,21 @@ DESTINADOS AO ARQUIVO PÚBLICO.
 REFERÊNCIA:
 
 REGISTRO 004
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "REGISTRO 004") {
 
 terminalPrint(`
+
 ARQUIVO PESSOAL
+───────────────
 
 REGISTRO 004
 
@@ -1563,16 +1718,21 @@ APLICAÇÃO.
 REFERÊNCIA:
 
 APLICAÇÃO
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "APLICAÇÃO") {
 
 terminalPrint(`
+
 ARQUIVO DE PESQUISA
+───────────────────
 
 PROJETO:
 VV-04
@@ -1591,16 +1751,21 @@ PARA PESQUISAS POSTERIORES.
 REFERÊNCIA:
 
 REGISTRO 005
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "REGISTRO 005") {
 
 terminalPrint(`
+
 ARQUIVO PESSOAL
+───────────────
 
 REGISTRO 005
 
@@ -1617,10 +1782,13 @@ V.G.
 REFERÊNCIA:
 
 V.G.
+
 `);
 
 return;
+
 }
+
 
 
 if (
@@ -1629,7 +1797,9 @@ value === "VG"
 ) {
 
 terminalPrint(`
+
 ARQUIVO DE CORRESPONDÊNCIA
+───────────────────────────
 
 REFERÊNCIA:
 V.G.
@@ -1651,16 +1821,21 @@ V.G.
 REFERÊNCIA:
 
 REGISTRO 006
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "REGISTRO 006") {
 
 terminalPrint(`
+
 ARQUIVO PESSOAL
+───────────────
 
 REGISTRO 006
 
@@ -1685,16 +1860,21 @@ Vou entrar.
 REFERÊNCIA:
 
 23:17
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "23:17") {
 
 terminalPrint(`
+
 REGISTRO DE ACESSO
+──────────────────
 
 DATA:
 29/08/1983
@@ -1713,16 +1893,21 @@ ATIVIDADE NÃO AUTORIZADA.
 REFERÊNCIA:
 
 REGISTRO 007
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "REGISTRO 007") {
 
 terminalPrint(`
+
 ARQUIVO PESSOAL
+───────────────
 
 REGISTRO 007
 
@@ -1742,16 +1927,21 @@ O ANIMAL NÃO ESTÁ MAIS LÁ.
 REFERÊNCIA:
 
 REGISTRO 008
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "REGISTRO 008") {
 
 terminalPrint(`
+
 ARQUIVO PESSOAL
+───────────────
 
 REGISTRO 008
 
@@ -1777,16 +1967,21 @@ Acho que ele está solto.
 REFERÊNCIA:
 
 REGISTRO 009
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "REGISTRO 009") {
 
 terminalPrint(`
+
 ARQUIVO PESSOAL
+───────────────
 
 REGISTRO 009
 
@@ -1814,35 +2009,28 @@ Se alguém encontrar isso:
 
 NÃO CONFIE NOS ARQUIVOS PÚBLICOS.
 
-────────────────────────
+────────────────────────────────
 
 FIM DOS REGISTROS PESSOAIS.
 
 NOVO ARQUIVO LOCALIZADO:
 
 MANUTENÇÃO
+
 `);
 
 return;
+
 }
 
-
-/* ================= CAPÍTULO 3 ================= */
-
-/*
-   IMPORTANTE:
-
-   A partir daqui NÃO existe nenhum
-   caminho de volta para V.G.
-
-   O Capítulo 3 é uma linha separada.
-*/
 
 
 if (value === "MANUTENÇÃO") {
 
 terminalPrint(`
+
 ORDEM DE SERVIÇO Nº 04
+───────────────────────
 
 DATA:
 30/08/1983
@@ -1859,7 +2047,7 @@ RESPONSÁVEL PELA CONFERÊNCIA:
 
 C. NOGUEIRA
 
-────────────────────────
+────────────────────────────────
 
 ERRO DE REGISTRO?
 
@@ -1873,7 +2061,9 @@ C. N_____
 `);
 
 return;
+
 }
+
 
 
 if (
@@ -1883,7 +2073,9 @@ value === "C.N"
 ) {
 
 terminalPrint(`
+
 REGISTRO DE ACESSO
+──────────────────
 
 IDENTIFICAÇÃO:
 
@@ -1896,7 +2088,7 @@ ACESSO: AUTORIZADO
 DATA:
 30/08/1983
 
-────────────────────────
+────────────────────────────────
 
 A IDENTIFICAÇÃO FOI UTILIZADA
 APÓS O CANCELAMENTO DA
@@ -1908,21 +2100,21 @@ A C. NOGUEIRA.
 NO RODAPÉ DO DOCUMENTO:
 
 19-B
+
 `);
 
 return;
+
 }
 
 
-/*
-   19 é uma pista opcional.
-   Não volta para V.G.
-*/
 
 if (value === "19") {
 
 terminalPrint(`
-ARQUIVO INCOMPLETO.
+
+ARQUIVO INCOMPLETO
+──────────────────
 
 REFERÊNCIAS:
 
@@ -1937,16 +2129,21 @@ SETOR 04.
 PROCURE:
 
 19-B
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "19-B") {
 
 terminalPrint(`
+
 FICHA 19-B
+──────────
 
 PROJETO:
 VV-04
@@ -1965,15 +2162,18 @@ OBSERVAÇÃO:
 O EXEMPLAR NÃO DEVE SER
 RECUPERADO PELO PARQUE.
 
-────────────────────────
+────────────────────────────────
 
 DOCUMENTO ASSOCIADO:
 
 FICHA ESCOLAR
+
 `);
 
 return;
+
 }
+
 
 
 if (
@@ -1982,7 +2182,9 @@ value === "ESCOLAR"
 ) {
 
 terminalPrint(`
+
 COLÉGIO VALE VERDE
+───────────────────
 
 FICHA DE ALUNO
 
@@ -1998,21 +2200,26 @@ NOME:
 
 ████████████████████
 
-────────────────────────
+────────────────────────────────
 
 ARQUIVO ASSOCIADO:
 
 PESSOAL
+
 `);
 
 return;
+
 }
+
 
 
 if (value === "PESSOAL") {
 
 terminalPrint(`
+
 ARQUIVO PESSOAL
+───────────────
 
 REGISTRO INCOMPLETO.
 
@@ -2028,19 +2235,24 @@ DATA DE NASCIMENTO:
 FOTOGRAFIA:
 DISPONÍVEL
 
-────────────────────────
+────────────────────────────────
 
 PARA RECUPERAR O NOME,
 CONSULTE O CAMPO:
 
 NOME
+
 `);
 
 return;
+
 }
 
 
-/* ================= REVELAÇÃO ================= */
+
+/* ================================
+   REVELAÇÃO DO LUCAS
+================================ */
 
 if (value === "NOME") {
 
@@ -2049,16 +2261,65 @@ document.getElementById(
 "finalPhoto"
 );
 
-finalPhoto.style.display =
-"block";
+finalPhoto.style.display = "none";
 
 terminalPrint(`
-ARQUIVO RECUPERADO.
+
+ARQUIVO RECUPERADO
+──────────────────
 
 IDENTIDADE DO AUTOR DOS
 REGISTROS PESSOAIS:
 
-LUCAS DOS SANTOS PEREIRA
+`);
+
+const nameLine =
+document.createElement("div");
+
+nameLine.className =
+"typewriter-name";
+
+terminalOutput.appendChild(
+nameLine
+);
+
+const name =
+"LUCAS DOS SANTOS PEREIRA";
+
+let i = 0;
+
+const cursor =
+document.createElement("span");
+
+cursor.className =
+"typewriter-cursor";
+
+cursor.textContent = "█";
+
+nameLine.appendChild(cursor);
+
+
+function typeName() {
+
+if (i < name.length) {
+
+cursor.insertAdjacentText(
+"beforebegin",
+name.charAt(i)
+);
+
+i++;
+
+setTimeout(
+typeName,
+110
+);
+
+}
+
+else {
+
+terminalPrint(`
 
 RECUPERANDO IMAGEM...
 
@@ -2074,35 +2335,52 @@ DESAPARECIDO
 
 SETOR 04
 
-────────────────────────
+────────────────────────────────
 
 FIM DO ARQUIVO.
+
 `);
 
 setTimeout(() => {
+
+finalPhoto.style.display =
+"block";
 
 finalPhoto.scrollIntoView({
 behavior: "smooth"
 });
 
-}, 150);
+}, 1000);
+
+}
+
+}
+
+typeName();
 
 return;
-}
-
-
-/* ================= DESCONHECIDO ================= */
-
-terminalPrint(
-"ARQUIVO NÃO ENCONTRADO."
-);
 
 }
 
 
-/* =====================================================
-   ENTER NO TERMINAL
-===================================================== */
+
+/* ================================
+   DESCONHECIDO
+================================ */
+
+terminalPrint(`
+
+ARQUIVO NÃO ENCONTRADO.
+
+`);
+
+}
+
+
+
+/* ================================
+   ENTER
+================================ */
 
 terminalInput.addEventListener(
 "keydown",
@@ -2116,9 +2394,10 @@ runTerminal();
 );
 
 
-/* =====================================================
+
+/* ================================
    ESCAPE HTML
-===================================================== */
+================================ */
 
 function escapeHTML(value) {
 
@@ -2132,9 +2411,10 @@ return String(value)
 }
 
 
-/* =====================================================
+
+/* ================================
    INICIALIZAÇÃO
-===================================================== */
+================================ */
 
 document.addEventListener(
 "DOMContentLoaded",
