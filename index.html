@@ -1,419 +1,346 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 
-<title>PARQUE ZOOLOGICO VALE VERDE - SISTEMA VV-01</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PARQUE ZOOLOGICO VALE VERDE</title>
 
 <style>
 
-/* =========================================================
-   VALE VERDE - SISTEMA DE INFORMACOES
-   ESTETICA: 1983
-========================================================= */
+* {
+    box-sizing: border-box;
+}
 
 html,
 body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
-    background: #000000;
-    color: #b7ffb7;
-    font-family: "Courier New", Courier, monospace;
+
+    background: #000;
+
+    color: #b8ffb8;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
     font-size: 14px;
+
     overflow-x: hidden;
 }
 
+/* EFEITO DE MONITOR ANTIGO */
 
-/* =========================================================
-   TERMINAL PRINCIPAL
-========================================================= */
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.025),
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    z-index: 999;
+
+}
 
 #screen {
-    width: 100%;
+
     min-height: 100vh;
-    background: #000000;
-    box-sizing: border-box;
+
     padding: 18px;
+
 }
 
+header {
 
-/* =========================================================
-   LINHAS E CABECALHOS
-========================================================= */
+    border: 1px solid #b8ffb8;
 
-.line {
-    color: #b7ffb7;
-    white-space: pre-wrap;
-}
+    padding: 15px;
 
-.bright {
-    color: #ffffff;
-}
+    text-align: center;
 
-.warning {
-    color: #ffffff;
-}
-
-.error {
-    color: #ffffff;
-}
-
-.dim {
-    color: #6f9f6f;
-}
-
-
-/* =========================================================
-   CABECALHO
-========================================================= */
-
-#header {
-    border: 1px solid #b7ffb7;
-    padding: 12px;
     margin-bottom: 12px;
+
 }
 
-#title {
-    color: #ffffff;
-    font-size: 21px;
-    font-weight: bold;
-    text-align: center;
+header h1 {
+
+    color: white;
+
+    margin: 0;
+
+    font-size: 22px;
+
     letter-spacing: 2px;
+
 }
 
-#subtitle {
-    text-align: center;
-    margin-top: 7px;
+header p {
+
+    margin: 8px 0 0;
+
 }
 
+#system-status {
 
-/* =========================================================
-   BARRA DE STATUS
-========================================================= */
+    border-top: 1px solid #557755;
 
-#status {
-    border-top: 1px solid #6f9f6f;
-    border-bottom: 1px solid #6f9f6f;
-    padding: 5px 0;
-    margin-bottom: 15px;
+    border-bottom: 1px solid #557755;
+
+    padding: 7px;
+
     display: flex;
+
     justify-content: space-between;
+
     flex-wrap: wrap;
+
+    margin-bottom: 18px;
+
 }
-
-
-/* =========================================================
-   PAGINAS
-========================================================= */
 
 .page {
+
     display: none;
+
 }
 
 .page.active {
+
     display: block;
+
 }
 
+.panel {
 
-/* =========================================================
-   MENU
-========================================================= */
+    width: 100%;
 
-.menu-box {
-    border: 1px solid #b7ffb7;
-    padding: 12px;
-    max-width: 850px;
-    margin: 0 auto;
+    max-width: 1000px;
+
+    margin: auto;
+
+    border: 1px solid #b8ffb8;
+
+    padding: 20px;
+
 }
 
-.menu-title {
+.center {
+
     text-align: center;
-    color: #ffffff;
-    margin-bottom: 15px;
+
 }
 
-.menu-option {
-    padding: 5px 0;
+.white {
+
+    color: white;
+
 }
 
-.menu-option span {
-    color: #ffffff;
+.dim {
+
+    color: #668866;
+
 }
 
-.menu-option button {
-    background: transparent;
-    border: none;
-    color: #b7ffb7;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 14px;
-    padding: 0;
+.line {
+
+    color: #557755;
+
+    margin: 14px 0;
+
+}
+
+button {
+
+    background: #000;
+
+    color: #b8ffb8;
+
+    border: 1px solid #b8ffb8;
+
+    padding: 6px 12px;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
     cursor: pointer;
+
+    font-size: 14px;
+
 }
 
-.menu-option button:hover {
-    color: #ffffff;
-    text-decoration: underline;
+button:hover {
+
+    color: white;
+
+    border-color: white;
+
 }
 
+.menu {
 
-/* =========================================================
-   TEXTO
-========================================================= */
+    line-height: 2.1;
 
-.content-box {
-    border: 1px solid #b7ffb7;
-    padding: 15px;
-    max-width: 900px;
-    margin: 0 auto;
-    box-sizing: border-box;
 }
 
-.section-title {
-    color: #ffffff;
-    font-weight: bold;
-    margin-bottom: 15px;
+.menu button {
+
+    margin-left: 8px;
+
 }
 
-.separator {
-    color: #6f9f6f;
-    margin: 10px 0;
+input,
+textarea {
+
+    display: block;
+
+    width: 100%;
+
+    background: #000;
+
+    color: #b8ffb8;
+
+    border: 1px solid #557755;
+
+    padding: 8px;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 14px;
+
+    outline: none;
+
+    margin: 7px 0 16px;
+
 }
 
-pre {
-    font-family: "Courier New", Courier, monospace;
-    white-space: pre-wrap;
-}
+textarea {
 
+    min-height: 180px;
 
-/* =========================================================
-   BOLETINS
-========================================================= */
+    resize: vertical;
 
-.boletim {
-    border: 1px solid #6f9f6f;
-    padding: 12px;
-    margin: 12px 0;
-}
-
-.boletim-title {
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.boletim-date {
-    color: #6f9f6f;
-    font-size: 12px;
-    margin: 5px 0 10px 0;
-}
-
-.boletim-category {
-    color: #ffffff;
-    margin-bottom: 8px;
-}
-
-.boletim-content {
-    white-space: pre-wrap;
-    line-height: 1.5;
-}
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-.login-area {
-    min-height: 430px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .login-box {
+
     width: 500px;
-    max-width: 95%;
-    border: 1px solid #b7ffb7;
-    padding: 20px;
-    box-sizing: border-box;
+
+    max-width: 100%;
+
+    margin: 50px auto;
+
+    border: 1px solid #b8ffb8;
+
+    padding: 22px;
+
 }
 
-.login-title {
-    text-align: center;
-    color: #ffffff;
-    margin-bottom: 25px;
-}
+.error {
 
-.login-row {
-    margin: 12px 0;
-}
+    color: white;
 
-.login-input {
-    background: #000000;
-    color: #b7ffb7;
-    border: none;
-    border-bottom: 1px solid #b7ffb7;
-    outline: none;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 14px;
-    width: 240px;
-    padding: 2px;
-}
-
-.terminal-button {
-    background: #000000;
-    color: #b7ffb7;
-    border: 1px solid #b7ffb7;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 14px;
-    padding: 5px 12px;
-    cursor: pointer;
-}
-
-.terminal-button:hover {
-    color: #ffffff;
-    border-color: #ffffff;
-}
-
-.login-error {
-    display: none;
-    color: #ffffff;
     margin-top: 15px;
+
+    display: none;
+
 }
 
+.success {
 
-/* =========================================================
-   ADMINISTRACAO
-========================================================= */
+    color: white;
 
-.admin-box {
-    border: 1px solid #b7ffb7;
+    margin: 12px 0;
+
+}
+
+.boletim {
+
+    border: 1px solid #557755;
+
     padding: 15px;
-    max-width: 900px;
-    margin: 0 auto;
+
+    margin: 15px 0;
+
 }
 
-.admin-input,
-.admin-textarea {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    background: #000000;
-    color: #b7ffb7;
-    border: 1px solid #6f9f6f;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 14px;
-    padding: 6px;
-    margin: 6px 0 15px 0;
-    outline: none;
+.boletim h3 {
+
+    margin: 0 0 7px;
+
+    color: white;
+
 }
 
-.admin-textarea {
-    height: 180px;
-    resize: vertical;
-}
+.boletim .date {
 
-.admin-post {
-    border-top: 1px solid #6f9f6f;
-    padding: 12px 0;
-}
+    color: #668866;
 
-.admin-post-title {
-    color: #ffffff;
-}
-
-.admin-post-date {
-    color: #6f9f6f;
     font-size: 12px;
+
+    margin-bottom: 12px;
+
 }
 
+.boletim .content {
 
-/* =========================================================
-   TERMINAL SECRETO
-========================================================= */
-
-#terminal-page {
-    border: 1px solid #b7ffb7;
-    min-height: 600px;
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-#terminal-output {
     white-space: pre-wrap;
-    line-height: 1.45;
-    min-height: 500px;
-    overflow-y: auto;
+
+    line-height: 1.5;
+
 }
 
-.terminal-line {
-    display: flex;
-    align-items: center;
+.admin-actions {
+
+    margin-top: 12px;
+
 }
 
-.terminal-prompt {
-    color: #ffffff;
-    white-space: nowrap;
-}
+footer {
 
-#command-input {
-    flex: 1;
-    background: #000000;
-    color: #b7ffb7;
-    border: none;
-    outline: none;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 14px;
-    margin-left: 5px;
-}
-
-
-/* =========================================================
-   RODAPE
-========================================================= */
-
-#footer {
-    border-top: 1px solid #6f9f6f;
-    margin-top: 18px;
-    padding-top: 10px;
     text-align: center;
+
+    border-top: 1px solid #557755;
+
+    margin-top: 25px;
+
+    padding: 12px;
+
     font-size: 12px;
-}
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 650px) {
-
-    #screen {
-        padding: 8px;
-    }
-
-    #title {
-        font-size: 16px;
-    }
-
-    #status {
-        display: block;
-    }
-
-    #status div {
-        margin: 3px 0;
-    }
-
-    .login-input {
-        width: 100%;
-        box-sizing: border-box;
-    }
+    color: #557755;
 
 }
 
 </style>
+
 </head>
 
 
@@ -422,166 +349,155 @@ pre {
 <div id="screen">
 
 
-<!-- =======================================================
-     CABECALHO
-======================================================= -->
+<header>
 
-<div id="header">
+<h1>PARQUE ZOOLOGICO VALE VERDE</h1>
 
-    <div id="title">
-        PARQUE ZOOLOGICO VALE VERDE
-    </div>
+<p>SISTEMA DE INFORMACOES VV-01</p>
 
-    <div id="subtitle">
-        SISTEMA DE INFORMACOES VV-01
-    </div>
-
-</div>
+</header>
 
 
-<!-- =======================================================
-     STATUS
-======================================================= -->
+<div id="system-status">
 
-<div id="status">
+<span>SISTEMA: VV-01</span>
 
-    <div>
-        SISTEMA: VV-01
-    </div>
+<span>STATUS: OPERACIONAL</span>
 
-    <div>
-        STATUS: OPERACIONAL
-    </div>
-
-    <div>
-        DATA: 14/08/1983
-    </div>
+<span>ANO: 1983</span>
 
 </div>
 
 
-<!-- =======================================================
+<!-- =====================================================
      PAGINA INICIAL
-======================================================= -->
+===================================================== -->
 
-<div id="home" class="page active">
+<section id="home" class="page active">
 
-    <div class="menu-box">
+<div class="panel">
 
-        <div class="menu-title">
-            ================================================
-            <br>
-            PARQUE ZOOLOGICO VALE VERDE
-            <br>
-            SISTEMA DE INFORMACOES
-            <br>
-            ================================================
-        </div>
+<div class="center white">
 
+==================================================
 
-        <div class="line">
-            BEM-VINDO AO SISTEMA DE INFORMACOES
-            DO PARQUE ZOOLOGICO VALE VERDE.
-        </div>
+<br>
 
-        <br>
+SISTEMA CENTRAL DO PARQUE
 
-        <div class="line">
-            SELECIONE UMA OPCAO:
-        </div>
+<br>
 
-        <br>
-
-
-        <div class="menu-option">
-            <span>[1]</span>
-            <button onclick="showPage('information')">
-                INFORMACOES GERAIS
-            </button>
-        </div>
-
-
-        <div class="menu-option">
-            <span>[2]</span>
-            <button onclick="showPage('animals')">
-                ANIMAIS
-            </button>
-        </div>
-
-
-        <div class="menu-option">
-            <span>[3]</span>
-            <button onclick="showPage('conservation')">
-                CONSERVACAO
-            </button>
-        </div>
-
-
-        <div class="menu-option">
-            <span>[4]</span>
-            <button onclick="showPage('bulletins')">
-                BOLETINS
-            </button>
-        </div>
-
-
-        <div class="menu-option">
-            <span>[5]</span>
-            <button onclick="showPage('location')">
-                LOCALIZACAO
-            </button>
-        </div>
-
-
-        <div class="menu-option">
-            <span>[6]</span>
-            <button onclick="showPage('login')">
-                SISTEMA ADMINISTRATIVO
-            </button>
-        </div>
-
-
-        <br>
-
-        <div class="separator">
-            ------------------------------------------------
-        </div>
-
-
-        <div class="menu-option">
-            <span>[0]</span>
-            <button onclick="closeSystem()">
-                ENCERRAR
-            </button>
-        </div>
-
-    </div>
+==================================================
 
 </div>
 
+<br>
 
-<!-- =======================================================
+BEM-VINDO AO SISTEMA DE INFORMACOES DO
+
+PARQUE ZOOLOGICO VALE VERDE.
+
+<br><br>
+
+SELECIONE UMA OPERACAO:
+
+<br><br>
+
+<div class="menu">
+
+[01]
+
+<button onclick="showPage('information')">
+
+INFORMACOES GERAIS
+
+</button>
+
+<br>
+
+[02]
+
+<button onclick="showPage('animals')">
+
+REGISTRO DE ANIMAIS
+
+</button>
+
+<br>
+
+[03]
+
+<button onclick="showPage('conservation')">
+
+CONSERVACAO
+
+</button>
+
+<br>
+
+[04]
+
+<button onclick="showPage('bulletins')">
+
+BOLETINS
+
+</button>
+
+<br>
+
+[05]
+
+<button onclick="showPage('login')">
+
+ACESSO ADMINISTRATIVO
+
+</button>
+
+</div>
+
+<div class="line">
+
+--------------------------------------------------
+
+</div>
+
+<div class="dim">
+
+VV-01 / TERMINAL LOCAL
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
      INFORMACOES
-======================================================= -->
+===================================================== -->
 
-<div id="information" class="page">
+<section id="information" class="page">
 
-    <div class="content-box">
+<div class="panel">
 
-        <div class="section-title">
-            INFORMACOES GERAIS
-        </div>
+<div class="white">
 
-        <div class="separator">
-            ------------------------------------------------
-        </div>
+INFORMACOES GERAIS
 
-        <pre>
+</div>
+
+<div class="line">
+
+--------------------------------------------------
+
+</div>
+
+<pre>
+
 PARQUE ZOOLOGICO VALE VERDE
 
-O PARQUE DESENVOLVE ATIVIDADES DE
-EDUCACAO AMBIENTAL, CONSERVACAO E
-ACOMPANHAMENTO DA FAUNA.
+ESTE TERMINAL CONTEM INFORMACOES
+ADMINISTRATIVAS E REGISTROS DO PARQUE.
 
 HORARIO DE FUNCIONAMENTO:
 
@@ -589,456 +505,361 @@ TERCA A DOMINGO
 08:00 - 17:00
 
 SEGUNDA-FEIRA
-FECHADO PARA MANUTENCAO.
+MANUTENCAO.
 
-        </pre>
+</pre>
 
-        <div class="separator">
-            ------------------------------------------------
-        </div>
+<button onclick="showPage('home')">
 
-        <button
-            class="terminal-button"
-            onclick="showPage('home')"
-        >
-            [ VOLTAR ]
-        </button>
+[ VOLTAR ]
 
-    </div>
+</button>
 
 </div>
 
+</section>
 
-<!-- =======================================================
+
+<!-- =====================================================
      ANIMAIS
-======================================================= -->
+===================================================== -->
 
-<div id="animals" class="page">
+<section id="animals" class="page">
 
-    <div class="content-box">
+<div class="panel">
 
-        <div class="section-title">
-            REGISTRO DE ANIMAIS
-        </div>
+<div class="white">
 
-        <div class="separator">
-            ------------------------------------------------
-        </div>
-
-        <pre>
-GRUPO 01 ........ MAMIFEROS
-
-GRUPO 02 ........ AVES
-
-GRUPO 03 ........ REPTEIS
-
-GRUPO 04 ........ PRIMATAS
-
-GRUPO 05 ........ OUTRAS ESPECIES
-
-        </pre>
-
-        <div class="separator">
-            ------------------------------------------------
-        </div>
-
-        <p>
-            INFORMACOES DETALHADAS SOBRE OS
-            ANIMAIS SAO MANTIDAS NO ARQUIVO
-            INTERNO DO PARQUE.
-        </p>
-
-        <button
-            class="terminal-button"
-            onclick="showPage('home')"
-        >
-            [ VOLTAR ]
-        </button>
-
-    </div>
+REGISTRO DE ANIMAIS
 
 </div>
 
+<div class="line">
 
-<!-- =======================================================
+--------------------------------------------------
+
+</div>
+
+<pre>
+
+REGISTRO 001 ........ MAMIFEROS
+
+REGISTRO 002 ........ AVES
+
+REGISTRO 003 ........ REPTEIS
+
+REGISTRO 004 ........ PRIMATAS
+
+REGISTRO 005 ........ OUTRAS ESPECIES
+
+STATUS:
+
+ARQUIVO DISPONIVEL.
+
+</pre>
+
+<button onclick="showPage('home')">
+
+[ VOLTAR ]
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
      CONSERVACAO
-======================================================= -->
+===================================================== -->
 
-<div id="conservation" class="page">
+<section id="conservation" class="page">
 
-    <div class="content-box">
+<div class="panel">
 
-        <div class="section-title">
-            PROGRAMA DE CONSERVACAO
-        </div>
+<div class="white">
 
-        <div class="separator">
-            ------------------------------------------------
-        </div>
+PROGRAMAS DE CONSERVACAO
 
-        <pre>
-ATIVIDADES REGISTRADAS:
+</div>
+
+<div class="line">
+
+--------------------------------------------------
+
+</div>
+
+<pre>
 
 01 - EDUCACAO AMBIENTAL
-02 - ACOMPANHAMENTO DE ESPECIES
-03 - PESQUISA
-04 - PRESERVACAO DA FAUNA
+
+02 - PESQUISA
+
+03 - PRESERVACAO DA FAUNA
+
+04 - MONITORAMENTO
+
 05 - PROGRAMAS EDUCATIVOS
 
-        </pre>
+</pre>
 
-        <div class="separator">
-            ------------------------------------------------
-        </div>
+<button onclick="showPage('home')">
 
-        <p>
-            OS REGISTROS COMPLETOS ENCONTRAM-SE
-            NO ARQUIVO ADMINISTRATIVO.
-        </p>
+[ VOLTAR ]
 
-        <button
-            class="terminal-button"
-            onclick="showPage('home')"
-        >
-            [ VOLTAR ]
-        </button>
-
-    </div>
+</button>
 
 </div>
 
+</section>
 
-<!-- =======================================================
-     BOLETINS
-======================================================= -->
 
-<div id="bulletins" class="page">
+<!-- =====================================================
+     BOLETINS PUBLICOS
+===================================================== -->
 
-    <div class="content-box">
+<section id="bulletins" class="page">
 
-        <div class="section-title">
-            BOLETINS DO PARQUE
-        </div>
+<div class="panel">
 
-        <div class="separator">
-            ------------------------------------------------
-        </div>
+<div class="white">
 
-        <div id="bulletin-list"></div>
-
-        <br>
-
-        <button
-            class="terminal-button"
-            onclick="showPage('home')"
-        >
-            [ VOLTAR ]
-        </button>
-
-    </div>
+ARQUIVO DE BOLETINS
 
 </div>
 
+<div class="line">
 
-<!-- =======================================================
-     LOCALIZACAO
-======================================================= -->
+--------------------------------------------------
 
-<div id="location" class="page">
+</div>
 
-    <div class="content-box">
+<div id="public-bulletins">
 
-        <div class="section-title">
-            LOCALIZACAO E CONTATO
-        </div>
+CONECTANDO AO ARQUIVO...
 
-        <div class="separator">
-            ------------------------------------------------
-        </div>
+</div>
 
-        <pre>
+<br>
+
+<button onclick="showPage('home')">
+
+[ VOLTAR ]
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<section id="login" class="page">
+
+<div class="login-box">
+
+<div class="white">
+
+SISTEMA ADMINISTRATIVO VV-01
+
+</div>
+
+<div class="line">
+
+--------------------------------------------------
+
+</div>
+
+USUARIO:
+
+<input
+id="username"
+type="text"
+autocomplete="off"
+>
+
+SENHA:
+
+<input
+id="password"
+type="password"
+autocomplete="off"
+>
+
+<button onclick="login()">
+
+[ ACESSAR ]
+
+</button>
+
+<button onclick="showPage('home')">
+
+[ CANCELAR ]
+
+</button>
+
+<div id="login-error" class="error">
+
+ACESSO NEGADO.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PAINEL DO GESTOR
+===================================================== -->
+
+<section id="admin" class="page">
+
+<div class="panel">
+
+<div class="white">
+
+SISTEMA ADMINISTRATIVO
+
+</div>
+
+<div class="line">
+
+--------------------------------------------------
+
+</div>
+
+<div id="operator-name">
+
+OPERADOR: --
+
+</div>
+
+<br>
+
+<div class="white">
+
+NOVO BOLETIM
+
+</div>
+
+<br>
+
+TITULO:
+
+<input
+id="post-title"
+type="text"
+>
+
+CATEGORIA:
+
+<input
+id="post-category"
+type="text"
+value="BOLETIM"
+>
+
+CONTEUDO:
+
+<textarea
+id="post-content"
+></textarea>
+
+<button onclick="publishBulletin()">
+
+[ PUBLICAR BOLETIM ]
+
+</button>
+
+<div id="publish-message" class="success">
+
+</div>
+
+<div class="line">
+
+--------------------------------------------------
+
+</div>
+
+<div class="white">
+
+BOLETINS REGISTRADOS
+
+</div>
+
+<br>
+
+<div id="admin-bulletins">
+
+CARREGANDO...
+
+</div>
+
+<br>
+
+<button onclick="logout()">
+
+[ ENCERRAR SESSAO ]
+
+</button>
+
+</div>
+
+</section>
+
+
+<footer>
+
 PARQUE ZOOLOGICO VALE VERDE
 
-ESTRADA VALE VERDE, KM 12
+<br>
 
-TELEFONE:
-(00) 0000-0000
+SISTEMA VV-01
 
-HORARIO:
-08:00 - 17:00
+<br>
 
-        </pre>
+TERMINAL ORIGINAL - 1983
 
-        <div class="separator">
-            ------------------------------------------------
-        </div>
+</footer>
 
-        <button
-            class="terminal-button"
-            onclick="showPage('home')"
-        >
-            [ VOLTAR ]
-        </button>
-
-    </div>
 
 </div>
 
 
-<!-- =======================================================
-     LOGIN
-======================================================= -->
-
-<div id="login" class="page">
-
-    <div class="login-area">
-
-        <div class="login-box">
-
-            <div class="login-title">
-
-                ----------------------------------------
-                <br>
-
-                SISTEMA ADMINISTRATIVO VV-01
-
-                <br>
-
-                ----------------------------------------
-
-            </div>
-
-
-            <div class="line">
-
-                IDENTIFICACAO DO OPERADOR
-
-            </div>
-
-
-            <div class="login-row">
-
-                USUARIO:
-
-                <br>
-
-                <input
-                    id="login-user"
-                    class="login-input"
-                    type="text"
-                    autocomplete="off"
-                >
-
-            </div>
-
-
-            <div class="login-row">
-
-                SENHA:
-
-                <br>
-
-                <input
-                    id="login-pass"
-                    class="login-input"
-                    type="password"
-                >
-
-            </div>
-
-
-            <br>
-
-
-            <button
-                class="terminal-button"
-                onclick="login()"
-            >
-                [ ACESSAR ]
-            </button>
-
-
-            <button
-                class="terminal-button"
-                onclick="showPage('home')"
-            >
-                [ CANCELAR ]
-            </button>
-
-
-            <div
-                id="login-error"
-                class="login-error"
-            >
-                <br>
-                *** ACESSO NEGADO ***
-                <br>
-                USUARIO OU SENHA INVALIDOS.
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =======================================================
-     PAINEL ADMINISTRATIVO
-======================================================= -->
-
-<div id="dashboard" class="page">
-
-    <div class="admin-box">
-
-        <div class="section-title">
-            SISTEMA ADMINISTRATIVO VV-01
-        </div>
-
-        <div class="separator">
-            ------------------------------------------------
-        </div>
-
-        <div id="logged-user"></div>
-
-        <br>
-
-        <div class="warning">
-            ACESSO RESTRITO A OPERADORES AUTORIZADOS.
-        </div>
-
-        <div class="separator">
-            ------------------------------------------------
-        </div>
-
-
-        <div class="section-title">
-            NOVO BOLETIM
-        </div>
-
-
-        TITULO:
-
-        <input
-            id="post-title"
-            class="admin-input"
-            type="text"
-        >
-
-
-        CATEGORIA:
-
-        <input
-            id="post-category"
-            class="admin-input"
-            type="text"
-        >
-
-
-        CONTEUDO:
-
-        <textarea
-            id="post-content"
-            class="admin-textarea"
-        ></textarea>
-
-
-        <button
-            class="terminal-button"
-            onclick="createPost()"
-        >
-            [ REGISTRAR BOLETIM ]
-        </button>
-
-
-        <div class="separator">
-            ------------------------------------------------
-        </div>
-
-
-        <div class="section-title">
-            BOLETINS REGISTRADOS
-        </div>
-
-
-        <div id="admin-posts"></div>
-
-
-        <br>
-
-
-        <button
-            class="terminal-button"
-            onclick="logout()"
-        >
-            [ ENCERRAR SESSAO ]
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =======================================================
-     TERMINAL SECRETO
-======================================================= -->
-
-<div id="terminal" class="page">
-
-    <div id="terminal-page">
-
-        <div id="terminal-output"></div>
-
-        <div class="terminal-line">
-
-            <span class="terminal-prompt">
-                VV-01&gt;
-            </span>
-
-            <input
-                id="command-input"
-                type="text"
-                autocomplete="off"
-            >
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =======================================================
-     RODAPE
-======================================================= -->
-
-<div id="footer">
-
-    PARQUE ZOOLOGICO VALE VERDE
-
-    <br>
-
-    SISTEMA VV-01
-
-    <br>
-
-    DATA DO SISTEMA: 14/08/1983
-
-    <br><br>
-
-    TODOS OS DIREITOS RESERVADOS
-
-</div>
-
-
-</div>
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <script>
 
-/* =========================================================
-   GESTORES
-========================================================= */
+/* =====================================================
+   CONEXAO COM O SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+    "https://ejuoosullizocjprdbsj.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_tk2a-wGe64sC5QonEFYwzw_NhhDiJiv";
+
+
+const db =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =====================================================
+   GESTORES DO ARG
+===================================================== */
 
 const gestores = {
 
@@ -1051,64 +872,60 @@ const gestores = {
 };
 
 
-/* =========================================================
+let currentOperator = null;
+
+
+/* =====================================================
    NAVEGACAO
-========================================================= */
+===================================================== */
 
-function showPage(page) {
+function showPage(id) {
 
-    const pages =
-        document.querySelectorAll(".page");
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
 
+            page.classList.remove("active");
 
-    pages.forEach(function(element) {
-
-        element.classList.remove("active");
-
-    });
+        });
 
 
-    const selected =
-        document.getElementById(page);
+    const page =
+        document.getElementById(id);
 
 
-    if (!selected) {
-        return;
+    if (page) {
+
+        page.classList.add("active");
+
     }
 
 
-    selected.classList.add("active");
+    if (id === "bulletins") {
 
+        loadPublicBulletins();
 
-    window.scrollTo(0, 0);
-
-
-    if (page === "bulletins") {
-        renderBulletins();
     }
 
 
-    if (page === "dashboard") {
-        renderAdmin();
-    }
+    if (id === "admin") {
 
+        loadAdminBulletins();
 
-    if (page === "terminal") {
-        startTerminal();
     }
 
 }
 
 
-/* =========================================================
+/* =====================================================
    LOGIN
-========================================================= */
+===================================================== */
 
 function login() {
 
     const username =
         document
-        .getElementById("login-user")
+        .getElementById("username")
         .value
         .trim()
         .toUpperCase();
@@ -1116,8 +933,14 @@ function login() {
 
     const password =
         document
-        .getElementById("login-pass")
+        .getElementById("password")
         .value;
+
+
+    const error =
+        document.getElementById(
+            "login-error"
+        );
 
 
     if (
@@ -1125,83 +948,79 @@ function login() {
         gestores[username] === password
     ) {
 
-        localStorage.setItem(
-            "valeVerdeGestor",
-            username
-        );
+        currentOperator =
+            username;
 
 
         document
-        .getElementById("login-error")
-        .style.display = "none";
+        .getElementById(
+            "operator-name"
+        )
+        .textContent =
+            "OPERADOR: " +
+            username;
 
 
-        showPage("dashboard");
+        error.style.display =
+            "none";
 
-    }
 
-    else {
+        showPage("admin");
 
-        document
-        .getElementById("login-error")
-        .style.display = "block";
+
+    } else {
+
+        error.textContent =
+            "ACESSO NEGADO.";
+
+
+        error.style.display =
+            "block";
 
     }
 
 }
 
 
-/* =========================================================
+/* =====================================================
    LOGOUT
-========================================================= */
+===================================================== */
 
 function logout() {
 
-    localStorage.removeItem(
-        "valeVerdeGestor"
-    );
+    currentOperator = null;
 
+    document
+        .getElementById("username")
+        .value = "";
+
+    document
+        .getElementById("password")
+        .value = "";
 
     showPage("home");
 
 }
 
 
-/* =========================================================
-   POSTS / BOLETINS
-========================================================= */
+/* =====================================================
+   PUBLICAR BOLETIM
+===================================================== */
 
-function getPosts() {
+async function publishBulletin() {
 
-    return JSON.parse(
+    if (!currentOperator) {
 
-        localStorage.getItem(
-            "valeVerdePosts"
-        ) || "[]"
+        alert(
+            "ACESSO ADMINISTRATIVO NECESSARIO."
+        );
 
-    );
+        showPage("login");
 
-}
+        return;
 
+    }
 
-function savePosts(posts) {
-
-    localStorage.setItem(
-
-        "valeVerdePosts",
-
-        JSON.stringify(posts)
-
-    );
-
-}
-
-
-/* =========================================================
-   CRIAR BOLETIM
-========================================================= */
-
-function createPost() {
 
     const title =
         document
@@ -1224,156 +1043,126 @@ function createPost() {
         .trim();
 
 
+    const message =
+        document.getElementById(
+            "publish-message"
+        );
+
+
     if (!title || !content) {
 
-        alert(
-            "TITULO E CONTEUDO SAO OBRIGATORIOS."
-        );
+        message.textContent =
+            "TITULO E CONTEUDO SAO OBRIGATORIOS.";
 
         return;
 
     }
 
 
-    const posts = getPosts();
+    message.textContent =
+        "REGISTRANDO BOLETIM...";
 
 
-    posts.unshift({
+    const { error } =
+        await db
+        .from("boletins")
+        .insert({
 
-        id: Date.now(),
+            title: title,
 
-        title: title,
+            category:
+                category || "BOLETIM",
 
-        category:
-            category || "BOLETIM",
+            content: content,
 
-        content: content,
+            author:
+                currentOperator
 
-        date:
-            new Date()
-            .toLocaleDateString("pt-BR")
-
-    });
-
-
-    savePosts(posts);
+        });
 
 
-    document
-    .getElementById("post-title")
-    .value = "";
+    if (error) {
 
+        console.error(error);
 
-    document
-    .getElementById("post-category")
-    .value = "";
-
-
-    document
-    .getElementById("post-content")
-    .value = "";
-
-
-    renderAdmin();
-
-    renderBulletins();
-
-
-    alert(
-        "BOLETIM REGISTRADO COM SUCESSO."
-    );
-
-}
-
-
-/* =========================================================
-   BOLETINS PUBLICOS
-========================================================= */
-
-function renderBulletins() {
-
-    const posts = getPosts();
-
-    const container =
-        document.getElementById(
-            "bulletin-list"
-        );
-
-
-    if (posts.length === 0) {
-
-        container.innerHTML =
-            "NAO HA BOLETINS REGISTRADOS.";
+        message.textContent =
+            "ERRO AO REGISTRAR BOLETIM.";
 
         return;
 
     }
 
 
-    container.innerHTML =
+    document
+        .getElementById("post-title")
+        .value = "";
 
-        posts.map(function(post) {
 
-            return `
+    document
+        .getElementById("post-category")
+        .value = "BOLETIM";
 
-                <div class="boletim">
 
-                    <div class="boletim-title">
-                        ${escapeHTML(post.title)}
-                    </div>
+    document
+        .getElementById("post-content")
+        .value = "";
 
-                    <div class="boletim-date">
-                        DATA: ${escapeHTML(post.date)}
-                    </div>
 
-                    <div class="boletim-category">
-                        CATEGORIA:
-                        ${escapeHTML(post.category)}
-                    </div>
+    message.textContent =
+        "BOLETIM REGISTRADO COM SUCESSO.";
 
-                    <div class="boletim-content">
-                        ${escapeHTML(post.content)}
-                    </div>
 
-                </div>
-
-            `;
-
-        }).join("");
+    loadAdminBulletins();
 
 }
 
 
-/* =========================================================
-   ADMIN
-========================================================= */
+/* =====================================================
+   CARREGAR BOLETINS PUBLICOS
+===================================================== */
 
-function renderAdmin() {
-
-    const user =
-        localStorage.getItem(
-            "valeVerdeGestor"
-        );
-
-
-    document
-    .getElementById("logged-user")
-    .textContent =
-        "OPERADOR AUTORIZADO: " +
-        (user || "DESCONHECIDO");
-
-
-    const posts = getPosts();
+async function loadPublicBulletins() {
 
     const container =
         document.getElementById(
-            "admin-posts"
+            "public-bulletins"
         );
 
 
-    if (posts.length === 0) {
+    container.textContent =
+        "CONECTANDO AO ARQUIVO...";
 
-        container.innerHTML =
+
+    const {
+        data,
+        error
+    } =
+        await db
+        .from("boletins")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending: false
+            }
+        );
+
+
+    if (error) {
+
+        console.error(error);
+
+        container.textContent =
+            "ERRO AO ACESSAR O ARQUIVO.";
+
+        return;
+
+    }
+
+
+    if (!data || data.length === 0) {
+
+        container.textContent =
             "NENHUM BOLETIM REGISTRADO.";
 
         return;
@@ -1381,501 +1170,328 @@ function renderAdmin() {
     }
 
 
-    container.innerHTML =
+    container.innerHTML = "";
 
-        posts.map(function(post) {
 
-            return `
+    data.forEach(post => {
 
-                <div class="admin-post">
+        const article =
+            document.createElement(
+                "article"
+            );
 
-                    <div class="admin-post-title">
-                        ${escapeHTML(post.title)}
-                    </div>
 
-                    <div class="admin-post-date">
-                        DATA:
-                        ${escapeHTML(post.date)}
-                    </div>
+        article.className =
+            "boletim";
 
-                    <br>
 
-                    <button
-                        class="terminal-button"
-                        onclick="deletePost(${post.id})"
-                    >
-                        [ EXCLUIR ]
-                    </button>
+        const title =
+            document.createElement(
+                "h3"
+            );
 
-                </div>
 
-            `;
+        title.textContent =
+            post.title;
 
-        }).join("");
+
+        const date =
+            document.createElement(
+                "div"
+            );
+
+
+        date.className =
+            "date";
+
+
+        date.textContent =
+            "DATA: " +
+            formatDate(
+                post.created_at
+            );
+
+
+        const category =
+            document.createElement(
+                "div"
+            );
+
+
+        category.textContent =
+            "CATEGORIA: " +
+            post.category;
+
+
+        const content =
+            document.createElement(
+                "div"
+            );
+
+
+        content.className =
+            "content";
+
+
+        content.textContent =
+            post.content;
+
+
+        article.appendChild(title);
+
+        article.appendChild(date);
+
+        article.appendChild(category);
+
+        article.appendChild(
+            document.createElement("br")
+        );
+
+        article.appendChild(content);
+
+
+        container.appendChild(article);
+
+    });
 
 }
 
 
-/* =========================================================
-   EXCLUIR
-========================================================= */
+/* =====================================================
+   CARREGAR BOLETINS DO GESTOR
+===================================================== */
 
-function deletePost(id) {
+async function loadAdminBulletins() {
 
-    let posts = getPosts();
-
-
-    posts =
-        posts.filter(function(post) {
-
-            return post.id !== id;
-
-        });
+    const container =
+        document.getElementById(
+            "admin-bulletins"
+        );
 
 
-    savePosts(posts);
+    container.textContent =
+        "CARREGANDO...";
 
 
-    renderAdmin();
-
-    renderBulletins();
-
-}
-
-
-/* =========================================================
-   TERMINAL
-========================================================= */
-
-const terminalOutput =
-    document.getElementById(
-        "terminal-output"
-    );
+    const {
+        data,
+        error
+    } =
+        await db
+        .from("boletins")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending: false
+            }
+        );
 
 
-const commandInput =
-    document.getElementById(
-        "command-input"
-    );
+    if (error) {
 
+        console.error(error);
 
-let terminalStarted = false;
-
-
-function startTerminal() {
-
-    if (terminalStarted) {
-
-        commandInput.focus();
+        container.textContent =
+            "ERRO AO CARREGAR.";
 
         return;
 
     }
 
 
-    terminalStarted = true;
+    if (!data || data.length === 0) {
+
+        container.textContent =
+            "NENHUM BOLETIM.";
+
+        return;
+
+    }
 
 
-    terminalOutput.textContent =
-`VALE VERDE COMPUTER SYSTEM
-VV-01
-
-INITIALIZING SYSTEM...
-
-MEMORY CHECK ............... OK
-DISK UNIT A ............... OK
-DISK UNIT B ............... OK
-SYSTEM CLOCK .............. OK
-
-SYSTEM DATE: 14/08/1983
-
---------------------------------------------
-
-ATENCAO:
-
-ESTE TERMINAL E DESTINADO A OPERADORES
-AUTORIZADOS DO PARQUE ZOOLOGICO
-VALE VERDE.
-
-DIGITE HELP PARA OBTER UMA LISTA
-DE COMANDOS.
-
-`;
+    container.innerHTML = "";
 
 
-    commandInput.focus();
+    data.forEach(post => {
+
+        const article =
+            document.createElement(
+                "article"
+            );
+
+
+        article.className =
+            "boletim";
+
+
+        const title =
+            document.createElement(
+                "h3"
+            );
+
+
+        title.textContent =
+            post.title;
+
+
+        const date =
+            document.createElement(
+                "div"
+            );
+
+
+        date.className =
+            "date";
+
+
+        date.textContent =
+            "DATA: " +
+            formatDate(
+                post.created_at
+            ) +
+            " | AUTOR: " +
+            post.author;
+
+
+        const content =
+            document.createElement(
+                "div"
+            );
+
+
+        content.className =
+            "content";
+
+
+        content.textContent =
+            post.content;
+
+
+        const actions =
+            document.createElement(
+                "div"
+            );
+
+
+        actions.className =
+            "admin-actions";
+
+
+        const deleteButton =
+            document.createElement(
+                "button"
+            );
+
+
+        deleteButton.textContent =
+            "[ EXCLUIR ]";
+
+
+        deleteButton.onclick =
+            () => deleteBulletin(
+                post.id
+            );
+
+
+        actions.appendChild(
+            deleteButton
+        );
+
+
+        article.appendChild(title);
+
+        article.appendChild(date);
+
+        article.appendChild(content);
+
+        article.appendChild(actions);
+
+
+        container.appendChild(article);
+
+    });
 
 }
 
 
-/* =========================================================
-   COMANDOS
-========================================================= */
+/* =====================================================
+   EXCLUIR BOLETIM
+===================================================== */
 
-commandInput.addEventListener(
-    "keydown",
-    function(event) {
+async function deleteBulletin(id) {
 
-        if (event.key === "Enter") {
+    if (!currentOperator) {
 
-            executeCommand();
-
-        }
-
-    }
-);
-
-
-function executeCommand() {
-
-    const raw =
-        commandInput.value.trim();
-
-
-    const command =
-        raw.toUpperCase();
-
-
-    commandInput.value = "";
-
-
-    terminalOutput.textContent +=
-        "\nVV-01> " +
-        raw +
-        "\n";
-
-
-    switch (command) {
-
-
-        case "HELP":
-
-            terminalOutput.textContent +=
-`
-COMANDOS DISPONIVEIS
-
-HELP
-ABOUT
-STATUS
-FILES
-READ
-ACCESS
-CLEAR
-LOGOUT
-
-`;
-
-            break;
-
-
-        case "ABOUT":
-
-            terminalOutput.textContent +=
-`
-SISTEMA DE INFORMACOES VV-01
-
-PARQUE ZOOLOGICO VALE VERDE
-
-VERSAO: 1.0
-ANO: 1983
-
-`;
-
-            break;
-
-
-        case "STATUS":
-
-            terminalOutput.textContent +=
-`
-STATUS DO SISTEMA
-
-COMPUTADOR ........ OPERACIONAL
-UNIDADE A ......... OPERACIONAL
-UNIDADE B ......... OPERACIONAL
-ARQUIVO ........... OPERACIONAL
-REDE .............. NAO DISPONIVEL
-
-`;
-
-            break;
-
-
-        case "FILES":
-
-            terminalOutput.textContent +=
-`
-DIRETORIOS DISPONIVEIS
-
-/PUBLIC
-/ANIMAIS
-/BOLETINS
-/ADMIN
-/ARQUIVO
-
-ARQUIVOS ENCONTRADOS: 05
-
-`;
-
-            break;
-
-
-        case "READ":
-
-            terminalOutput.textContent +=
-`
-ARQUIVO: REGISTRO-004
-
-DATA: 13/08/1983
-
-STATUS: RESTRITO
-
-CONTEUDO:
-
-[REGISTRO PARCIALMENTE REMOVIDO]
-
-REFERENCIA:
-ADMIN-04
-
-`;
-
-            break;
-
-
-        case "ACCESS":
-
-            terminalOutput.textContent +=
-`
-CONTROLE DE ACESSO
-
-INSIRA O CODIGO DE AUTORIZACAO.
-
-DICA:
-O CODIGO PODE SER ENCONTRADO
-EM UM DOS ARQUIVOS DO SISTEMA.
-
-`;
-
-            break;
-
-
-        case "ADMIN-04":
-
-            terminalOutput.textContent +=
-`
---------------------------------------------
-
-ACESSO AUTORIZADO.
-
-ARQUIVO ADMIN-04
-
-NIVEL DE SEGURANCA: RESTRITO
-
-ESTE DOCUMENTO NAO DEVE SER
-CONSULTADO POR OPERADORES NAO
-AUTORIZADOS.
-
-REGISTRO DE ADMINISTRACAO:
-[ DADOS INDISPONIVEIS ]
-
---------------------------------------------
-
-`;
-
-            break;
-
-
-        case "CLEAR":
-
-            terminalOutput.textContent = "";
-
-            break;
-
-
-        case "LOGOUT":
-
-            terminalOutput.textContent +=
-`
-ENCERRANDO TERMINAL...
-
-`;
-
-            showPage("home");
-
-            break;
-
-
-        case "":
-
-            break;
-
-
-        default:
-
-            terminalOutput.textContent +=
-`
-COMANDO NAO ENCONTRADO.
-
-DIGITE HELP PARA OBTER AJUDA.
-
-`;
-
-            break;
+        return;
 
     }
 
 
-    terminalOutput.scrollTop =
-        terminalOutput.scrollHeight;
+    const confirmed =
+        confirm(
+            "EXCLUIR ESTE BOLETIM?"
+        );
 
-}
 
+    if (!confirmed) {
 
-/* =========================================================
-   ATALHO SECRETO
-=========================================================
-
-   CTRL + ALT + V
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-
-            event.ctrlKey &&
-            event.altKey &&
-            event.key.toLowerCase() === "v"
-
-        ) {
-
-            showPage("terminal");
-
-        }
+        return;
 
     }
-);
 
 
-/* =========================================================
-   ENCERRAR
-========================================================= */
+    const { error } =
+        await db
+        .from("boletins")
+        .delete()
+        .eq("id", id);
 
-function closeSystem() {
 
-    document.body.innerHTML = `
+    if (error) {
 
-        <div style="
-            background:#000;
-            color:#b7ffb7;
-            font-family:'Courier New',monospace;
-            padding:30px;
-            min-height:100vh;
-            box-sizing:border-box;
-        ">
+        console.error(error);
 
-        SISTEMA ENCERRADO.
+        alert(
+            "ERRO AO EXCLUIR BOLETIM."
+        );
 
-        <br><br>
+        return;
 
-        VALE VERDE COMPUTER SYSTEM
+    }
 
-        <br>
 
-        VV-01
-
-        </div>
-
-    `;
+    loadAdminBulletins();
 
 }
 
 
-/* =========================================================
-   SEGURANCA DE EXIBICAO
-========================================================= */
+/* =====================================================
+   FORMATAR DATA
+===================================================== */
 
-function escapeHTML(text) {
+function formatDate(date) {
 
-    return String(text)
-
-        .replaceAll("&", "&amp;")
-
-        .replaceAll("<", "&lt;")
-
-        .replaceAll(">", "&gt;")
-
-        .replaceAll('"', "&quot;")
-
-        .replaceAll("'", "&#039;");
-
-}
-
-
-/* =========================================================
-   POSTS INICIAIS
-========================================================= */
-
-function initializePosts() {
-
-    if (
-        !localStorage.getItem(
-            "valeVerdePosts"
-        )
-    ) {
-
-        savePosts([
-
+    return new Date(date)
+        .toLocaleString(
+            "pt-BR",
             {
-
-                id: 1,
-
-                title:
-                    "COMUNICADO SOBRE VISITACAO",
-
-                category:
-                    "COMUNICADO",
-
-                content:
-                    "O PARQUE INFORMa AOS VISITANTES QUE AS ATIVIDADES DE VISITACAO OCORRERAO NORMALMENTE DURANTE A SEMANA.",
-
-                date:
-                    "03/08/1983"
-
-            },
-
-            {
-
-                id: 2,
-
-                title:
-                    "PROGRAMA DE CONSERVACAO",
-
-                category:
-                    "CONSERVACAO",
-
-                content:
-                    "NOVAS ATIVIDADES DE ACOMPANHAMENTO E CONSERVACAO DA FAUNA ESTAO SENDO ORGANIZADAS PELA ADMINISTRACAO.",
-
-                date:
-                    "27/07/1983"
-
+                dateStyle: "short",
+                timeStyle: "short"
             }
-
-        ]);
-
-    }
-
-
-    renderBulletins();
+        );
 
 }
 
 
-initializePosts();
+/* =====================================================
+   INICIO
+===================================================== */
+
+loadPublicBulletins();
 
 </script>
 
 </body>
+
 </html>
