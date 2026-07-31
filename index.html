@@ -30,8 +30,7 @@ body {
 
 button,
 input,
-textarea,
-select {
+textarea {
     font-family: "Courier New", Courier, monospace;
 }
 
@@ -273,15 +272,36 @@ pre {
     padding: 20px;
 }
 
-textarea {
-    width: 100%;
-    min-height: 150px;
-    background: #000;
-    color: #72ff72;
-    border: 1px solid #72ff72;
-    padding: 10px;
-    resize: vertical;
-    outline: none;
+/* FOTO FINAL DO GAROTO */
+
+.final-photo {
+    display: none;
+    text-align: center;
+    margin: 35px auto 20px;
+    padding: 20px;
+    border-top: 1px solid #72ff72;
+}
+
+.final-photo img {
+    width: 280px;
+    max-width: 100%;
+    display: block;
+    margin: 20px auto;
+    filter: brightness(65%) contrast(110%);
+    image-rendering: auto;
+}
+
+.final-name {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+.final-caption {
+    font-size: 11px;
+    margin-top: 15px;
+    opacity: .7;
 }
 
 footer {
@@ -315,17 +335,22 @@ footer {
 
 <div class="topbar">
     <div>VV-01 :: ARQUIVO DIGITAL</div>
+
     <div class="topbar-status">
         SISTEMA OPERACIONAL
     </div>
 </div>
 
 <header>
-    <div class="logo">PARQUE ZOOLÓGICO VALE VERDE</div>
+
+    <div class="logo">
+        PARQUE ZOOLÓGICO VALE VERDE
+    </div>
 
     <div class="subtitle">
         CENTRO DE CONSERVAÇÃO E PESQUISA — ARQUIVO 1983
     </div>
+
 </header>
 
 <nav>
@@ -1104,7 +1129,7 @@ async function salvarBoletim() {
 
 
 /* =====================================================
-   TERMINAL ARG
+   TERMINAL
    ===================================================== */
 
 const terminalOutput =
@@ -1142,10 +1167,6 @@ function runTerminal() {
     terminalInput.value = "";
 
 
-    /* =================================================
-       HELP
-       ================================================= */
-
     if (value === "HELP") {
 
         terminalPrint(`
@@ -1162,10 +1183,6 @@ ACESSO RESTRITO
         return;
     }
 
-
-    /* =================================================
-       STATUS
-       ================================================= */
 
     if (value === "STATUS") {
 
@@ -1184,10 +1201,6 @@ ACESSO: PÚBLICO
     }
 
 
-    /* =================================================
-       VV-04
-       ================================================= */
-
     if (value === "VV-04") {
 
         terminalPrint(`
@@ -1198,8 +1211,6 @@ DATA: 17/08/1983
 
 CLASSIFICAÇÃO:
 RESTRITO
-
-────────────────────────
 
 O SETOR 04 PERMANECERÁ
 FECHADO ATÉ SEGUNDA ORDEM.
@@ -1212,8 +1223,6 @@ RESPONSÁVEL:
 
 C. NOGUEIRA
 
-────────────────────────
-
 REFERÊNCIA:
 C. NOGUEIRA
 `);
@@ -1221,10 +1230,6 @@ C. NOGUEIRA
         return;
     }
 
-
-    /* =================================================
-       NOGUEIRA
-       ================================================= */
 
     if (
         value === "NOGUEIRA" ||
@@ -1258,10 +1263,6 @@ DOCUMENTO ASSOCIADO:
     }
 
 
-    /* =================================================
-       0183
-       ================================================= */
-
     if (value === "0183") {
 
         terminalPrint(`
@@ -1293,10 +1294,6 @@ LAB-04
         return;
     }
 
-
-    /* =================================================
-       LAB-04
-       ================================================= */
 
     if (
         value === "LAB-04" ||
@@ -1339,10 +1336,6 @@ VV-04-BIO
     }
 
 
-    /* =================================================
-       VV-04-BIO
-       ================================================= */
-
     if (value === "VV-04-BIO") {
 
         terminalPrint(`
@@ -1364,14 +1357,10 @@ ATIVO
 ORIGEM:
 ILHAS BALEARES
 
-────────────────────────
-
 RESULTADO:
 
 RECONSTRUÇÃO CONSIDERADA
 BEM-SUCEDIDA.
-
-────────────────────────
 
 RECOMENDAÇÃO:
 
@@ -1381,8 +1370,6 @@ MANTER O EXEMPLAR NA
 NÃO AUTORIZAR TRANSFERÊNCIA
 SEM AVAL DA DIRETORIA.
 
-────────────────────────
-
 REFERÊNCIA:
 
 CLÍNICA
@@ -1391,10 +1378,6 @@ CLÍNICA
         return;
     }
 
-
-    /* =================================================
-       CLINICA
-       ================================================= */
 
     if (value === "CLINICA") {
 
@@ -1437,10 +1420,6 @@ COMUNICADO 08
         return;
     }
 
-
-    /* =================================================
-       COMUNICADO 08
-       ================================================= */
 
     if (
         value === "COMUNICADO 08" ||
@@ -1490,10 +1469,6 @@ INVESTIMENTO
     }
 
 
-    /* =================================================
-       INVESTIMENTO
-       ================================================= */
-
     if (value === "INVESTIMENTO") {
 
         terminalPrint(`
@@ -1527,10 +1502,6 @@ ARQUIVO PESSOAL
     }
 
 
-    /* =================================================
-       REGISTRO 001
-       ================================================= */
-
     if (
         value === "ARQUIVO PESSOAL" ||
         value === "REGISTRO 001"
@@ -1544,8 +1515,6 @@ REGISTRO 001
 DATA:
 23/08/1983
 
-────────────────────────
-
 Eu sabia que tinha alguma coisa
 errada.
 
@@ -1556,20 +1525,11 @@ Meu pai disse que é só manutenção.
 
 Mas hoje vi um homem saindo de lá.
 
-Ele estava usando uma roupa que
-nunca vi ninguém usar no parque.
-
 Depois fui até a clínica.
 
 Tinha mais gente lá.
 
-Perguntei o que aconteceu.
-
-Ninguém quis falar.
-
 Eu vou descobrir.
-
-────────────────────────
 
 REFERÊNCIA:
 REGISTRO 002
@@ -1578,10 +1538,6 @@ REGISTRO 002
         return;
     }
 
-
-    /* =================================================
-       REGISTRO 002
-       ================================================= */
 
     if (value === "REGISTRO 002") {
 
@@ -1593,22 +1549,13 @@ REGISTRO 002
 DATA:
 24/08/1983
 
-────────────────────────
-
 Hoje voltei perto do setor 04.
 
-O portão continua fechado.
-
-Mas encontrei uma coisa no chão.
-
-Uma etiqueta.
+Encontrei uma etiqueta.
 
 Nela estava escrito:
 
 VV-04-BIO
-
-Eu já tinha visto esse código
-nos arquivos da administração.
 
 Pesquisei o nome que estava escrito
 no documento.
@@ -1622,8 +1569,6 @@ Mas se ele está extinto...
 por que existe um registro dele
 no parque?
 
-────────────────────────
-
 REFERÊNCIA:
 
 CONTATO
@@ -1632,10 +1577,6 @@ CONTATO
         return;
     }
 
-
-    /* =================================================
-       CONTATO
-       ================================================= */
 
     if (value === "CONTATO") {
 
@@ -1650,8 +1591,6 @@ RESTRITO
 CÓDIGO:
 CONTATO
 
-────────────────────────
-
 OS CASOS REGISTRADOS APÓS
 18/08 APRESENTAM RELAÇÃO
 TEMPORAL COM O INCIDENTE
@@ -1660,21 +1599,15 @@ OCORRIDO NO SETOR 04.
 A ORIGEM DO CONTATO
 NÃO FOI DETERMINADA.
 
-────────────────────────
-
 RECOMENDAÇÃO:
 
 INFORMAR À DIRETORIA.
-
-────────────────────────
 
 NOTA:
 
 NÃO UTILIZAR A EXPRESSÃO
 "CONTAMINAÇÃO" EM DOCUMENTOS
 DESTINADOS AO ARQUIVO PÚBLICO.
-
-────────────────────────
 
 REFERÊNCIA:
 
@@ -1685,10 +1618,6 @@ REGISTRO 004
     }
 
 
-    /* =================================================
-       REGISTRO 004
-       ================================================= */
-
     if (value === "REGISTRO 004") {
 
         terminalPrint(`
@@ -1698,8 +1627,6 @@ REGISTRO 004
 
 DATA:
 26/08/1983
-
-────────────────────────
 
 Agora eu sei.
 
@@ -1719,13 +1646,9 @@ apenas sobre reconstruir um animal.
 
 Havia outra finalidade.
 
-Não consegui pegar o documento.
-
 Só consegui copiar uma palavra:
 
 APLICAÇÃO.
-
-────────────────────────
 
 REFERÊNCIA:
 
@@ -1735,10 +1658,6 @@ APLICAÇÃO
         return;
     }
 
-
-    /* =================================================
-       APLICAÇÃO
-       ================================================= */
 
     if (value === "APLICAÇÃO") {
 
@@ -1751,14 +1670,10 @@ VV-04
 CLASSIFICAÇÃO:
 ULTRARRESTRITO
 
-────────────────────────
-
 FINALIDADE:
 
 ESTUDO DE APLICAÇÕES
 BIOLÓGICAS DO EXEMPLAR.
-
-────────────────────────
 
 A RECONSTRUÇÃO NÃO DEVE
 SER CONSIDERADA O OBJETIVO
@@ -1768,13 +1683,9 @@ O EXEMPLAR POSSUI
 CARACTERÍSTICAS DE INTERESSE
 PARA PESQUISAS POSTERIORES.
 
-────────────────────────
-
 TRANSFERÊNCIA DE INFORMAÇÕES
 SOMENTE MEDIANTE AUTORIZAÇÃO
 DA DIRETORIA.
-
-────────────────────────
 
 REFERÊNCIA:
 
@@ -1784,10 +1695,6 @@ REGISTRO 005
         return;
     }
 
-
-    /* =================================================
-       REGISTRO 005
-       ================================================= */
 
     if (value === "REGISTRO 005") {
 
@@ -1799,8 +1706,6 @@ REGISTRO 005
 DATA:
 27/08/1983
 
-────────────────────────
-
 Eu descobri por que estão
 escondendo isso.
 
@@ -1810,18 +1715,12 @@ um animal.
 Eles queriam usar o projeto
 para outra coisa.
 
-Não sei exatamente o quê.
-
-Mas encontrei o nome de uma
+Encontrei o nome de uma
 organização em um dos documentos.
-
-Não estava escrito por inteiro.
 
 Só consegui copiar:
 
 V.G.
-
-────────────────────────
 
 REFERÊNCIA:
 
@@ -1831,10 +1730,6 @@ V.G.
         return;
     }
 
-
-    /* =================================================
-       V.G.
-       ================================================= */
 
     if (
         value === "V.G." ||
@@ -1850,8 +1745,6 @@ V.G.
 DATA:
 12/08/1983
 
-────────────────────────
-
 AO PARQUE ZOOLÓGICO
 VALE VERDE
 
@@ -1865,13 +1758,9 @@ PERMANEÇAM RESTRITOS.
 HAVERÁ NOVA AVALIAÇÃO APÓS
 A CONCLUSÃO DA FASE ATUAL.
 
-────────────────────────
-
 ASSINATURA:
 
 V.G.
-
-────────────────────────
 
 REFERÊNCIA:
 
@@ -1882,10 +1771,6 @@ REGISTRO 006
     }
 
 
-    /* =================================================
-       REGISTRO 006
-       ================================================= */
-
     if (value === "REGISTRO 006") {
 
         terminalPrint(`
@@ -1895,8 +1780,6 @@ REGISTRO 006
 
 DATA:
 28/08/1983
-
-────────────────────────
 
 Acho que eles sabem que estou
 procurando os documentos.
@@ -1919,8 +1802,6 @@ Setor 03 e o Setor 04.
 
 Vou entrar.
 
-────────────────────────
-
 REFERÊNCIA:
 
 23:17
@@ -1929,10 +1810,6 @@ REFERÊNCIA:
         return;
     }
 
-
-    /* =================================================
-       23:17
-       ================================================= */
 
     if (value === "23:17") {
 
@@ -1951,11 +1828,7 @@ PASSAGEM 03 — 04
 STATUS:
 ACESSO REGISTRADO
 
-────────────────────────
-
 ATIVIDADE NÃO AUTORIZADA.
-
-────────────────────────
 
 REFERÊNCIA:
 
@@ -1965,10 +1838,6 @@ REGISTRO 007
         return;
     }
 
-
-    /* =================================================
-       REGISTRO 007
-       ================================================= */
 
     if (value === "REGISTRO 007") {
 
@@ -1980,19 +1849,9 @@ REGISTRO 007
 DATA:
 29/08/1983
 
-HORÁRIO:
-23:17
-
-────────────────────────
-
 Eu entrei.
 
-Não devia ter feito isso.
-
 O laboratório estava vazio.
-
-Mas havia sinais de que alguém
-tinha saído às pressas.
 
 Encontrei as caixas do projeto.
 
@@ -2000,11 +1859,7 @@ E encontrei o recinto.
 
 Está vazio.
 
-────────────────────────
-
 O ANIMAL NÃO ESTÁ MAIS LÁ.
-
-────────────────────────
 
 REFERÊNCIA:
 
@@ -2015,10 +1870,6 @@ REGISTRO 008
     }
 
 
-    /* =================================================
-       REGISTRO 008
-       ================================================= */
-
     if (value === "REGISTRO 008") {
 
         terminalPrint(`
@@ -2028,8 +1879,6 @@ REGISTRO 008
 
 DATA:
 30/08/1983
-
-────────────────────────
 
 Eles disseram que o animal
 foi transferido.
@@ -2049,11 +1898,7 @@ E depois disso...
 os casos da clínica
 aumentaram.
 
-────────────────────────
-
 Acho que ele está solto.
-
-────────────────────────
 
 REFERÊNCIA:
 
@@ -2064,10 +1909,6 @@ REGISTRO 009
     }
 
 
-    /* =================================================
-       REGISTRO 009
-       ================================================= */
-
     if (value === "REGISTRO 009") {
 
         terminalPrint(`
@@ -2077,8 +1918,6 @@ REGISTRO 009
 
 DATA:
 31/08/1983
-
-────────────────────────
 
 Eu sei onde ele está.
 
@@ -2097,15 +1936,13 @@ Se eu conseguir destruir os
 registros do projeto, talvez eles
 não consigam continuar.
 
-────────────────────────
-
 Se alguém encontrar isso:
 
 NÃO CONFIE NOS ARQUIVOS PÚBLICOS.
 
-────────────────────────
+REFERÊNCIA:
 
-FIM DO REGISTRO.
+MANUTENÇÃO
 `);
 
         return;
@@ -2113,31 +1950,227 @@ FIM DO REGISTRO.
 
 
     /* =================================================
-       VV-01
+       CAPÍTULO 3
        ================================================= */
 
-    if (value === "VV-01") {
+    if (value === "MANUTENÇÃO") {
 
         terminalPrint(`
-ARQUIVO PRINCIPAL
+ORDEM DE SERVIÇO Nº 04
 
-ACESSO NEGADO.
+DATA:
+30/08/1983
 
-NÍVEL DE AUTORIZAÇÃO INSUFICIENTE.
+MOTIVO:
+MANUTENÇÃO ESTRUTURAL.
+
+OBSERVAÇÃO:
+
+NENHUM ANIMAL FOI REMOVIDO
+DAS INSTALAÇÕES.
+
+RESPONSÁVEL PELA CONFERÊNCIA:
+
+C. NOGUEIRA
+
+────────────────────────
+
+ERRO DE REGISTRO?
+
+NOGUEIRA ESTAVA AFASTADO
+DESDE 17/08/1983.
+
+REFERÊNCIA:
+
+C. N_____
 `);
 
         return;
     }
 
 
-    /* =================================================
-       COMANDO INVÁLIDO
-       ================================================= */
+    if (
+        value === "C. N_____" ||
+        value === "C. N"
+    ) {
+
+        terminalPrint(`
+REGISTRO DE ACESSO
+
+IDENTIFICAÇÃO:
+
+C. NOGUEIRA
+ACESSO: CANCELADO
+
+C. N_____
+ACESSO: AUTORIZADO
+
+DATA:
+30/08/1983
+
+────────────────────────
+
+A IDENTIFICAÇÃO FOI UTILIZADA
+APÓS O CANCELAMENTO DO ACESSO.
+
+REFERÊNCIA:
+
+V.G.
+`);
+
+        return;
+    }
+
+
+    if (value === "19") {
+
+        terminalPrint(`
+ARQUIVO INCOMPLETO.
+
+REFERÊNCIAS ENCONTRADAS:
+
+19-A
+19-B
+19-C
+
+APENAS UMA DELAS POSSUI
+REGISTRO DE TRANSFERÊNCIA.
+
+`);
+
+        return;
+    }
+
+
+    if (value === "19-B") {
+
+        terminalPrint(`
+FICHA 19-B
+
+PROJETO:
+VV-04
+
+TRANSFERÊNCIA:
+NEGADA.
+
+DESTINO:
+[████████]
+
+AUTORIZAÇÃO:
+V.G.
+
+OBSERVAÇÃO:
+
+O EXEMPLAR NÃO DEVE SER
+RECUPERADO PELO PARQUE.
+
+────────────────────────
+
+ARQUIVO ASSOCIADO:
+
+FICHA ESCOLAR
+`);
+
+        return;
+    }
+
+
+    if (
+        value === "FICHA ESCOLAR" ||
+        value === "ESCOLAR"
+    ) {
+
+        terminalPrint(`
+COLÉGIO VALE VERDE
+
+FICHA DE ALUNO
+
+TURMA:
+8º
+
+OCORRÊNCIA:
+
+AUSENTE DESDE:
+31/08/1983
+
+NOME:
+
+████████████
+
+────────────────────────
+
+ARQUIVO:
+
+PESSOAL
+`);
+
+        return;
+    }
+
+
+    if (value === "NOME") {
+
+        const finalPhoto =
+            document.getElementById(
+                "finalPhoto"
+            );
+
+        finalPhoto.style.display =
+            "block";
+
+        terminalPrint(`
+ARQUIVO RECUPERADO.
+
+IDENTIDADE DO AUTOR DOS
+REGISTROS PESSOAIS:
+
+JOÃO
+
+RECUPERANDO IMAGEM...
+
+ARQUIVO 31-08-83
+
+STATUS:
+
+DESAPARECIDO
+
+ÚLTIMO LOCAL REGISTRADO:
+
+SETOR 04
+
+────────────────────────
+
+FIM DO ARQUIVO.
+`);
+
+        finalPhoto.scrollIntoView({
+            behavior: "smooth"
+        });
+
+        return;
+    }
+
+
+    if (value === "STATUS") {
+
+        terminalPrint(`
+VV-01
+
+SISTEMA: OPERACIONAL
+ARQUIVOS: PARCIALMENTE DISPONÍVEIS
+ACESSO: PÚBLICO
+
+ÚLTIMA ATUALIZAÇÃO:
+17/08/1983
+`);
+
+        return;
+    }
+
 
     terminalPrint(
         "ARQUIVO NÃO ENCONTRADO."
     );
-
 }
 
 
@@ -2155,6 +2188,24 @@ terminalInput.addEventListener(
 
     }
 );
+
+
+/* =====================================================
+   FOTO FINAL
+   ===================================================== */
+
+function mostrarFotoFinal() {
+
+    const finalPhoto =
+        document.getElementById(
+            "finalPhoto"
+        );
+
+    if (finalPhoto) {
+        finalPhoto.style.display =
+            "block";
+    }
+}
 
 
 /* =====================================================
@@ -2187,6 +2238,55 @@ document.addEventListener(
 
     }
 );
+
+
+/* =====================================================
+   GESTÃO
+   ===================================================== */
+
+function atualizarPainelGestor() {
+
+    const gestor =
+        localStorage.getItem(
+            "vv_gestor"
+        );
+
+    const loginArea =
+        document.getElementById(
+            "loginArea"
+        );
+
+    const adminArea =
+        document.getElementById(
+            "adminArea"
+        );
+
+    const username =
+        document.getElementById(
+            "adminUsername"
+        );
+
+    if (gestor) {
+
+        loginArea.style.display =
+            "none";
+
+        adminArea.style.display =
+            "block";
+
+        username.textContent =
+            gestor;
+
+    } else {
+
+        loginArea.style.display =
+            "block";
+
+        adminArea.style.display =
+            "none";
+
+    }
+}
 
 </script>
 
