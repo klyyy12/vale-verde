@@ -39,8 +39,6 @@ body {
     overflow-x: hidden;
 }
 
-/* EFEITO DE MONITOR ANTIGO */
-
 body::after {
 
     content: "";
@@ -238,6 +236,12 @@ textarea {
     outline: none;
 
     margin: 7px 0 16px;
+
+}
+
+input[type="date"] {
+
+    color-scheme: dark;
 
 }
 
@@ -763,6 +767,24 @@ type="text"
 value="BOLETIM"
 >
 
+DATA DO BOLETIM:
+
+<input
+id="post-date"
+type="date"
+>
+
+<div class="dim">
+
+A DATA ACIMA SERA MOSTRADA AOS VISITANTES.
+
+SE DEIXAR EM BRANCO, SERA UTILIZADA A DATA
+DE PUBLICACAO.
+
+</div>
+
+<br>
+
 CONTEUDO:
 
 <textarea
@@ -1036,6 +1058,12 @@ async function publishBulletin() {
         .trim();
 
 
+    const selectedDate =
+        document
+        .getElementById("post-date")
+        .value;
+
+
     const content =
         document
         .getElementById("post-content")
@@ -1063,6 +1091,16 @@ async function publishBulletin() {
         "REGISTRANDO BOLETIM...";
 
 
+    /*
+       Se o gestor escolheu uma data,
+       ela será salva.
+
+       Se deixou em branco,
+       display_date ficará NULL.
+       Nesse caso o site mostrará
+       a data real da publicação.
+    */
+
     const { error } =
         await db
         .from("boletins")
@@ -1076,7 +1114,10 @@ async function publishBulletin() {
             content: content,
 
             author:
-                currentOperator
+                currentOperator,
+
+            display_date:
+                selectedDate || null
 
         });
 
@@ -1104,6 +1145,11 @@ async function publishBulletin() {
 
 
     document
+        .getElementById("post-date")
+        .value = "";
+
+
+    document
         .getElementById("post-content")
         .value = "";
 
@@ -1113,6 +1159,48 @@ async function publishBulletin() {
 
 
     loadAdminBulletins();
+
+}
+
+
+/* =====================================================
+   FORMATAR DATA DO BOLETIM
+===================================================== */
+
+function formatBulletinDate(post) {
+
+    /*
+       Primeiro tenta usar a data escolhida
+       pelo gestor.
+
+       Se não existir, utiliza created_at.
+    */
+
+    if (post.display_date) {
+
+        const parts =
+            post.display_date.split("-");
+
+        if (parts.length === 3) {
+
+            return (
+                parts[2] +
+                "/" +
+                parts[1] +
+                "/" +
+                parts[0]
+            );
+
+        }
+
+    }
+
+
+    return new Date(
+        post.created_at
+    ).toLocaleDateString(
+        "pt-BR"
+    );
 
 }
 
@@ -1207,9 +1295,7 @@ async function loadPublicBulletins() {
 
         date.textContent =
             "DATA: " +
-            formatDate(
-                post.created_at
-            );
+            formatBulletinDate(post);
 
 
         const category =
@@ -1346,10 +1432,8 @@ async function loadAdminBulletins() {
 
 
         date.textContent =
-            "DATA: " +
-            formatDate(
-                post.created_at
-            ) +
+            "DATA DO BOLETIM: " +
+            formatBulletinDate(post) +
             " | AUTOR: " +
             post.author;
 
@@ -1462,24 +1546,6 @@ async function deleteBulletin(id) {
 
 
     loadAdminBulletins();
-
-}
-
-
-/* =====================================================
-   FORMATAR DATA
-===================================================== */
-
-function formatDate(date) {
-
-    return new Date(date)
-        .toLocaleString(
-            "pt-BR",
-            {
-                dateStyle: "short",
-                timeStyle: "short"
-            }
-        );
 
 }
 
