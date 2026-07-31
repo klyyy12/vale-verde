@@ -14,7 +14,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     min-height: 100%;
@@ -140,9 +141,16 @@ main {
     min-height: 300px;
     max-height: 600px;
     overflow-y: auto;
+
+    /*
+    Mantém quebras de linha e espaços
+    dos documentos do terminal.
+    */
     white-space: pre-wrap;
+
     word-break: normal;
     overflow-wrap: break-word;
+
     margin-bottom: 20px;
     padding-right: 10px;
 }
@@ -195,6 +203,16 @@ main {
 .boletim-title {
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.boletim-category {
+    font-size: 11px;
+    opacity: .65;
+    margin-bottom: 12px;
+}
+
+.boletim-content {
+    white-space: pre-wrap;
 }
 
 .login-box {
@@ -272,19 +290,17 @@ main {
 }
 
 @keyframes blink {
-    0%, 50% {
+
+    0%,
+    50% {
         opacity: 1;
     }
 
-    51%, 100% {
+    51%,
+    100% {
         opacity: 0;
     }
-}
 
-.final-caption {
-    font-size: 11px;
-    opacity: .65;
-    margin-top: 15px;
 }
 
 footer {
@@ -312,15 +328,25 @@ footer {
 </style>
 </head>
 
+
 <body>
 
 <div id="site">
 
+
+<!-- ================================
+     TOPO
+================================ -->
+
 <div class="topbar">
 
-    <div>VV-01 :: ARQUIVO DIGITAL</div>
+    <div>
+        VV-01 :: ARQUIVO DIGITAL
+    </div>
 
-    <div>1983 // SISTEMA OPERACIONAL</div>
+    <div>
+        1983 // SISTEMA OPERACIONAL
+    </div>
 
 </div>
 
@@ -338,37 +364,53 @@ footer {
 </header>
 
 
+<!-- ================================
+     MENU
+================================ -->
+
 <nav>
 
-<button class="nav-btn active"
-onclick="showPage('inicio', this)">
-INÍCIO
-</button>
+    <button
+        class="nav-btn active"
+        onclick="showPage('inicio', this)"
+    >
+        INÍCIO
+    </button>
 
-<button class="nav-btn"
-onclick="showPage('parque', this)">
-PARQUE
-</button>
+    <button
+        class="nav-btn"
+        onclick="showPage('parque', this)"
+    >
+        PARQUE
+    </button>
 
-<button class="nav-btn"
-onclick="showPage('animais', this)">
-ANIMAIS
-</button>
+    <button
+        class="nav-btn"
+        onclick="showPage('animais', this)"
+    >
+        ANIMAIS
+    </button>
 
-<button class="nav-btn"
-onclick="showPage('boletins', this)">
-BOLETINS
-</button>
+    <button
+        class="nav-btn"
+        onclick="showPage('boletins', this)"
+    >
+        BOLETINS
+    </button>
 
-<button class="nav-btn"
-onclick="showPage('terminal', this)">
-TERMINAL
-</button>
+    <button
+        class="nav-btn"
+        onclick="showPage('terminal', this)"
+    >
+        TERMINAL
+    </button>
 
-<button class="nav-btn"
-onclick="showPage('gestor', this)">
-GESTOR
-</button>
+    <button
+        class="nav-btn"
+        onclick="showPage('gestor', this)"
+    >
+        GESTOR
+    </button>
 
 </nav>
 
@@ -376,79 +418,96 @@ GESTOR
 <main>
 
 
-<section id="inicio" class="page active">
+<!-- ================================
+     INÍCIO
+================================ -->
 
-<div class="box">
+<section
+    id="inicio"
+    class="page active"
+>
 
-<div class="box-title">
-PARQUE ZOOLÓGICO VALE VERDE
-</div>
+    <div class="box">
 
-<p>
-Bem-vindo ao arquivo digital do Parque Zoológico Vale Verde.
-</p>
+        <div class="box-title">
+            PARQUE ZOOLÓGICO VALE VERDE
+        </div>
 
-<p>
-O Parque Zoológico Vale Verde atua na conservação,
-pesquisa e educação ambiental.
-</p>
+        <p>
+            Bem-vindo ao arquivo digital do
+            Parque Zoológico Vale Verde.
+        </p>
 
-<p class="dim">
-Arquivo público — 1983.
-</p>
+        <p>
+            O Parque Zoológico Vale Verde atua
+            na conservação, pesquisa e educação
+            ambiental.
+        </p>
 
-</div>
+        <p class="dim">
+            Arquivo público — 1983.
+        </p>
+
+    </div>
 
 
-<div class="box">
+    <div class="box">
 
-<div class="box-title">
-AVISO
-</div>
+        <div class="box-title">
+            AVISO
+        </div>
 
-<p>
-Alguns registros podem não estar disponíveis
-nesta versão do arquivo.
-</p>
+        <p>
+            Alguns registros podem não estar
+            disponíveis nesta versão do arquivo.
+        </p>
 
-<p>
-Para consultar documentos administrativos,
-utilize o TERMINAL.
-</p>
+        <p>
+            Para consultar documentos administrativos,
+            utilize o TERMINAL.
+        </p>
 
-</div>
+    </div>
 
 </section>
 
 
 
-<section id="parque" class="page">
+<!-- ================================
+     PARQUE
+================================ -->
 
-<div class="box">
+<section
+    id="parque"
+    class="page"
+>
 
-<div class="box-title">
-SOBRE O PARQUE
-</div>
+    <div class="box">
 
-<p>
-O Parque Zoológico Vale Verde foi criado com
-o objetivo de promover a conservação da fauna,
-a pesquisa zoológica e a educação ambiental.
-</p>
+        <div class="box-title">
+            SOBRE O PARQUE
+        </div>
 
-<p>
-Durante a década de 1980, o parque ampliou
-suas atividades de pesquisa.
-</p>
+        <p>
+            O Parque Zoológico Vale Verde foi
+            criado com o objetivo de promover
+            a conservação da fauna, a pesquisa
+            zoológica e a educação ambiental.
+        </p>
 
-</div>
+        <p>
+            Durante a década de 1980, o parque
+            ampliou suas atividades de pesquisa.
+        </p>
+
+    </div>
 
 
-<div class="box">
+    <div class="box">
 
-<div class="box-title">
-SETORES
-</div>
+        <div class="box-title">
+            SETORES
+        </div>
 
 <pre>
 01 — VISITAÇÃO
@@ -458,94 +517,117 @@ SETORES
 05 — ADMINISTRAÇÃO
 </pre>
 
-</div>
+    </div>
 
 </section>
 
 
 
-<section id="animais" class="page">
+<!-- ================================
+     ANIMAIS
+================================ -->
 
-<div class="box">
+<section
+    id="animais"
+    class="page"
+>
 
-<div class="box-title">
-REGISTRO DE ESPÉCIES
-</div>
+    <div class="box">
 
-<p>
-O Vale Verde mantém registros de espécies
-utilizadas em programas de conservação,
-pesquisa e educação.
-</p>
+        <div class="box-title">
+            REGISTRO DE ESPÉCIES
+        </div>
 
-</div>
+        <p>
+            O Vale Verde mantém registros de
+            espécies utilizadas em programas de
+            conservação, pesquisa e educação.
+        </p>
 
-
-<div class="box">
-
-<div class="box-title">
-REGISTRO HISTÓRICO
-</div>
-
-<p>
-<strong>MYOTRAGUS BALEARICUS</strong>
-</p>
-
-<p>
-Status histórico: EXTINTO
-</p>
-
-<p>
-Origem: ILHAS BALEARES
-</p>
-
-<p class="dim">
-Registro detalhado indisponível.
-</p>
-
-</div>
-
-</section>
+    </div>
 
 
+    <div class="box">
 
-<section id="boletins" class="page">
+        <div class="box-title">
+            REGISTRO HISTÓRICO
+        </div>
 
-<div class="box">
+        <p>
+            <strong>MYOTRAGUS BALEARICUS</strong>
+        </p>
 
-<div class="box-title">
-BOLETINS PÚBLICOS
-</div>
+        <p>
+            Status histórico: EXTINTO
+        </p>
 
-<div id="boletinsContainer">
-CARREGANDO ARQUIVOS...
-</div>
+        <p>
+            Origem: ILHAS BALEARES
+        </p>
 
-</div>
+        <p class="dim">
+            Registro detalhado indisponível.
+        </p>
+
+    </div>
 
 </section>
 
 
 
-<section id="terminal" class="page">
+<!-- ================================
+     BOLETINS
+================================ -->
 
-<div class="box">
+<section
+    id="boletins"
+    class="page"
+>
 
-<div class="box-title">
-TERMINAL DE ARQUIVOS VV-01
-</div>
+    <div class="box">
 
-<p class="small">
-SISTEMA DE CONSULTA — ACESSO RESTRITO
-</p>
+        <div class="box-title">
+            BOLETINS PÚBLICOS
+        </div>
 
-</div>
+        <div id="boletinsContainer">
+            CARREGANDO ARQUIVOS...
+        </div>
+
+    </div>
+
+</section>
 
 
-<div class="terminal">
 
-<div id="terminalOutput"
-class="terminal-output">VALE VERDE ARCHIVE TERMINAL
+<!-- ================================
+     TERMINAL
+================================ -->
+
+<section
+    id="terminal"
+    class="page"
+>
+
+    <div class="box">
+
+        <div class="box-title">
+            TERMINAL DE ARQUIVOS VV-01
+        </div>
+
+        <p class="small">
+            SISTEMA DE CONSULTA — ACESSO RESTRITO
+        </p>
+
+    </div>
+
+
+    <div class="terminal">
+
+        <div
+            id="terminalOutput"
+            class="terminal-output"
+>VALE VERDE ARCHIVE TERMINAL
 ════════════════════════════════════
 
 VERSÃO 1.983
@@ -555,185 +637,235 @@ SISTEMA INICIADO.
 DIGITE HELP PARA CONSULTAR OS COMANDOS.</div>
 
 
-<div class="terminal-line">
+        <div class="terminal-line">
 
-<span class="prompt">&gt;</span>
+            <span class="prompt">
+                &gt;
+            </span>
 
-<input
-id="terminalInput"
-autocomplete="off"
-spellcheck="false"
-placeholder="digite um código..."
->
+            <input
+                id="terminalInput"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="digite um código..."
+            >
 
-</div>
-
-
-<button
-class="terminal-button"
-onclick="runTerminal()">
-
-EXECUTAR
-
-</button>
-
-</div>
+        </div>
 
 
-<div id="finalPhoto" class="final-photo">
+        <button
+            class="terminal-button"
+            onclick="runTerminal()"
+        >
+            EXECUTAR
+        </button>
 
-<div class="small">
-ARQUIVO FOTOGRÁFICO RECUPERADO
-</div>
+    </div>
 
-<img
-src="garoto.jpeg"
-alt="Fotografia recuperada do arquivo"
->
 
-<div class="final-name">
-LUCAS DOS SANTOS PEREIRA
-</div>
+    <div
+        id="finalPhoto"
+        class="final-photo"
+    >
 
-<div class="final-caption">
+        <div class="small">
+            ARQUIVO FOTOGRÁFICO RECUPERADO
+        </div>
 
-ARQUIVO 31-08-83
-<br>
-STATUS: DESAPARECIDO
-<br>
-ÚLTIMO LOCAL REGISTRADO: SETOR 04
+        <img
+            src="garoto.jpeg"
+            alt="Fotografia recuperada do arquivo"
+        >
 
-</div>
+        <div class="final-name">
+            LUCAS DOS SANTOS PEREIRA
+        </div>
 
-</div>
+        <div class="final-caption">
+
+            ARQUIVO 31-08-83
+
+            <br>
+
+            STATUS: DESAPARECIDO
+
+            <br>
+
+            ÚLTIMO LOCAL REGISTRADO:
+            SETOR 04
+
+        </div>
+
+    </div>
 
 </section>
 
 
 
-<section id="gestor" class="page">
+<!-- ================================
+     GESTOR
+================================ -->
 
-<div id="loginArea" class="login-box">
-
-<div class="box">
-
-<div class="box-title">
-ACESSO DE GESTOR
-</div>
-
-<div class="form-row">
-
-<label>USUÁRIO</label>
-
-<input
-id="loginUsername"
-type="text"
+<section
+    id="gestor"
+    class="page"
 >
 
-</div>
 
-<div class="form-row">
+    <div
+        id="loginArea"
+        class="login-box"
+    >
 
-<label>SENHA</label>
+        <div class="box">
 
-<input
-id="loginPassword"
-type="password"
->
-
-</div>
-
-<button
-class="btn"
-onclick="loginGestor()">
-
-ENTRAR
-
-</button>
-
-<div id="loginMessage"></div>
-
-</div>
-
-</div>
+            <div class="box-title">
+                ACESSO DE GESTOR
+            </div>
 
 
+            <div class="form-row">
 
-<div id="adminArea" class="admin-only">
+                <label>
+                    USUÁRIO
+                </label>
 
-<div class="admin-panel">
+                <input
+                    id="loginUsername"
+                    type="text"
+                >
 
-<div class="box-title">
-PAINEL DE GESTÃO
-</div>
+            </div>
 
-<p>
-USUÁRIO:
-<strong id="adminUsername"></strong>
-</p>
 
-<button
-class="btn"
-onclick="logoutGestor()">
+            <div class="form-row">
 
-SAIR
+                <label>
+                    SENHA
+                </label>
 
-</button>
+                <input
+                    id="loginPassword"
+                    type="password"
+                >
 
-<hr style="
-border:0;
-border-top:1px solid #72ff72;
-margin:25px 0;
-">
+            </div>
 
-<div class="box-title">
-NOVO BOLETIM
-</div>
 
-<div class="form-row">
+            <button
+                class="btn"
+                onclick="loginGestor()"
+            >
+                ENTRAR
+            </button>
 
-<label>DATA</label>
 
-<input
-id="boletimData"
-type="date"
->
+            <div
+                id="loginMessage"
+            ></div>
 
-</div>
+        </div>
 
-<div class="form-row">
+    </div>
 
-<label>TÍTULO</label>
 
-<input
-id="boletimTitulo"
-type="text"
->
 
-</div>
+    <div
+        id="adminArea"
+        class="admin-only"
+    >
 
-<div class="form-row">
+        <div class="admin-panel">
 
-<label>CONTEÚDO</label>
+            <div class="box-title">
+                PAINEL DE GESTÃO
+            </div>
 
-<textarea
-id="boletimConteudo"></textarea>
 
-</div>
+            <p>
+                USUÁRIO:
 
-<button
-class="btn"
-onclick="salvarBoletim()">
+                <strong id="adminUsername"></strong>
+            </p>
 
-PUBLICAR BOLETIM
 
-</button>
+            <button
+                class="btn"
+                onclick="logoutGestor()"
+            >
+                SAIR
+            </button>
 
-<div id="adminMessage"></div>
 
-</div>
+            <hr style="
+                border:0;
+                border-top:1px solid #72ff72;
+                margin:25px 0;
+            ">
 
-</div>
+
+            <div class="box-title">
+                NOVO BOLETIM
+            </div>
+
+
+            <div class="form-row">
+
+                <label>
+                    DATA QUE APARECERÁ PARA OS VISITANTES
+                </label>
+
+                <input
+                    id="boletimData"
+                    type="date"
+                >
+
+            </div>
+
+
+            <div class="form-row">
+
+                <label>
+                    TÍTULO
+                </label>
+
+                <input
+                    id="boletimTitulo"
+                    type="text"
+                >
+
+            </div>
+
+
+            <div class="form-row">
+
+                <label>
+                    CONTEÚDO
+                </label>
+
+                <textarea
+                    id="boletimConteudo"
+                ></textarea>
+
+            </div>
+
+
+            <button
+                class="btn"
+                onclick="salvarBoletim()"
+            >
+                PUBLICAR BOLETIM
+            </button>
+
+
+            <div
+                id="adminMessage"
+                style="margin-top:15px;"
+            ></div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -742,13 +874,13 @@ PUBLICAR BOLETIM
 
 <footer>
 
-<span>
-PARQUE ZOOLÓGICO VALE VERDE
-</span>
+    <span>
+        PARQUE ZOOLÓGICO VALE VERDE
+    </span>
 
-<span>
-ARQUIVO VV-01 / 1983
-</span>
+    <span>
+        ARQUIVO VV-01 / 1983
+    </span>
 
 </footer>
 
@@ -758,433 +890,625 @@ ARQUIVO VV-01 / 1983
 
 <script>
 
+/* =========================================
+   SUPABASE
+========================================= */
+
 const SUPABASE_URL =
-"https://ejuoosullizocjprdbsj.supabase.co";
+    "https://ejuoosullizocjprdbsj.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_tk2a-wGe64sC5QonEFYwzw_NhhDiJiv";
+    "sb_publishable_tk2a-wGe64sC5QonEFYwzw_NhhDiJiv";
 
 const supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
 
-/* ================================
+/* =========================================
    NAVEGAÇÃO
-================================ */
+========================================= */
 
 function showPage(pageId, button) {
 
-document
-.querySelectorAll(".page")
-.forEach(page =>
-page.classList.remove("active")
-);
-
-document
-.getElementById(pageId)
-.classList.add("active");
-
-document
-.querySelectorAll(".nav-btn")
-.forEach(btn =>
-btn.classList.remove("active")
-);
-
-if (button) {
-button.classList.add("active");
-}
-
-if (pageId === "boletins") {
-carregarBoletins();
-}
-
-}
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
 
 
+    document
+        .getElementById(pageId)
+        .classList.add("active");
 
-/* ================================
-   BOLETINS
-================================ */
 
-async function carregarBoletins() {
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
 
-const container =
-document.getElementById(
-"boletinsContainer"
-);
 
-container.innerHTML =
-"CARREGANDO ARQUIVOS...";
+    if (button) {
+        button.classList.add("active");
+    }
 
-try {
 
-const {
-data,
-error
-} =
-await supabaseClient
-.from("boletins")
-.select("*")
-.order("data", {
-ascending: false
-});
-
-if (error) throw error;
-
-if (!data || data.length === 0) {
-
-container.innerHTML =
-"<p>NENHUM BOLETIM DISPONÍVEL.</p>";
-
-return;
-
-}
-
-container.innerHTML = "";
-
-data.forEach(boletim => {
-
-const div =
-document.createElement("div");
-
-div.className = "boletim";
-
-div.innerHTML = `
-
-<div class="boletim-date">
-${escapeHTML(formatarData(boletim.data))}
-</div>
-
-<div class="boletim-title">
-${escapeHTML(boletim.titulo || "SEM TÍTULO")}
-</div>
-
-<div>
-${escapeHTML(boletim.conteudo || "")}
-</div>
-
-`;
-
-container.appendChild(div);
-
-});
-
-}
-
-catch (error) {
-
-console.error(error);
-
-container.innerHTML =
-"<p>ERRO AO CARREGAR OS BOLETINS.</p>";
-
-}
+    if (pageId === "boletins") {
+        carregarBoletins();
+    }
 
 }
 
 
+
+/* =========================================
+   FORMATAR DATA
+========================================= */
 
 function formatarData(data) {
 
-if (!data) return "";
+    if (!data) {
+        return "";
+    }
 
-const partes =
-String(data).split("-");
+    const partes =
+        String(data).split("-");
 
-if (partes.length !== 3)
-return data;
 
-return `${partes[2]}/${partes[1]}/${partes[0]}`;
+    if (partes.length !== 3) {
+        return data;
+    }
+
+
+    return (
+        partes[2] +
+        "/" +
+        partes[1] +
+        "/" +
+        partes[0]
+    );
 
 }
 
 
 
-/* ================================
-   GESTOR
-================================ */
+/* =========================================
+   ESCAPAR HTML
+========================================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+
+/* =========================================
+   CARREGAR BOLETINS
+========================================= */
+
+async function carregarBoletins() {
+
+    const container =
+        document.getElementById(
+            "boletinsContainer"
+        );
+
+
+    container.innerHTML =
+        "CARREGANDO ARQUIVOS...";
+
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+            .from("boletins")
+            .select("*")
+            .order("display_date", {
+                ascending: false
+            });
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        if (!data || data.length === 0) {
+
+            container.innerHTML =
+                "<p>NENHUM BOLETIM DISPONÍVEL.</p>";
+
+            return;
+        }
+
+
+        container.innerHTML = "";
+
+
+        data.forEach(boletim => {
+
+            const div =
+                document.createElement("div");
+
+
+            div.className =
+                "boletim";
+
+
+            div.innerHTML = `
+
+                <div class="boletim-date">
+
+                    ${escapeHTML(
+                        formatarData(
+                            boletim.display_date
+                        )
+                    )}
+
+                </div>
+
+
+                <div class="boletim-title">
+
+                    ${escapeHTML(
+                        boletim.title ||
+                        "SEM TÍTULO"
+                    )}
+
+                </div>
+
+
+                <div class="boletim-category">
+
+                    ${escapeHTML(
+                        boletim.category ||
+                        "COMUNICADO"
+                    )}
+
+                </div>
+
+
+                <div class="boletim-content">
+
+                    ${escapeHTML(
+                        boletim.content ||
+                        ""
+                    )}
+
+                </div>
+
+            `;
+
+
+            container.appendChild(div);
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "ERRO AO CARREGAR BOLETINS:",
+            error
+        );
+
+
+        container.innerHTML =
+            "<p>ERRO AO CARREGAR OS BOLETINS.</p>";
+
+    }
+
+}
+
+
+
+/* =========================================
+   GESTORES
+========================================= */
 
 const gestores = {
 
-"GESTOR_01": "VALEVERDE",
+    "GESTOR_01": "VALEVERDE",
 
-"DIRETORIA": "ARQUIVO04",
+    "DIRETORIA": "ARQUIVO04",
 
-"OPERADOR": "TERMINAL04"
+    "OPERADOR": "TERMINAL04"
 
 };
 
 
 
+/* =========================================
+   LOGIN
+========================================= */
+
 function loginGestor() {
 
-const username =
-document
-.getElementById("loginUsername")
-.value
-.trim()
-.toUpperCase();
+    const username =
+        document
+            .getElementById(
+                "loginUsername"
+            )
+            .value
+            .trim()
+            .toUpperCase();
 
-const password =
-document
-.getElementById("loginPassword")
-.value;
 
-const message =
-document.getElementById(
-"loginMessage"
-);
+    const password =
+        document
+            .getElementById(
+                "loginPassword"
+            )
+            .value;
 
-if (
-gestores[username] &&
-gestores[username] === password
-) {
 
-localStorage.setItem(
-"vv_gestor",
-username
-);
+    const message =
+        document.getElementById(
+            "loginMessage"
+        );
 
-atualizarPainelGestor();
 
-message.textContent = "";
+    if (
+        gestores[username] &&
+        gestores[username] === password
+    ) {
+
+        localStorage.setItem(
+            "vv_gestor",
+            username
+        );
+
+
+        atualizarPainelGestor();
+
+
+        message.textContent = "";
+
+    }
+
+    else {
+
+        message.textContent =
+            "ACESSO NEGADO.";
+
+    }
 
 }
 
-else {
-
-message.textContent =
-"ACESSO NEGADO.";
-
-}
-
-}
 
 
+/* =========================================
+   LOGOUT
+========================================= */
 
 function logoutGestor() {
 
-localStorage.removeItem(
-"vv_gestor"
-);
+    localStorage.removeItem(
+        "vv_gestor"
+    );
 
-atualizarPainelGestor();
+
+    atualizarPainelGestor();
 
 }
 
 
+
+/* =========================================
+   PAINEL
+========================================= */
 
 function atualizarPainelGestor() {
 
-const gestor =
-localStorage.getItem(
-"vv_gestor"
-);
+    const gestor =
+        localStorage.getItem(
+            "vv_gestor"
+        );
 
-const loginArea =
-document.getElementById(
-"loginArea"
-);
 
-const adminArea =
-document.getElementById(
-"adminArea"
-);
+    const loginArea =
+        document.getElementById(
+            "loginArea"
+        );
 
-const username =
-document.getElementById(
-"adminUsername"
-);
 
-if (gestor) {
+    const adminArea =
+        document.getElementById(
+            "adminArea"
+        );
 
-loginArea.style.display =
-"none";
 
-adminArea.style.display =
-"block";
+    const username =
+        document.getElementById(
+            "adminUsername"
+        );
 
-username.textContent =
-gestor;
+
+    if (gestor) {
+
+        loginArea.style.display =
+            "none";
+
+
+        adminArea.style.display =
+            "block";
+
+
+        username.textContent =
+            gestor;
+
+    }
+
+    else {
+
+        loginArea.style.display =
+            "block";
+
+
+        adminArea.style.display =
+            "none";
+
+    }
 
 }
 
-else {
-
-loginArea.style.display =
-"block";
-
-adminArea.style.display =
-"none";
-
-}
-
-}
 
 
-
-/* ================================
+/* =========================================
    SALVAR BOLETIM
-================================ */
+========================================= */
 
 async function salvarBoletim() {
 
-const gestor =
-localStorage.getItem(
-"vv_gestor"
-);
+    const gestor =
+        localStorage.getItem(
+            "vv_gestor"
+        );
 
-const message =
-document.getElementById(
-"adminMessage"
-);
 
-if (!gestor) {
+    const message =
+        document.getElementById(
+            "adminMessage"
+        );
 
-message.textContent =
-"ACESSO NEGADO.";
 
-return;
+    if (!gestor) {
+
+        message.textContent =
+            "ACESSO NEGADO.";
+
+        return;
+    }
+
+
+    const data =
+        document
+            .getElementById(
+                "boletimData"
+            )
+            .value;
+
+
+    const titulo =
+        document
+            .getElementById(
+                "boletimTitulo"
+            )
+            .value
+            .trim();
+
+
+    const conteudo =
+        document
+            .getElementById(
+                "boletimConteudo"
+            )
+            .value
+            .trim();
+
+
+    if (
+        !data ||
+        !titulo ||
+        !conteudo
+    ) {
+
+        message.textContent =
+            "PREENCHA TODOS OS CAMPOS.";
+
+        return;
+    }
+
+
+    message.textContent =
+        "PUBLICANDO...";
+
+
+    try {
+
+        const {
+            data: boletim,
+            error
+        } =
+        await supabaseClient
+            .from("boletins")
+            .insert([
+                {
+
+                    title: titulo,
+
+                    category:
+                        "COMUNICADO",
+
+                    content:
+                        conteudo,
+
+                    author:
+                        gestor,
+
+                    display_date:
+                        data
+
+                }
+            ])
+            .select();
+
+
+        if (error) {
+
+            console.error(
+                "ERRO SUPABASE:",
+                error
+            );
+
+
+            message.textContent =
+                "ERRO: " +
+                error.message;
+
+            return;
+        }
+
+
+        console.log(
+            "BOLETIM PUBLICADO:",
+            boletim
+        );
+
+
+        message.textContent =
+            "BOLETIM PUBLICADO COM SUCESSO.";
+
+
+        document
+            .getElementById(
+                "boletimData"
+            )
+            .value = "";
+
+
+        document
+            .getElementById(
+                "boletimTitulo"
+            )
+            .value = "";
+
+
+        document
+            .getElementById(
+                "boletimConteudo"
+            )
+            .value = "";
+
+
+        carregarBoletins();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "ERRO:",
+            error
+        );
+
+
+        message.textContent =
+            "ERRO AO PUBLICAR: " +
+            error.message;
+
+    }
 
 }
 
-const data =
-document
-.getElementById("boletimData")
-.value;
-
-const titulo =
-document
-.getElementById("boletimTitulo")
-.value
-.trim();
-
-const conteudo =
-document
-.getElementById("boletimConteudo")
-.value
-.trim();
-
-if (!data || !titulo || !conteudo) {
-
-message.textContent =
-"PREENCHA TODOS OS CAMPOS.";
-
-return;
-
-}
-
-message.textContent =
-"PUBLICANDO...";
-
-try {
-
-const {
-error
-} =
-await supabaseClient
-.from("boletins")
-.insert({
-
-data: data,
-titulo: titulo,
-conteudo: conteudo,
-criado_por: gestor
-
-});
-
-if (error) throw error;
-
-message.textContent =
-"BOLETIM PUBLICADO COM SUCESSO.";
-
-document
-.getElementById("boletimTitulo")
-.value = "";
-
-document
-.getElementById("boletimConteudo")
-.value = "";
-
-carregarBoletins();
-
-}
-
-catch (error) {
-
-console.error(error);
-
-message.textContent =
-"ERRO AO PUBLICAR O BOLETIM.";
-
-}
-
-}
 
 
-
-/* ================================
+/* =========================================
    TERMINAL
-================================ */
+========================================= */
 
 const terminalOutput =
-document.getElementById(
-"terminalOutput"
-);
+    document.getElementById(
+        "terminalOutput"
+    );
+
 
 const terminalInput =
-document.getElementById(
-"terminalInput"
-);
+    document.getElementById(
+        "terminalInput"
+    );
 
 
 
 function terminalPrint(text) {
 
-const separator = `
+    const separator = `
 
 ════════════════════════════════════
 
 `;
 
-terminalOutput.textContent +=
-separator + text.trim();
 
-terminalOutput.scrollTop =
-terminalOutput.scrollHeight;
+    terminalOutput.textContent +=
+        separator +
+        text.trim();
+
+
+    terminalOutput.scrollTop =
+        terminalOutput.scrollHeight;
 
 }
 
 
 
-/* ================================
-   COMANDOS
-================================ */
+/* =========================================
+   COMANDOS DO TERMINAL
+========================================= */
 
 function runTerminal() {
 
-const value =
-terminalInput.value
-.trim()
-.toUpperCase();
-
-if (!value) return;
-
-terminalPrint(
-"> " + value
-);
-
-terminalInput.value = "";
+    const value =
+        terminalInput.value
+            .trim()
+            .toUpperCase();
 
 
+    if (!value) {
+        return;
+    }
 
-if (value === "HELP") {
 
-terminalPrint(`
+    terminalPrint(
+        "> " + value
+    );
+
+
+    terminalInput.value = "";
+
+
+
+    /* HELP */
+
+    if (value === "HELP") {
+
+        terminalPrint(`
 
 COMANDOS DISPONÍVEIS
 ────────────────────
@@ -1197,15 +1521,16 @@ ACESSO RESTRITO
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "STATUS") {
 
-terminalPrint(`
+    /* STATUS */
+
+    if (value === "STATUS") {
+
+        terminalPrint(`
 
 STATUS DO SISTEMA
 ─────────────────
@@ -1226,15 +1551,16 @@ PÚBLICO
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "VV-04") {
 
-terminalPrint(`
+    /* VV-04 */
+
+    if (value === "VV-04") {
+
+        terminalPrint(`
 
 ARQUIVO ENCONTRADO
 ──────────────────
@@ -1265,18 +1591,19 @@ C. NOGUEIRA
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (
-value === "NOGUEIRA" ||
-value === "C. NOGUEIRA"
-) {
 
-terminalPrint(`
+    /* NOGUEIRA */
+
+    if (
+        value === "NOGUEIRA" ||
+        value === "C. NOGUEIRA"
+    ) {
+
+        terminalPrint(`
 
 REGISTRO ENCONTRADO
 ───────────────────
@@ -1302,15 +1629,16 @@ DOCUMENTO ASSOCIADO:
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "0183") {
 
-terminalPrint(`
+    /* 0183 */
+
+    if (value === "0183") {
+
+        terminalPrint(`
 
 DOCUMENTO Nº 0183
 ─────────────────
@@ -1339,15 +1667,16 @@ LAB-04
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "LAB-04") {
 
-terminalPrint(`
+    /* LAB-04 */
+
+    if (value === "LAB-04") {
+
+        terminalPrint(`
 
 REGISTRO DE PESQUISA
 ─────────────────────
@@ -1380,15 +1709,16 @@ VV-04-BIO
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "VV-04-BIO") {
 
-terminalPrint(`
+    /* VV-04-BIO */
+
+    if (value === "VV-04-BIO") {
+
+        terminalPrint(`
 
 REGISTRO BIOLÓGICO
 ──────────────────
@@ -1425,15 +1755,16 @@ CLINICA
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "CLINICA") {
 
-terminalPrint(`
+    /* CLINICA */
+
+    if (value === "CLINICA") {
+
+        terminalPrint(`
 
 CLÍNICA VALE VERDE
 ───────────────────
@@ -1467,15 +1798,16 @@ COMUNICADO 08
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "COMUNICADO 08") {
 
-terminalPrint(`
+    /* COMUNICADO 08 */
+
+    if (value === "COMUNICADO 08") {
+
+        terminalPrint(`
 
 COMUNICADO INTERNO Nº 08
 ─────────────────────────
@@ -1509,15 +1841,16 @@ INVESTIMENTO
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "INVESTIMENTO") {
 
-terminalPrint(`
+    /* INVESTIMENTO */
+
+    if (value === "INVESTIMENTO") {
+
+        terminalPrint(`
 
 ARQUIVO ADMINISTRATIVO
 ────────────────────────
@@ -1541,15 +1874,16 @@ ARQUIVO PESSOAL
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "ARQUIVO PESSOAL") {
 
-terminalPrint(`
+    /* ARQUIVO PESSOAL */
+
+    if (value === "ARQUIVO PESSOAL") {
+
+        terminalPrint(`
 
 ARQUIVO PESSOAL
 ───────────────
@@ -1581,15 +1915,16 @@ REGISTRO 002
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "REGISTRO 001") {
 
-terminalPrint(`
+    /* REGISTRO 001 */
+
+    if (value === "REGISTRO 001") {
+
+        terminalPrint(`
 
 REGISTRO 001
 ────────────
@@ -1600,15 +1935,16 @@ REGISTRO 002
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "REGISTRO 002") {
 
-terminalPrint(`
+    /* REGISTRO 002 */
+
+    if (value === "REGISTRO 002") {
+
+        terminalPrint(`
 
 ARQUIVO PESSOAL
 ───────────────
@@ -1642,15 +1978,16 @@ CONTATO
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "CONTATO") {
 
-terminalPrint(`
+    /* CONTATO */
+
+    if (value === "CONTATO") {
+
+        terminalPrint(`
 
 CLÍNICA VALE VERDE
 ───────────────────
@@ -1677,15 +2014,16 @@ REGISTRO 004
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "REGISTRO 004") {
 
-terminalPrint(`
+    /* REGISTRO 004 */
+
+    if (value === "REGISTRO 004") {
+
+        terminalPrint(`
 
 ARQUIVO PESSOAL
 ───────────────
@@ -1721,15 +2059,16 @@ APLICAÇÃO
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "APLICAÇÃO") {
 
-terminalPrint(`
+    /* APLICAÇÃO */
+
+    if (value === "APLICAÇÃO") {
+
+        terminalPrint(`
 
 ARQUIVO DE PESQUISA
 ───────────────────
@@ -1754,15 +2093,16 @@ REGISTRO 005
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "REGISTRO 005") {
 
-terminalPrint(`
+    /* REGISTRO 005 */
+
+    if (value === "REGISTRO 005") {
+
+        terminalPrint(`
 
 ARQUIVO PESSOAL
 ───────────────
@@ -1785,18 +2125,19 @@ V.G.
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (
-value === "V.G." ||
-value === "VG"
-) {
 
-terminalPrint(`
+    /* V.G. */
+
+    if (
+        value === "V.G." ||
+        value === "VG"
+    ) {
+
+        terminalPrint(`
 
 ARQUIVO DE CORRESPONDÊNCIA
 ───────────────────────────
@@ -1824,15 +2165,16 @@ REGISTRO 006
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "REGISTRO 006") {
 
-terminalPrint(`
+    /* REGISTRO 006 */
+
+    if (value === "REGISTRO 006") {
+
+        terminalPrint(`
 
 ARQUIVO PESSOAL
 ───────────────
@@ -1863,15 +2205,16 @@ REFERÊNCIA:
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "23:17") {
 
-terminalPrint(`
+    /* 23:17 */
+
+    if (value === "23:17") {
+
+        terminalPrint(`
 
 REGISTRO DE ACESSO
 ──────────────────
@@ -1896,15 +2239,16 @@ REGISTRO 007
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "REGISTRO 007") {
 
-terminalPrint(`
+    /* REGISTRO 007 */
+
+    if (value === "REGISTRO 007") {
+
+        terminalPrint(`
 
 ARQUIVO PESSOAL
 ───────────────
@@ -1930,15 +2274,16 @@ REGISTRO 008
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "REGISTRO 008") {
 
-terminalPrint(`
+    /* REGISTRO 008 */
+
+    if (value === "REGISTRO 008") {
+
+        terminalPrint(`
 
 ARQUIVO PESSOAL
 ───────────────
@@ -1970,15 +2315,16 @@ REGISTRO 009
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "REGISTRO 009") {
 
-terminalPrint(`
+    /* REGISTRO 009 */
+
+    if (value === "REGISTRO 009") {
+
+        terminalPrint(`
 
 ARQUIVO PESSOAL
 ───────────────
@@ -2019,15 +2365,16 @@ MANUTENÇÃO
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "MANUTENÇÃO") {
 
-terminalPrint(`
+    /* MANUTENÇÃO */
+
+    if (value === "MANUTENÇÃO") {
+
+        terminalPrint(`
 
 ORDEM DE SERVIÇO Nº 04
 ───────────────────────
@@ -2060,19 +2407,20 @@ C. N_____
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (
-value === "C. N_____" ||
-value === "C. N" ||
-value === "C.N"
-) {
 
-terminalPrint(`
+    /* C.N. */
+
+    if (
+        value === "C. N_____" ||
+        value === "C. N" ||
+        value === "C.N"
+    ) {
+
+        terminalPrint(`
 
 REGISTRO DE ACESSO
 ──────────────────
@@ -2103,15 +2451,16 @@ NO RODAPÉ DO DOCUMENTO:
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "19") {
 
-terminalPrint(`
+    /* 19 */
+
+    if (value === "19") {
+
+        terminalPrint(`
 
 ARQUIVO INCOMPLETO
 ──────────────────
@@ -2132,15 +2481,16 @@ PROCURE:
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "19-B") {
 
-terminalPrint(`
+    /* 19-B */
+
+    if (value === "19-B") {
+
+        terminalPrint(`
 
 FICHA 19-B
 ──────────
@@ -2170,18 +2520,19 @@ FICHA ESCOLAR
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (
-value === "FICHA ESCOLAR" ||
-value === "ESCOLAR"
-) {
 
-terminalPrint(`
+    /* FICHA ESCOLAR */
+
+    if (
+        value === "FICHA ESCOLAR" ||
+        value === "ESCOLAR"
+    ) {
+
+        terminalPrint(`
 
 COLÉGIO VALE VERDE
 ───────────────────
@@ -2208,15 +2559,16 @@ PESSOAL
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-if (value === "PESSOAL") {
 
-terminalPrint(`
+    /* PESSOAL */
+
+    if (value === "PESSOAL") {
+
+        terminalPrint(`
 
 ARQUIVO PESSOAL
 ───────────────
@@ -2244,26 +2596,28 @@ NOME
 
 `);
 
-return;
-
-}
-
+        return;
+    }
 
 
-/* ================================
-   REVELAÇÃO DO LUCAS
-================================ */
 
-if (value === "NOME") {
+    /* =====================================
+       REVELAÇÃO DO LUCAS
+    ===================================== */
 
-const finalPhoto =
-document.getElementById(
-"finalPhoto"
-);
+    if (value === "NOME") {
 
-finalPhoto.style.display = "none";
+        const finalPhoto =
+            document.getElementById(
+                "finalPhoto"
+            );
 
-terminalPrint(`
+
+        finalPhoto.style.display =
+            "none";
+
+
+        terminalPrint(`
 
 ARQUIVO RECUPERADO
 ──────────────────
@@ -2273,53 +2627,69 @@ REGISTROS PESSOAIS:
 
 `);
 
-const nameLine =
-document.createElement("div");
 
-nameLine.className =
-"typewriter-name";
-
-terminalOutput.appendChild(
-nameLine
-);
-
-const name =
-"LUCAS DOS SANTOS PEREIRA";
-
-let i = 0;
-
-const cursor =
-document.createElement("span");
-
-cursor.className =
-"typewriter-cursor";
-
-cursor.textContent = "█";
-
-nameLine.appendChild(cursor);
+        const nameLine =
+            document.createElement("div");
 
 
-function typeName() {
+        nameLine.className =
+            "typewriter-name";
 
-if (i < name.length) {
 
-cursor.insertAdjacentText(
-"beforebegin",
-name.charAt(i)
-);
+        terminalOutput.appendChild(
+            nameLine
+        );
 
-i++;
 
-setTimeout(
-typeName,
-110
-);
+        const name =
+            "LUCAS DOS SANTOS PEREIRA";
 
-}
 
-else {
+        let i = 0;
 
-terminalPrint(`
+
+        const cursor =
+            document.createElement(
+                "span"
+            );
+
+
+        cursor.className =
+            "typewriter-cursor";
+
+
+        cursor.textContent =
+            "█";
+
+
+        nameLine.appendChild(
+            cursor
+        );
+
+
+        function typeName() {
+
+            if (i < name.length) {
+
+                cursor.insertAdjacentText(
+                    "beforebegin",
+                    name.charAt(i)
+                );
+
+
+                i++;
+
+
+                setTimeout(
+                    typeName,
+                    110
+                );
+
+            }
+
+            else {
+
+                terminalPrint(`
 
 RECUPERANDO IMAGEM...
 
@@ -2341,34 +2711,36 @@ FIM DO ARQUIVO.
 
 `);
 
-setTimeout(() => {
 
-finalPhoto.style.display =
-"block";
+                setTimeout(() => {
 
-finalPhoto.scrollIntoView({
-behavior: "smooth"
-});
-
-}, 1000);
-
-}
-
-}
-
-typeName();
-
-return;
-
-}
+                    finalPhoto.style.display =
+                        "block";
 
 
+                    finalPhoto.scrollIntoView({
+                        behavior: "smooth"
+                    });
 
-/* ================================
-   DESCONHECIDO
-================================ */
+                }, 1000);
 
-terminalPrint(`
+            }
+
+        }
+
+
+        typeName();
+
+        return;
+    }
+
+
+
+    /* =====================================
+       COMANDO DESCONHECIDO
+    ===================================== */
+
+    terminalPrint(`
 
 ARQUIVO NÃO ENCONTRADO.
 
@@ -2378,53 +2750,36 @@ ARQUIVO NÃO ENCONTRADO.
 
 
 
-/* ================================
-   ENTER
-================================ */
+/* =========================================
+   ENTER NO TERMINAL
+========================================= */
 
 terminalInput.addEventListener(
-"keydown",
-function(event) {
+    "keydown",
+    function(event) {
 
-if (event.key === "Enter") {
-runTerminal();
-}
+        if (event.key === "Enter") {
+            runTerminal();
+        }
 
-}
+    }
 );
 
 
 
-/* ================================
-   ESCAPE HTML
-================================ */
-
-function escapeHTML(value) {
-
-return String(value)
-.replaceAll("&", "&amp;")
-.replaceAll("<", "&lt;")
-.replaceAll(">", "&gt;")
-.replaceAll('"', "&quot;")
-.replaceAll("'", "&#039;");
-
-}
-
-
-
-/* ================================
+/* =========================================
    INICIALIZAÇÃO
-================================ */
+========================================= */
 
 document.addEventListener(
-"DOMContentLoaded",
-function() {
+    "DOMContentLoaded",
+    function() {
 
-atualizarPainelGestor();
+        atualizarPainelGestor();
 
-carregarBoletins();
+        carregarBoletins();
 
-}
+    }
 );
 
 </script>
